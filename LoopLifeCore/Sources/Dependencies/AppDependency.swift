@@ -9,7 +9,9 @@
 import Foundation
 
 public final class AppDependency: ObservableObject {
-
+	
+	lazy var coreDataManager: CoreDataManaging = CoreDataManager()
+	
 	// MARK: - Init
 	
 	init() { }

@@ -2,6 +2,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let features: [Feature] = [
+	activity,
 	example,
 	home,
 	sheet,

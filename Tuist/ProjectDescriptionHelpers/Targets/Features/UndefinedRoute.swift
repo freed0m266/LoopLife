@@ -1,19 +1,19 @@
 //
-//  Sheet.swift
+//  UndefinedRoute.swift
 //  ProjectDescriptionHelpers
 //
-//  Created by Martin Svoboda on 03.07.2025.
+//  Created by Martin Svoboda on 13.07.2025.
 //
 
 import Foundation
 
-public let sheet = Feature(
-	name: "Sheet",
+public let undefinedRoute = Feature(
+	name: "UndefinedRoute",
 	dependencies: [
 		.target(name: core.name),
 		.target(name: designSystem.name),
 		.target(name: resources.name)
-		.target(undefinedRoute)
 	],
-	hasTests: false
+	hasTests: true,
+	hasTesting: false
 )

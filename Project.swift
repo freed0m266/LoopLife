@@ -4,6 +4,7 @@ import ProjectDescriptionHelpers
 let features: [Feature] = [
 	example,
 	sheet
+	undefinedRoute
 ]
 let services: [Service] = []
 let appTargets: [Target] = features.flatMap(\.allTargets) + services.flatMap(\.allTargets)

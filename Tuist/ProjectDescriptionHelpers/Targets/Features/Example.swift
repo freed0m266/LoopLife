@@ -14,6 +14,5 @@ public let example = Feature(
 		.target(name: designSystem.name),
 		.target(name: resources.name)
 	],
-	hasTests: true,
 	hasTesting: true
 )

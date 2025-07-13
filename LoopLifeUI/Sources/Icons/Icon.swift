@@ -44,6 +44,8 @@ public extension Icon {
 	static var info: Icon = "info.circle"
 	/// doc.on.doc
 	static var copy: Icon = "doc.on.doc"
+	/// exclamationmark.triangle
+	static var warningTriangle: Icon = "exclamationmark.triangle"
 }
 
 #Preview {

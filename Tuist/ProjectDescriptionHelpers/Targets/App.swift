@@ -36,6 +36,7 @@ public let app = Target.target(
 		.target(core),
 		.target(designSystem),
 		.target(example)
+		.target(undefinedRoute)
 	],
 	settings: .settings(
 		base: [

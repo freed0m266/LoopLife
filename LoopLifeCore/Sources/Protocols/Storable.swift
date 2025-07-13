@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol Storable: Identifiable, Codable where ID == String {
+public protocol Storable: Identifiable, Equatable, Codable where ID == String {
 	
 }
 
-extension Storable {
+public extension Storable {
 	var entityKey: EntityKey {
 		.init(id: id, entityType: Self.entityType)
 	}

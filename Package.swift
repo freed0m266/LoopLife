@@ -18,7 +18,7 @@ let package = Package(
 		),
 		.package(
 			url: "https://github.com/freed0m266/BaseKitX",
-			from: "1.1.0"
+			from: "1.2.0"
 		)
 	]
 )

@@ -12,7 +12,8 @@ public let designSystem = Target.target(
     sources: "\(targetName)/Sources/**",
     dependencies: [
         .target(name: resources.name),
-        .target(name: core.name)
+        .target(name: core.name),
+		.external(name: "MKRingProgressView")
     ]
 )
 

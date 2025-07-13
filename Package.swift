@@ -17,6 +17,10 @@ let package = Package(
 			from: "2.1.0"
 		),
 		.package(
+			url: "https://github.com/maxkonovalov/MKRingProgressView",
+			from: "2.3.0"
+		),
+		.package(
 			url: "https://github.com/freed0m266/BaseKitX",
 			from: "1.2.0"
 		)

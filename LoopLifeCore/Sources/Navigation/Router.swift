@@ -16,6 +16,7 @@ public final class Router: ObservableObject {
 	@Published public var sheetItem: Route?
 	
 	@Published public var examplePath: [Route] = []
+	@Published public var homePath: [Route] = []
 	@Published public var sheetPath: [Route] = []
 	
 	private var activePath: RoutePath?
@@ -36,6 +37,8 @@ public final class Router: ObservableObject {
 		switch activePath {
 		case .example:
 			examplePath.append(route)
+		case .home:
+			homePath.append(route)
 		case .sheet:
 			sheetPath.append(route)
 		case .none:
@@ -47,6 +50,8 @@ public final class Router: ObservableObject {
 		switch activePath {
 		case .example:
 			examplePath.removeLast()
+		case .home:
+			homePath.removeLast()
 		case .sheet:
 			sheetPath.removeLast()
 		case .none:
@@ -58,11 +63,14 @@ public final class Router: ObservableObject {
 		switch path {
 		case .example:
 			examplePath = []
+		case .home:
+			homePath = []
 		case .sheet:
 			sheetPath = []
 		case .none:
 			// Clear all paths
 			examplePath = []
+			homePath = []
 			sheetPath = []
 		}
 	}

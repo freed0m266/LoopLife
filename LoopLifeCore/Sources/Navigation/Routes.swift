@@ -10,11 +10,13 @@ import Foundation
 
 public enum RoutePath {
 	case example
+	case home
 	case sheet
 }
 
 public enum Route: Hashable {
-	case exampleDetail(String)
+	case exampleDetail(Example.ID)
+	case activityDetail(Activity.ID)
 }
 
 extension Route: Identifiable {

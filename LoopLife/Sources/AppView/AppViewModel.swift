@@ -8,8 +8,11 @@
 
 import Foundation
 import LoopLifeCore
+import Home
 
 final class AppViewModel: BaseViewModel, ObservableObject {
+	
+	lazy var homeViewModel = HomeViewModel()
 	
 	// MARK: - Init
 	

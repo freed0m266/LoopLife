@@ -3,7 +3,8 @@ import ProjectDescriptionHelpers
 
 let features: [Feature] = [
 	example,
-	sheet
+	home,
+	sheet,
 	undefinedRoute
 ]
 let services: [Service] = []

@@ -35,7 +35,9 @@ public let app = Target.target(
 	dependencies: [
 		.target(core),
 		.target(designSystem),
-		.target(example)
+		.target(example),
+		.target(home),
+		.target(sheet),
 		.target(undefinedRoute)
 	],
 	settings: .settings(

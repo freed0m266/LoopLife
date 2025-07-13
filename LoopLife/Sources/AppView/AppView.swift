@@ -7,12 +7,12 @@
 //
 
 import SwiftUI
-import Example
+import Home
 
 struct AppView<ViewModel: AppViewModel>: View {
 	@ObservedObject var viewModel: ViewModel
 
 	var body: some View {
-		ExampleListView(viewModel: exampleListVM())
+		HomeView(viewModel: viewModel.homeViewModel)
 	}
 }

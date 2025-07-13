@@ -1,18 +1,20 @@
 //
-//  Sheet.swift
+//  Home.swift
 //  ProjectDescriptionHelpers
 //
-//  Created by Martin Svoboda on 03.07.2025.
+//  Created by Martin Svoboda on 13.07.2025.
 //
 
 import Foundation
 
-public let sheet = Feature(
-	name: "Sheet",
+public let home = Feature(
+	name: "Home",
 	dependencies: [
 		.target(name: core.name),
 		.target(name: designSystem.name),
 		.target(name: resources.name),
+		.target(activity),
+		.target(sheet),
 		.target(undefinedRoute)
 	],
 	hasTests: false

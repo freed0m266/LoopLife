@@ -19,14 +19,4 @@ extension NSCompoundPredicate {
 		
 		return NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
 	}
-	
-	static func orPredicate(ids: [String]) -> NSCompoundPredicate {
-		var predicates: [NSPredicate] = []
-		
-		ids.forEach { id in
-			predicates.append(NSPredicate(format: "itemId == %@", id))
-		}
-		
-		return NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
-	}
 }

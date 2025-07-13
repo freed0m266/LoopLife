@@ -14,34 +14,23 @@ extension ItemEntity {
 	static func fetchRequest(for key: EntityKey) -> NSFetchRequest<ItemEntity> {
 		let request = fetchRequest()
 		
-		let predicates: [NSPredicate] = [
-			NSPredicate(format: "itemId == %@", key.id),
-			NSPredicate(format: "type == %@", key.entityType)
-		]
-		
+		request.predicate = NSPredicate(format: "itemId == %@ AND type == %@", key.id, key.entityType)
 		request.fetchLimit = 1
-		request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+		
 		return request
 	}
 }
 
 extension ItemEntity {
-	static func fetchRequest(for entityType: String) -> NSFetchRequest<ItemEntity> {
+	static func fetchRequest(ids: [String] = [], entityType: String) -> NSFetchRequest<ItemEntity> {
 		let request = fetchRequest()
 		
-		request.predicate = NSPredicate(format: "type == %@", entityType)
-		return request
-	}
-	
-	static func fetchRequest(for ids: [String], of entityType: String) -> NSFetchRequest<ItemEntity> {
-		let request = fetchRequest()
+		if ids.isEmpty {
+			request.predicate = NSPredicate(format: "type == %@", entityType)
+		} else {
+			request.predicate = NSPredicate(format: "type == %@ AND itemId IN %@", entityType, ids)
+		}
 		
-		request.predicate = NSCompoundPredicate(
-			andPredicateWithSubpredicates: [
-				NSCompoundPredicate.orPredicate(ids: ids),
-				NSPredicate(format: "type == %@", entityType)
-			]
-		)
 		return request
 	}
 }
@@ -59,9 +48,9 @@ extension ItemEntity {
 }
 
 extension ItemEntity {
-	func update<T: Storable>(with element: T) {
+	func update<T: Storable>(with item: T) {
 		do {
-			let data = try element.encode()
+			let data = try item.encode()
 			self.data = data
 			self.changed = .now
 		} catch {
@@ -69,13 +58,13 @@ extension ItemEntity {
 		}
 	}
 	
-	func populate<T: Storable>(with element: T) {
+	func populate<T: Storable>(with item: T) {
 		do {
-			let data = try element.encode()
+			let data = try item.encode()
 			self.data = data
 			self.changed = .now
 			self.created = .now
-			self.itemId = element.id
+			self.itemId = item.id
 			self.type = T.entityType
 		} catch {
 			Logger.error("\(T.self): \(error)")

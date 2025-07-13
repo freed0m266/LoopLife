@@ -8,26 +8,19 @@
 
 import Foundation
 
-public enum AppError: ErrorPresentable, Hashable {
-	case general
+// TODO: Localize
+public enum AppError: ErrorPresentable, Equatable, Hashable {
+	case general(message: String)
 	
 	public var title: String {
-		switch self {
-		case .general: 
-			"Error"
-		}
+		"Error"
 	}
 	
 	public var message: String {
-		switch self {
-		case .general:
-			"Please try again later or contact application support."
-		}
+		localizedDescription
 	}
-}
-
-extension AppError: Equatable {
-	public static func == (lhs: AppError, rhs: AppError) -> Bool {
-		lhs.title == rhs.title && lhs.message == rhs.message
+	
+	public init (message: String) {
+		self = .general(message: message)
 	}
 }

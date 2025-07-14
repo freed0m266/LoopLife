@@ -1,5 +1,5 @@
 //
-//  EXList.swift
+//  LLList.swift
 //  LoopLifeUI
 //
 //  Created by Martin Svoboda on 26.06.2025.
@@ -9,7 +9,7 @@
 import SwiftUI
 import LoopLifeCore
 
-public struct EXList<T, ID>: View where ID: Hashable {
+public struct LLList<T, ID>: View where ID: Hashable {
 	let headline: String?
 	let items: [T]
 	let id: KeyPath<T, ID>
@@ -30,7 +30,7 @@ public struct EXList<T, ID>: View where ID: Hashable {
 	public var body: some View {
 		VStack(spacing: 0) {
 			if let headline {
-				EXHeadline(headline)
+				LLHeadline(headline)
 			}
 			
 			LazyVStack(spacing: 0) {
@@ -44,7 +44,7 @@ public struct EXList<T, ID>: View where ID: Hashable {
 	}
 }
 	
-extension EXList where ID == T.ID, T: Identifiable {
+extension LLList where ID == T.ID, T: Identifiable {
 	public init(
 		headline: String? = nil,
 		items: [T],
@@ -60,7 +60,7 @@ extension EXList where ID == T.ID, T: Identifiable {
 #if DEBUG
 #Preview {
 	VStack(spacing: 16) {
-		EXList(headline: "headline", items: [Example].mock) { example in
+		LLList(headline: "headline", items: [Example].mock) { example in
 			ListButton(title: example.text) {
 				
 			}

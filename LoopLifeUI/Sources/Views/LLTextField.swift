@@ -1,5 +1,5 @@
 //
-//  EXTextField.swift
+//  LLTextField.swift
 //  LoopLifeUI
 //
 //  Created by Martin Svoboda on 26.06.2025.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct EXTextField: View {
+public struct LLTextField: View {
 	@Binding var text: String
 	
 	@Environment(\.isEnabled) private var isEnabled
@@ -54,7 +54,7 @@ public struct EXTextField: View {
 	public var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
 			if let headline {
-				EXHeadline(headline)
+				LLHeadline(headline)
 			}
 			
 			TextField("", text: $text, prompt: Text(placeholder).foregroundColor(ColorItem.foregroundDisabled.color))
@@ -113,13 +113,13 @@ public struct EXTextField: View {
 #if DEBUG
 #Preview {
 	VStack(spacing: 16) {
-		EXTextField("Placeholder", text: .constant(""), headline: "headline")
+		LLTextField("Placeholder", text: .constant(""), headline: "headline")
 		
-		EXTextField("Label", text: .constant("Teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeext"))
+		LLTextField("Label", text: .constant("Teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeext"))
 		
-		EXTextField("Label", text: .constant("Text"), error: "Error message")
+		LLTextField("Label", text: .constant("Text"), error: "Error message")
 		
-		EXTextField("Placeholder", text: .constant("Text"))
+		LLTextField("Placeholder", text: .constant("Text"))
 			.disabled(true)
 	}
 	.padding()

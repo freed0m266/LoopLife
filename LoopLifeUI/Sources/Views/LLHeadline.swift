@@ -1,5 +1,5 @@
 //
-//  Headline.swift
+//  LLHeadline.swift
 //  LoopLifeUI
 //
 //  Created by Martin Svoboda on 26.06.2025.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct EXHeadline: View {
+public struct LLHeadline: View {
 	let text: String
 	
 	public init(_ text: String) {
@@ -27,7 +27,7 @@ public struct EXHeadline: View {
 
 #if DEBUG
 #Preview {
-	EXHeadline("headline")
+	LLHeadline("headline")
 		.padding(16)
 		.backgroundColor(.backgroundPrimary)
 }

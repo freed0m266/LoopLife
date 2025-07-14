@@ -8,10 +8,13 @@
 
 import SwiftUI
 import LoopLifeCore
+import LoopLifeResources
 import LoopLifeUI
 
 public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
 	@StateObject private var viewModel: ViewModel
+	
+	typealias Texts = L10n.ActivityList
 	
 	public init(viewModel: ViewModel) {
 		_viewModel = .init(wrappedValue: viewModel)

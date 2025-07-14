@@ -7,3 +7,4 @@
 //
 
 public typealias Assets = LoopLifeResourcesAsset
+public typealias L10n = LoopLifeResourcesStrings.Localizable

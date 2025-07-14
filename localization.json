@@ -1,0 +1,10 @@
+{
+    "apiKey": "AIzaSyClO1io-818RcraBz0N5mRSCLpFtu9JE1U",
+    "destinationDir": "LoopLifeResources/Resources",
+    "keyColumnName": "ios_key",
+    "languageMapping": {
+        "EN": "en",
+        "CZ": "cs"
+    },
+    "spreadsheetID": "12tBp0txXQ6ezAo8-_HNJKClUePCxVPBWY-58uOCIdOg"
+}

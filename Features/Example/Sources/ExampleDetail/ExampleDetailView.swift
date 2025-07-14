@@ -19,7 +19,7 @@ public struct ExampleDetailView<ViewModel: ExampleDetailViewModeling>: View {
     public var body: some View {
 		ScreenView(title: "ExampleDetail (\(viewModel.example.id))") {
 			VStack(spacing: 16) {
-				EXHeadline(viewModel.example.text)
+				LLHeadline(viewModel.example.text)
 				
 				Text(
 				  """

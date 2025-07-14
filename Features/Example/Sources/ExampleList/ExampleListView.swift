@@ -18,7 +18,7 @@ public struct ExampleListView<ViewModel: ExampleListViewModeling>: View {
 
     public var body: some View {
 		ScreenView(title: "ExampleList") {
-			EXList(headline: "Headline", items: viewModel.examples) { item in
+			LLList(headline: "Headline", items: viewModel.examples) { item in
 				ListButton(title: item.text, icon: Icon.info) {
 					navigateTo(route: .exampleDetail(item.id))
 				}

@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
+import LoopLifeResources
 import LoopLifeUI
 
 public struct ActivityDetailView<ViewModel: ActivityDetailViewModeling>: View {
 	@StateObject private var viewModel: ViewModel
+	
+	typealias Texts = L10n.ActivityDetail
 	
 	public init(viewModel: ViewModel) {
 		_viewModel = .init(wrappedValue: viewModel)

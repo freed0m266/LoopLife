@@ -7,13 +7,13 @@
 //
 
 import Foundation
+import LoopLifeResources
 
-// TODO: Localize
 public enum AppError: ErrorPresentable, Equatable, Hashable {
 	case general(message: String)
 	
 	public var title: String {
-		"Error"
+		L10n.Error.defaultTitle
 	}
 	
 	public var message: String {

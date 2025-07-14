@@ -10,8 +10,9 @@ import SwiftUI
 import MKRingProgressView
 
 public struct RingProgress: View {
-	@State var progress: Double
+	@State var currentProgress: Double = 0
 	
+	let progress: Double
 	let ringSize: CGFloat
 	let ringThickness: CGFloat
 	let startColor: ColorItem
@@ -33,12 +34,15 @@ public struct RingProgress: View {
 	
 	public var body: some View {
 		UIRingProgress(
-			progress: progress,
+			progress: currentProgress,
 			ringWidth: ringThickness,
 			startColor: startColor.uiColor,
 			endColor: endColor.uiColor
 		)
 		.frame(width: ringSize, height: ringSize)
+		.onAppear {
+			currentProgress = progress
+		}
 	}
 }
 

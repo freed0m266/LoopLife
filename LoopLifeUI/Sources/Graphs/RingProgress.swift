@@ -50,7 +50,7 @@ public struct RingProgress: View {
 		RingProgress(progress: 0.72, ringSize: 240, startColor: .basicRed, endColor: .basicMagenta)
 	}
 	.frame(maxWidth: .infinity, maxHeight: .infinity)
-	.backgroundColor(.background)
+	.backgroundColor(.backgroundPrimary)
 }
 #endif
 
@@ -82,7 +82,7 @@ private struct UIRingProgress: UIViewRepresentable {
 			withDuration: 1.0 + progress,
 			delay: 0,
 			usingSpringWithDamping: 0.8,
-			initialSpringVelocity: 0.2,
+			initialSpringVelocity: 4.0,
 			options: .curveEaseOut
 		) {
 			uiView.progress = progress

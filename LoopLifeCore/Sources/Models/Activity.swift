@@ -23,8 +23,8 @@ extension Activity {
 		case fitness
 		case reading
 		case finance
+		case addiction
 		case habit
-		case custom
 	}
 }
 

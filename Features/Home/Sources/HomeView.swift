@@ -27,6 +27,8 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 			ActivityListView(viewModel: viewModel.activityListViewModel)
 				.navigationDestination(for: Route.self) { screen in
 					switch screen {
+					case .activityDetail(let id):
+						ActivityDetailView(viewModel: activityDetailVM(id: id))
 					default:
 						UndefinedRouteView()
 					}
@@ -35,13 +37,8 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 		.onAppear {
 			setActive(path: .home)
 		}
-		.navigationDestination(for: Route.self) { screen in
-			switch screen {
-			case .activityDetail(let id):
-				ActivityDetailView(viewModel: activityDetailVM(id: id))
-			default:
-				UndefinedRouteView()
-			}
+		.sheet(item: $router.sheetItem) { route in
+			SheetView(viewModel: SheetViewModel(), route: route)
 		}
 	}
 }

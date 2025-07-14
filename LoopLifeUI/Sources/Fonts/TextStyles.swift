@@ -132,7 +132,7 @@ public extension View {
 			
 			Divider()
 			
-			Text("textMedium").textSmall()
+			Text("textSmall").textSmall()
 			Text("textMedium").textMedium()
 			Text("textLarge").textLarge()
 			

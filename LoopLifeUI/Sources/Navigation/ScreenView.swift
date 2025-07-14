@@ -11,6 +11,7 @@ import SwiftUI
 public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 	let title: String?
 	let subtitle: String?
+	let headline: String?
 	let padding: CGFloat
 	let content: () -> Content
 	let leading: () -> Leading
@@ -24,6 +25,7 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 	public init(
 		title: String? = nil,
 		subtitle: String? = nil,
+		headline: String? = nil,
 		padding: CGFloat = 16,
 		@ViewBuilder content: @escaping () -> Content,
 		@ViewBuilder leading: @escaping () -> Leading,
@@ -31,6 +33,7 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 	) {
 		self.title = title
 		self.subtitle = subtitle
+		self.headline = headline
 		self.padding = padding
 		self.content = content
 		self.leading = leading
@@ -76,7 +79,13 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 				HStack(spacing: 12) {
 					leading()
 					
-					VStack(alignment: .leading, spacing: 4) {
+					VStack(alignment: .leading, spacing: 2) {
+						if let headline {
+							Text(verbatim: headline.uppercased())
+								.headline()
+								.foregroundColor(.foregroundSecondary)
+						}
+						
 						Text(title)
 							.titleLarge()
 							.lineLimit(3)
@@ -107,14 +116,16 @@ extension ScreenView where Leading == EmptyView {
 	public init(
 		title: String? = nil,
 		subtitle: String? = nil,
+		headline: String? = nil,
 		padding: CGFloat = 16,
 		@ViewBuilder content: @escaping () -> Content,
 		@ViewBuilder trailing: @escaping () -> Trailing
 	) {
 		self.title = title
+		self.subtitle = subtitle
+		self.headline = headline
 		self.padding = padding
 		self.content = content
-		self.subtitle = subtitle
 		self.leading = { EmptyView() }
 		self.trailing = trailing
 	}
@@ -124,14 +135,16 @@ extension ScreenView where Trailing == EmptyView {
 	public init(
 		title: String? = nil,
 		subtitle: String? = nil,
+		headline: String? = nil,
 		padding: CGFloat = 16,
 		@ViewBuilder content: @escaping () -> Content,
 		@ViewBuilder leading: @escaping () -> Leading
 	) {
 		self.title = title
+		self.subtitle = subtitle
+		self.headline = headline
 		self.padding = padding
 		self.content = content
-		self.subtitle = subtitle
 		self.leading = leading
 		self.trailing = { EmptyView() }
 	}
@@ -141,13 +154,15 @@ extension ScreenView where Leading == EmptyView, Trailing == EmptyView {
 	public init(
 		title: String? = nil,
 		subtitle: String? = nil,
+		headline: String? = nil,
 		padding: CGFloat = 16,
 		@ViewBuilder content: @escaping () -> Content
 	) {
 		self.title = title
+		self.subtitle = subtitle
+		self.headline = headline
 		self.padding = padding
 		self.content = content
-		self.subtitle = subtitle
 		self.leading = { EmptyView() }
 		self.trailing = { EmptyView() }
 	}

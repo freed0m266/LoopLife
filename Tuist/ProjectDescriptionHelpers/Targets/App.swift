@@ -17,11 +17,11 @@ public let app = Target.target(
 			"CFBundleDisplayName": .string(appName),
 			"ITSAppUsesNonExemptEncryption": false,
 			"UILaunchScreen": [
-				"UIColorName": "mainWhite",
+				"UIColorName": "mainBlack",
 				"UIImageName": .string(logoName)
 			],
 			"UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
-			"UIUserInterfaceStyle": "Light"
+			"UIUserInterfaceStyle": "Dark"
 		]
 	),
 	sources: "\(targetName)/Sources/**",

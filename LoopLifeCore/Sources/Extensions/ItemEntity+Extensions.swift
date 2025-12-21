@@ -48,7 +48,7 @@ extension ItemEntity {
 }
 
 extension ItemEntity {
-	func update<T: Storable>(with item: T) {
+	func update<T: Storable>(item: T) {
 		do {
 			let data = try item.encode()
 			self.data = data
@@ -58,7 +58,7 @@ extension ItemEntity {
 		}
 	}
 	
-	func populate<T: Storable>(with item: T) {
+	func populate<T: Storable>(item: T) {
 		do {
 			let data = try item.encode()
 			self.data = data

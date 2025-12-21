@@ -16,8 +16,7 @@ struct WithDismissButtonModifier: ViewModifier {
 					Button {
 						content.closeSheet()
 					} label: {
-						Icon.xmarkFill
-							.foregroundColor(.foregroundSecondary)
+						Icon.xmark.size(15, weight: .medium)
 					}
 				}
 			}

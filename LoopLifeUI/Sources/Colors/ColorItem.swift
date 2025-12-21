@@ -41,14 +41,14 @@ public extension ColorItem {
 	
 	// MARK: - Foreground
 
-	/// #26334D
-	static var foregroundPrimary: ColorItem = "26334D"
-	/// #666A80
-	static var foregroundSecondary: ColorItem = "666A80"
+	/// #FFFFFF
+	static var foregroundPrimary: ColorItem = "FFFFFF"
+	/// #999999
+	static var foregroundSecondary: ColorItem = "999999"
 	/// #99A6B5
 	static var foregroundDisabled: ColorItem = "99A6B5"
-	/// #FFFFFF
-	static var foregroundOnPrimary: ColorItem = "FFFFFF"
+	/// #000000
+	static var foregroundOnPrimary: ColorItem = "000000"
 	
 	// MARK: - Icons
 	
@@ -57,11 +57,11 @@ public extension ColorItem {
 	
 	// MARK: - Background
 	
-	/// #F2F4F7
-	static var backgroundPrimary: ColorItem = "F2F4F7"
-	/// #FFFFFF
-	static var backgroundSecondary: ColorItem = "FFFFFF"
-	/// #FFFFFF
+	/// #000000
+	static var backgroundPrimary: ColorItem = "000000"
+	/// #404040
+	static var backgroundSecondary: ColorItem = "404040"
+	/// #445161
 	static var backgroundDisabled: ColorItem = "445161"
 	
 	// MARK: - Basic

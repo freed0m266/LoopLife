@@ -36,6 +36,8 @@ public extension Icon {
 public extension Icon {
 	/// checkmark.circle.fill
 	static var checkmarkFill: Icon = "checkmark.circle.fill"
+	/// xmark
+	static var xmark: Icon = "xmark"
 	/// xmark.circle.fill
 	static var xmarkFill: Icon = "xmark.circle.fill"
 	/// chevron.right
@@ -46,6 +48,16 @@ public extension Icon {
 	static var copy: Icon = "doc.on.doc"
 	/// exclamationmark.triangle
 	static var warningTriangle: Icon = "exclamationmark.triangle"
+	/// plus
+	static var plus: Icon = "plus"
+	/// plus.circle
+	static var plusCircle: Icon = "plus.circle"
+	/// plus.circle.fill
+	static var plusCircleFill: Icon = "plus.circle.fill"
+	/// arrow.trianglehead.clockwise
+	static var arrowClockwise: Icon = "arrow.trianglehead.clockwise"
+	/// circle.circle
+	static var circleCircle: Icon = "circle.circle"
 }
 
 #Preview {

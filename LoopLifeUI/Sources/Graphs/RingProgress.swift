@@ -49,7 +49,7 @@ public struct RingProgress: View {
 #if DEBUG
 #Preview {
 	ZStack {
-		RingProgress(progress: 0.26, ringSize: 183, startColor: .primary, endColor: .secondary)
+		RingProgress(progress: 0.26, ringSize: 183, startColor: .skyBlue, endColor: .electricPurple)
 		
 		RingProgress(progress: 0.72, ringSize: 240, startColor: .basicRed, endColor: .basicMagenta)
 	}
@@ -86,7 +86,7 @@ private struct UIRingProgress: UIViewRepresentable {
 			withDuration: 1.0 + progress,
 			delay: 0,
 			usingSpringWithDamping: 0.8,
-			initialSpringVelocity: 4.0,
+			initialSpringVelocity: 0,
 			options: .curveEaseOut
 		) {
 			uiView.progress = progress

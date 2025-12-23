@@ -5,6 +5,14 @@
 "error.defaultTitle" = "";
 "activityDetail.title" = "";
 "activityList.title" = "";
+"activityList.emptyListText" = "";
+"activityCard.categoryHeadline" = "";
+"activityCard.deadlineHeadline" = "";
+"activityCard.goalHeadline" = "";
+"activityCard.deadlineValue" = "";
+"activityCard.goalValue" = "";
+"undefinedRoute.title" = "";
+"undefinedRoute.text" = "";
 "category.fitness" = "";
 "category.reading" = "";
 "category.finance" = "";

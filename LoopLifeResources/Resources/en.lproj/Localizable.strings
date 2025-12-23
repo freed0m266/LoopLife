@@ -5,6 +5,14 @@
 "error.defaultTitle" = "Error";
 "activityDetail.title" = "LoopLife";
 "activityList.title" = "Summary";
+"activityList.emptyListText" = "You have no rings yet.";
+"activityCard.categoryHeadline" = "Category";
+"activityCard.deadlineHeadline" = "Deadline";
+"activityCard.goalHeadline" = "Goal";
+"activityCard.deadlineValue" = "%@ days";
+"activityCard.goalValue" = "%@ done";
+"undefinedRoute.title" = "Something went wrong";
+"undefinedRoute.text" = "Page not found.";
 "category.fitness" = "Fitness";
 "category.reading" = "Reading";
 "category.finance" = "Finance";

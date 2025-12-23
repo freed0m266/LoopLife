@@ -97,6 +97,17 @@ public extension ColorItem {
 	static var pastelOrange: ColorItem = "FFF5E5"
 	/// #D1F8D8
 	static var pastelGreen: ColorItem = "D1F8D8"
+	
+	// MARK: - ChatGPT
+	
+	/// #00C2FF
+	static var skyBlue: ColorItem = "00C2FF"
+	/// #6A00FF
+	static var electricPurple: ColorItem = "6A00FF"
+	/// #00FF94
+	static var mintGreen: ColorItem = "00FF94"
+	/// #FF5C5C
+	static var coralRed: ColorItem = "FF5C5C"
 }
 
 public extension View {
@@ -134,10 +145,18 @@ struct ColorItems_Previews: PreviewProvider {
 	static var previews: some View {
 		ScrollView {
 			LazyVGrid(columns: gridColumns, spacing: 10) {
-				color(title: "foregroundPrimary", color: .foregroundPrimary, textColor: .basicWhite)
+				color(title: "skyBlue", color: .skyBlue)
+				color(title: "electricPurple", color: .electricPurple)
+				color(title: "mintGreen", color: .mintGreen)
+				color(title: "coralRed", color: .coralRed)
+				
+				Divider().padding(.vertical)
+				Divider().padding(.vertical)
+				
+				color(title: "foregroundPrimary", color: .foregroundOnPrimary, textColor: .basicWhite)
 				color(title: "foregroundSecondary", color: .foregroundSecondary, textColor: .basicWhite)
 				color(title: "foregroundDisabled", color: .foregroundDisabled)
-				color(title: "foregroundOnPrimary", color: .foregroundOnPrimary, stroke: true)
+				color(title: "foregroundOnPrimary", color: .foregroundOnPrimary, textColor: .basicWhite)
 				
 				Divider().padding(.vertical)
 				Divider().padding(.vertical)
@@ -148,13 +167,13 @@ struct ColorItems_Previews: PreviewProvider {
 				Divider().padding(.vertical)
 				Divider().padding(.vertical)
 				
-				color(title: "backgroundPrimary", color: .backgroundPrimary, stroke: true)
-				color(title: "backgroundSecondary", color: .backgroundSecondary, stroke: true)
+				color(title: "backgroundPrimary", color: .foregroundPrimary)
+				color(title: "backgroundSecondary", color: .foregroundOnPrimary, textColor: .basicWhite)
 				
 				Divider().padding(.vertical)
 				Divider().padding(.vertical)
 				
-				color(title: "basicWhite", color: .basicWhite, stroke: true)
+				color(title: "basicWhite", color: .basicWhite)
 				color(title: "basicBlack", color: .basicBlack, textColor: .basicWhite)
 				color(title: "basicMagenta", color: .basicMagenta)
 				color(title: "basicBlue", color: .basicBlue)
@@ -162,6 +181,7 @@ struct ColorItems_Previews: PreviewProvider {
 				color(title: "basicRed", color: .basicRed)
 				color(title: "basicOrange", color: .basicOrange)
 				color(title: "basicGreen", color: .basicGreen)
+				color()
 				
 				Divider().padding(.vertical)
 				Divider().padding(.vertical)
@@ -173,18 +193,22 @@ struct ColorItems_Previews: PreviewProvider {
 				color(title: "pastelOrange", color: .pastelOrange)
 				color(title: "pastelGreen", color: .pastelGreen)
 			}
-			.padding(.horizontal)
+			.padding(16)
+		}
+		.background {
+			LinearGradient.backgroundSoft
+				.ignoresSafeArea()
 		}
 	}
 
 	static func color(
 		title: String = "",
-		color: ColorItem = "FFFFFF",
-		textColor: ColorItem = "000000",
+		color: ColorItem? = nil,
+		textColor: ColorItem = .foregroundOnPrimary,
 		stroke: Bool = false
 	) -> some View {
 		RoundedRectangle(cornerRadius: 5)
-			.fill(color)
+			.fill(color ?? .init(hex: "", alpha: 0))
 			.overlay(alignment: .topLeading) {
 				Text(title)
 					.font(.system(size: 11, weight: .bold))

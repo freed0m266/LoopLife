@@ -17,6 +17,7 @@ public enum RoutePath {
 public enum Route: Hashable {
 	case activityDetail(Activity.ID)
 	case addActivity
+	case addActivityLog(Activity.Category)
 	case exampleDetail(Example.ID)
 }
 

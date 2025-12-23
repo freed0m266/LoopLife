@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LoopLifeResources
 
 public struct Activity: Storable {
 	public let id: String
@@ -19,12 +20,26 @@ public struct Activity: Storable {
 }
 
 extension Activity {
-	public enum Category: String, Codable {
+	public enum Category: String, Identifiable, Codable, CaseIterable {
 		case fitness
 		case reading
 		case finance
 		case addiction
 		case habit
+		
+		public var id: Category {
+			self
+		}
+		
+		public var name: String {
+			switch self {
+			case .fitness: L10n.Category.fitness
+			case .reading: L10n.Category.reading
+			case .finance: L10n.Category.finance
+			case .addiction: L10n.Category.addiction
+			case .habit: L10n.Category.habit
+			}
+		}
 	}
 }
 
@@ -37,8 +52,16 @@ public extension Activity {
 		Calendar.current.dateComponents([.day], from: startDate, to: .now).day ?? 0
 	}
 	
+	var daysRemaining: Int {
+		Calendar.current.dateComponents([.day], from: .now, to: endDate).day ?? 0
+	}
+	
 	var daysTotal: Int {
 		Calendar.current.dateComponents([.day], from: startDate, to: endDate).day ?? 1
+	}
+	
+	var progressRatioText: String {
+		"\(completedCount)/\(targetCount)"
 	}
 	
 	var progressRatio: Double {

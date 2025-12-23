@@ -8,8 +8,8 @@
 
 import SwiftUI
 import LoopLifeUI
+import LoopLifeResources
 
-// TODO: Localize
 public struct UndefinedRouteView: View {
 	
 	public init() { }
@@ -22,11 +22,11 @@ public struct UndefinedRouteView: View {
 						.size(88)
 						.foregroundColor(.basicOrange)
 					
-					Text("Something Went Wrong".uppercased())
+					Text(L10n.UndefinedRoute.title.uppercased())
 						.titleLarge()
 						.foregroundColor(.foregroundPrimary)
 					
-					Text("Page not found.")
+					Text(L10n.UndefinedRoute.text)
 						.labelLarge()
 						.foregroundColor(.foregroundSecondary)
 				}

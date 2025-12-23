@@ -10,6 +10,9 @@ import SwiftUI
 import LoopLifeCore
 import LoopLifeUI
 
+import Activity
+import UndefinedRoute
+
 public struct SheetView<ViewModel: SheetViewModel>: View {
 	@StateObject private var viewModel: ViewModel
 	@StateObject private var router: Router = .default
@@ -25,15 +28,17 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 		NavigationStack(path: $router.sheetPath) {
 			Group {
 				switch route {
+				case .addActivity:
+					AddActivityView(viewModel: addActivityVM())
 				default:
-					EmptyView()
+					UndefinedRouteView()
 				}
 			}
 			.navigationDestination(for: Route.self) { screen in
 				Group {
 					switch screen {
 					default:
-						EmptyView()
+						UndefinedRouteView()
 					}
 				}
 				.withDismissButton()

@@ -54,10 +54,10 @@ final class CoreDataManager: CoreDataManaging {
 				let request = ItemEntity.fetchRequest(for: key)
 				
 				if let entity = try itemContext.fetch(request).first {
-					entity.update(with: item)
+					entity.update(item: item)
 				} else {
 					let entity = ItemEntity(context: itemContext)
-					entity.populate(with: item)
+					entity.populate(item: item)
 				}
 				
 				try saveItemContext()
@@ -81,10 +81,10 @@ final class CoreDataManager: CoreDataManaging {
 				
 				items.forEach { item in
 					if let entity = entities.first(where: { $0.itemId == item.id }) {
-						entity.update(with: item)
+						entity.update(item: item)
 					} else {
 						let entity = ItemEntity(context: itemContext)
-						entity.populate(with: item)
+						entity.populate(item: item)
 					}
 				}
 				
@@ -160,15 +160,13 @@ final class CoreDataManager: CoreDataManaging {
 		let itemsRequest = ItemEntity.fetchRequest(ids: ids, entityType: entityType)
 		
 		/// Delete entities
-		try itemContext.performAndWait { [weak self] in
-			guard let context = self?.itemContext else { return }
-			
+		try itemContext.performAndWait {
 			do {
-				let entities = try context.fetch(itemsRequest)
+				let entities = try itemContext.fetch(itemsRequest)
 				for entity in entities {
-					context.delete(entity)
+					itemContext.delete(entity)
 				}
-				try self?.saveItemContext()
+				try saveItemContext()
 			} catch {
 				Logger.error(error)
 				throw error

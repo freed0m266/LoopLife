@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import LoopLifeUI
 import Home
 
 struct AppView<ViewModel: AppViewModel>: View {
@@ -14,5 +15,6 @@ struct AppView<ViewModel: AppViewModel>: View {
 
 	var body: some View {
 		HomeView(viewModel: viewModel.homeViewModel)
+			.tint(.mintGreen)
 	}
 }

@@ -13,8 +13,9 @@ public extension Activity {
 		mock(
 			id: "1",
 			title: "Gym",
-			targetCount: 100,
-			category: .fitness
+			targetCount: 10,
+			category: .fitness,
+			logIds: [ "1", "2", "3", "4", "5", "6", "7", "8" ]
 		)
 	}
 	
@@ -22,8 +23,9 @@ public extension Activity {
 		mock(
 			id: "2",
 			title: "Read books",
-			targetCount: 24,
-			category: .reading
+			targetCount: 5,
+			category: .reading,
+			logIds: [ "1", "2" ]
 		)
 	}
 	
@@ -31,8 +33,9 @@ public extension Activity {
 		mock(
 			id: "3",
 			title: "Save money",
-			targetCount: 1_000_000,
-			category: .finance
+			targetCount: 10,
+			category: .finance,
+			logIds: [ "1", "2", "3", "4", "5" ]
 		)
 	}
 }
@@ -52,8 +55,8 @@ fileprivate extension Activity {
 		id: String,
 		title: String,
 		targetCount: Int,
-		startDate: Date = .mock2000,
-		endDate: Date = .mock2077,
+		startDate: Date = .mock2024,
+		endDate: Date = .mock2026,
 		category: Category,
 		logIds: [ActivityLog.ID] = []
 	) -> Activity {

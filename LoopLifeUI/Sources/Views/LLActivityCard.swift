@@ -45,7 +45,7 @@ public struct LLActivityCard: View {
 						
 						infoTextBlock(
 							headline: Texts.deadlineHeadline,
-							value: Texts.deadlineValue(activity.daysRemaining),
+							value: Texts.deadlineValue(activity.daysRemaining).uppercased(),
 							color: .basicRed
 						)
 						
@@ -102,6 +102,9 @@ public struct LLActivityCard: View {
 			
 			Button(action: action) {
 				Icon.plus
+					.padding(26)
+					.backgroundColor(.iconPrimary.opacity(0.01))
+					.clipShape(.circle)
 			}
 		}
 	}

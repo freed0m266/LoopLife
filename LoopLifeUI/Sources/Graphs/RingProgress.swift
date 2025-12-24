@@ -43,6 +43,9 @@ public struct RingProgress: View {
 		.onAppear {
 			currentProgress = progress
 		}
+		.onChange(of: progress) {
+			currentProgress = progress
+		}
 	}
 }
 

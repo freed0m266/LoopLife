@@ -13,6 +13,6 @@ final class ActivityListViewModelMock: ActivityListViewModeling {
 	var activities: [Activity] = .mock
 	var currentDate: Date = .mock2026
 	
-	func recordLog(of: Activity.Category) { }
+	func recordLog(for activity: Activity) { }
 	func willEnterForeground() { }
 }

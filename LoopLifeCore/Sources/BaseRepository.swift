@@ -21,9 +21,9 @@ open class BaseRepository {
 	
 	// MARK: - Public API
 	
-	func loadItems<T: Storable>(subject: inout PassthroughSubject<[T], Error>) {
+	func loadItems<T: Storable>(ids: [T.ID] = [], subject: PassthroughSubject<[T], Error>) {
 		do {
-			let items: [T] = try coreDataManager.loadAll()
+			let items: [T] = try coreDataManager.load(ids: ids)
 			subject.send(items)
 		} catch {
 			Logger.error("\(T.entityType) | \(error)")
@@ -31,7 +31,7 @@ open class BaseRepository {
 		}
 	}
 	
-	func loadItem<T: Storable>(id: T.ID, subject: inout PassthroughSubject<T, Error>) {
+	func loadItem<T: Storable>(id: T.ID, subject: PassthroughSubject<T, Error>) {
 		do {
 			if let item: T = try coreDataManager.load(id: id) {
 				subject.send(item)
@@ -42,7 +42,7 @@ open class BaseRepository {
 		}
 	}
 	
-	func createItem<T: Storable>(item: T) throws {
+	func saveItem<T: Storable>(item: T) throws {
 		try coreDataManager.save(item: item)
 	}
 	

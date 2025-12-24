@@ -14,7 +14,7 @@ public protocol ActivityListViewModeling: ObservableObject {
 	var activities: [Activity] { get }
 	var currentDate: Date { get }
 	
-	func recordLog(of: Activity.Category)
+	func recordLog(for activity: Activity)
 	func willEnterForeground()
 }
 
@@ -38,9 +38,12 @@ final class ActivityListViewModel: BaseViewModel, ActivityListViewModeling {
 	
 	// MARK: - Public API
 	
-	func recordLog(of: Activity.Category)) {
-		// TODO: Implement
-		
+	func recordLog(for activity: Activity) {
+		do {
+			try dependencies.activitiesRepository.recordLog(for: activity)
+		} catch {
+			showError(error)
+		}
 	}
 	
 	func willEnterForeground() {

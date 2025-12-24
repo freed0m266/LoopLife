@@ -17,6 +17,27 @@ public struct Activity: Storable {
 	public var endDate: Date
 	public var category: Category
 	public var logIds: [ActivityLog.ID]
+	
+	public mutating func newLog(
+		date: Date? = nil,
+		completionRatio: CGFloat = 1,
+		note: String? = nil
+	) -> ActivityLog {
+		let id = "\(id).\(UUID().uuidString)"
+		let createdAt = Date()
+		let date = date ?? createdAt
+		
+		let newLog = ActivityLog(
+			id: id,
+			date: date,
+			completionRatio: completionRatio,
+			note: note,
+			createdAt: createdAt
+		)
+		
+		logIds.append(newLog.id)
+		return newLog
+	}
 }
 
 extension Activity {

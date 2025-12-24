@@ -24,9 +24,9 @@ public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
 		ScreenView(title: Texts.title, headline: viewModel.currentDate.dayWeekMonthFormat) {
 			VStack(spacing: 16) {
 				if viewModel.activities.isNotEmpty {
-					ForEach(viewModel.activities) { ring in
-						LLActivityCard(activity: ring) {
-							viewModel.recordLog(of: ring.category))
+					ForEach(viewModel.activities) { activity in
+						LLActivityCard(activity: activity) {
+							viewModel.recordLog(for: activity)
 						}
 					}
 				} else {

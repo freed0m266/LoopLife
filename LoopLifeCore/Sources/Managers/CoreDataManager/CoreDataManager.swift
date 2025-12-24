@@ -11,9 +11,8 @@ import Foundation
 
 public protocol CoreDataManaging {
 	func save<T: Storable>(item: T) throws
-	func saveAll<T: Storable>(items: [T]) throws
 	func load<T: Storable>(id: T.ID) throws -> T?
-	func loadAll<T: Storable>() throws -> [T]
+	func load<T: Storable>(ids: [T.ID]) throws -> [T]
 	func delete(key: EntityKey) throws
 	func delete(ids: [String], entityType: String) throws
 }
@@ -68,34 +67,6 @@ final class CoreDataManager: CoreDataManaging {
 		}
 	}
 	
-	func saveAll<T: Storable>(items: [T]) throws {
-		guard !items.isEmpty else { return }
-		
-		try itemContext.performAndWait {
-			do {
-				/// Make request for the saving items
-				let request = ItemEntity.fetchRequest(entityType: T.entityType)
-				
-				/// Load existing entities
-				let entities = try itemContext.fetch(request)
-				
-				items.forEach { item in
-					if let entity = entities.first(where: { $0.itemId == item.id }) {
-						entity.update(item: item)
-					} else {
-						let entity = ItemEntity(context: itemContext)
-						entity.populate(item: item)
-					}
-				}
-				
-				try saveItemContext()
-			} catch {
-				Logger.error(error)
-				throw error
-			}
-		}
-	}
-	
 	func load<T: Storable>(id: T.ID) throws -> T? {
 		/// Make request for the loading item
 		let entityKey = EntityKey(id: id, entityType: T.entityType)
@@ -116,12 +87,15 @@ final class CoreDataManager: CoreDataManaging {
 		return item
 	}
 	
-	func loadAll<T: Storable>() throws -> [T] {
-		/// Make request for all items with specific type
-		let request = ItemEntity.fetchRequest(entityType: T.entityType)
+	func load<T: Storable>(ids: [T.ID]) throws -> [T] {
+		/// Make request for all entities with the specific type
+		let request = ItemEntity.fetchRequest(ids: ids, entityType: T.entityType)
 		var items: [T] = []
 		
-		try itemContext.performAndWait {
+		/// Create a new context per read to allow concurrent loads
+		let context = container.newBackgroundContext()
+		
+		try context.performAndWait {
 			do {
 				/// Fetch entities and return just the items
 				let entities = try itemContext.fetch(request)

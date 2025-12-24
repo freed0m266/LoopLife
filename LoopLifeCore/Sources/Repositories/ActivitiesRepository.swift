@@ -16,11 +16,28 @@ public protocol ActivitiesRepositoring {
 	func activity(id: Activity.ID) -> AnyPublisher<Activity, Error>
 	func activityLog(id: ActivityLog.ID) -> AnyPublisher<ActivityLog, Error>
 	
-	func create(activity: Activity) throws
-	func create(activityLog: ActivityLog) throws
+	func save(activity: Activity) throws
+	
+	func recordLog(for activity: Activity, date: Date?, completionRatio: CGFloat, note: String?) throws
 	
 	func deleteActivity(id: Activity.ID) throws
 	func deleteActivityLog(id: ActivityLog.ID) throws
+}
+
+public extension ActivitiesRepositoring {
+	func recordLog(
+		for activity: Activity,
+		date: Date? = nil,
+		completionRatio: CGFloat = 1,
+		note: String? = nil
+	) throws {
+		try recordLog(
+			for: activity,
+			date: date,
+			completionRatio: completionRatio,
+			note: note
+		)
+	}
 }
 
 final class ActivitiesRepository: BaseRepository, ActivitiesRepositoring {
@@ -41,34 +58,50 @@ final class ActivitiesRepository: BaseRepository, ActivitiesRepositoring {
 	
 	func activities() -> AnyPublisher<[Activity], Error> {
 		activitiesSubject.onReceiveSubscription { [unowned self] _ in
-			loadItems(subject: &activitiesSubject)
+			loadItems(subject: activitiesSubject)
 		}
 	}
 	
 	func activityLogs(ids: [ActivityLog]) -> AnyPublisher<[ActivityLog], Error> {
 		activityLogsSubject.onReceiveSubscription { [unowned self] _ in
-			loadItems(subject: &activityLogsSubject)
+			loadItems(subject: activityLogsSubject)
 		}
 	}
 	
 	func activity(id: Activity.ID) -> AnyPublisher<Activity, Error> {
 		activitySubject.onReceiveSubscription { [unowned self] _ in
-			loadItem(id: id, subject: &activitySubject)
+			loadItem(id: id, subject: activitySubject)
 		}
 	}
 	
 	func activityLog(id: ActivityLog.ID) -> AnyPublisher<ActivityLog, Error> {
 		activityLogSubject.onReceiveSubscription { [unowned self] _ in
-			loadItem(id: id, subject: &activityLogSubject)
+			loadItem(id: id, subject: activityLogSubject)
 		}
 	}
 	
-	func create(activity: Activity) throws {
-		try createItem(item: activity)
+	func save(activity: Activity) throws {
+		try saveItem(item: activity)
 	}
 	
-	func create(activityLog: ActivityLog) throws {
-		try createItem(item: activityLog)
+	func recordLog(for activity: Activity, date: Date?, completionRatio: CGFloat, note: String?) throws {
+		var activity = activity
+		
+		let newLog = activity.newLog(
+			date: date,
+			completionRatio: completionRatio,
+			note: note
+		)
+		
+		try saveItem(item: newLog)
+		try saveItem(item: activity)
+		
+		// Refresh activities
+		loadItems(subject: activitiesSubject)
+	}
+	
+	func save(activityLog: ActivityLog) throws {
+		try saveItem(item: activityLog)
 	}
 	
 	func deleteActivity(id: Activity.ID) throws {

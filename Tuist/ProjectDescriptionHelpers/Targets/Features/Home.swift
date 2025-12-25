@@ -13,7 +13,7 @@ public let home = Feature(
 		.target(name: core.name),
 		.target(name: designSystem.name),
 		.target(name: resources.name),
-		.target(activity),
+		.target(ring),
 		.target(sheet),
 		.target(undefinedRoute)
 	],

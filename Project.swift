@@ -2,9 +2,9 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let features: [Feature] = [
-	activity,
 	example,
 	home,
+	ring,
 	sheet,
 	undefinedRoute
 ]

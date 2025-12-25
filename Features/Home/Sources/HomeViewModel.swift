@@ -8,8 +8,8 @@
 
 import Foundation
 import LoopLifeCore
-import Activity
+import Ring
 
 public final class HomeViewModel: BaseViewModel, ObservableObject {
-	let activityListViewModel: some ActivityListViewModeling = activityListVM()
+	let ringListViewModel: some RingListViewModeling = ringListVM()
 }

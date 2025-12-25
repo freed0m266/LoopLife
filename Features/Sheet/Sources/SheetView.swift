@@ -10,7 +10,7 @@ import SwiftUI
 import LoopLifeCore
 import LoopLifeUI
 
-import Activity
+import Ring
 import UndefinedRoute
 
 public struct SheetView<ViewModel: SheetViewModel>: View {
@@ -28,8 +28,8 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 		NavigationStack(path: $router.sheetPath) {
 			Group {
 				switch route {
-				case .addActivity:
-					AddActivityView(viewModel: addActivityVM())
+				case .addRing:
+					AddRingView(viewModel: addRingVM())
 				default:
 					UndefinedRouteView()
 				}

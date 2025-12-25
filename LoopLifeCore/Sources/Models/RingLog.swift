@@ -1,5 +1,5 @@
 //
-//  ActivityLog.swift
+//  RingLog.swift
 //  LoopLifeCore
 //
 //  Created by Martin Svoboda on 12.07.2025.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ActivityLog: Storable {
+public struct RingLog: Storable {
 	public let id: String
 	public var date: Date
 	public var completionRatio: CGFloat

@@ -12,7 +12,7 @@ public final class AppDependency: ObservableObject {
 	
 	lazy var coreDataManager: CoreDataManaging = CoreDataManager()
 	
-	public lazy var activitiesRepository: ActivitiesRepositoring = ActivitiesRepository(coreDataManager: coreDataManager)
+	public lazy var ringsRepository: RingsRepositoring = RingsRepository(coreDataManager: coreDataManager)
 	
 	// MARK: - Init
 	

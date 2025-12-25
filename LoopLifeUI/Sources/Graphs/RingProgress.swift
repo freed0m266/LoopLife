@@ -1,6 +1,6 @@
 //
 //  RingProgress.swift
-//  Activity
+//  LoopLifeUI
 //
 //  Created by Martin Svoboda on 13.07.2025.
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.

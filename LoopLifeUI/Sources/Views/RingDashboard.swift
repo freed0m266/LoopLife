@@ -1,5 +1,5 @@
 //
-//  LLActivityCard.swift
+//  RingDashboard.swift
 //  LoopLifeUI
 //
 //  Created by Martin Svoboda on 13.07.2025.
@@ -10,33 +10,33 @@ import SwiftUI
 import LoopLifeCore
 import LoopLifeResources
 
-public struct LLActivityCard: View {
-	let activity: Activity
+public struct RingDashboard: View {
+	let ring: Ring
 	let action: () -> Void
 	
 	private var lastUpdateText: String {
-		if activity.lastUpdate.isToday {
+		if ring.lastUpdate.isToday {
 			Texts.lastUpdateToday
-		} else if activity.lastUpdate.isYesterday {
+		} else if ring.lastUpdate.isYesterday {
 			Texts.lastUpdateYesterday
 		} else {
-			Texts.lastUpdate(activity.lastUpdate.daysElapsed)
+			Texts.lastUpdate(ring.lastUpdate.daysElapsed)
 		}
 	}
 	
-	typealias Texts = L10n.ActivityCard
+	typealias Texts = L10n.RingCard
 	
 	public init(
-		activity: Activity,
+		ring: Ring,
 		action: @escaping () -> Void
 	) {
-		self.activity = activity
+		self.ring = ring
 		self.action = action
 	}
 	
 	public var body: some View {
 		Button {
-			navigateTo(route: .activityDetail(activity.id))
+			navigateTo(route: .ringDetail(ring.id))
 		} label: {
 			VStack(spacing: 0) {
 				title
@@ -49,19 +49,19 @@ public struct LLActivityCard: View {
 					VStack(alignment: .leading, spacing: 12) {
 						infoTextBlock(
 							headline: Texts.categoryHeadline,
-							value: activity.name.uppercased(),
+							value: ring.name.uppercased(),
 							color: .skyBlue
 						)
 						
 						infoTextBlock(
 							headline: Texts.deadlineHeadline,
-							value: Texts.deadlineValue(activity.daysRemaining).uppercased(),
+							value: Texts.deadlineValue(ring.daysRemaining).uppercased(),
 							color: .basicRed
 						)
 						
 						infoTextBlock(
 							headline: Texts.goalHeadline,
-							value: Texts.goalValue(activity.progressRatioText).uppercased(),
+							value: Texts.goalValue(ring.progressRatioText).uppercased(),
 							color: .mintGreen
 						)
 					}
@@ -85,7 +85,7 @@ public struct LLActivityCard: View {
 			Text(lastUpdateText)
 				.labelMedium()
 				.maxWidthLeading()
-				.animation(.default, value: activity.lastUpdate)
+				.animation(.default, value: ring.lastUpdate)
 				.contentTransition(.numericText())
 		}
 		.foregroundColor(.foregroundSecondary)
@@ -102,7 +102,7 @@ public struct LLActivityCard: View {
 	private var rings: some View {
 		ZStack {
 			RingProgress(
-				progress: activity.timeRatio,
+				progress: ring.timeRatio,
 				ringSize: 140,
 				ringThickness: 16,
 				startColor: .basicRed,
@@ -110,7 +110,7 @@ public struct LLActivityCard: View {
 			)
 			
 			RingProgress(
-				progress: activity.progressRatio,
+				progress: ring.progressRatio,
 				ringSize: 104,
 				ringThickness: 16,
 				startColor: .mintGreen,
@@ -135,7 +135,7 @@ public struct LLActivityCard: View {
 			Text(value)
 				.labelLarge()
 				.foregroundColor(color)
-				.animation(.default, value: activity.progressRatio)
+				.animation(.default, value: ring.progressRatio)
 				.contentTransition(.numericText())
 		}
 	}
@@ -144,11 +144,11 @@ public struct LLActivityCard: View {
 #if DEBUG
 #Preview {
 	VStack(spacing: 16) {
-		LLActivityCard(activity: .mock1) { }
+		RingDashboard(ring: .mock1) { }
 		
-		LLActivityCard(activity: .mock2) { }
+		RingDashboard(ring: .mock2) { }
 		
-		LLActivityCard(activity: .mock3) { }
+		RingDashboard(ring: .mock3) { }
 	}
 	.padding(16)
 	.frame(maxWidth: .infinity, maxHeight: .infinity)

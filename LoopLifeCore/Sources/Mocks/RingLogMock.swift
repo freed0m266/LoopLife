@@ -1,5 +1,5 @@
 //
-//  ActivityLogMock.swift
+//  RingLogMock.swift
 //  LoopLifeCore
 //
 //  Created by Martin Svoboda on 12.07.2025.
@@ -8,29 +8,29 @@
 
 import Foundation
 
-public extension ActivityLog {
-	static var mock1: ActivityLog {
+public extension RingLog {
+	static var mock1: RingLog {
 		.mock(
 			id: "1",
 			date: .mock2021
 		)
 	}
 	
-	static var mock2: ActivityLog {
+	static var mock2: RingLog {
 		.mock(
 			id: "2",
 			date: .mock2022
 		)
 	}
 	
-	static var mock3: ActivityLog {
+	static var mock3: RingLog {
 		.mock(
 			id: "3",
 			date: .mock2023
 		)
 	}
 	
-	static var mock4: ActivityLog {
+	static var mock4: RingLog {
 		.mock(
 			id: "4",
 			date: .mock2024
@@ -38,8 +38,8 @@ public extension ActivityLog {
 	}
 }
 
-public extension [ActivityLog] {
-	static var mock: [ActivityLog] {
+public extension [RingLog] {
+	static var mock: [RingLog] {
 		[
 			.mock1,
 			.mock2,
@@ -49,7 +49,7 @@ public extension [ActivityLog] {
 	}
 }
 
-fileprivate extension ActivityLog {
+fileprivate extension RingLog {
 	static func mock(
 		id: String,
 		date: Date,
@@ -57,7 +57,7 @@ fileprivate extension ActivityLog {
 		note: String? = "note",
 		createdAt: Date = .now,
 		updatedAt: Date? = nil
-	) -> ActivityLog {
+	) -> RingLog {
 		.init(
 			id: id,
 			date: date,

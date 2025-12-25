@@ -1,5 +1,5 @@
 //
-//  Activity.swift
+//  Ring.swift
 //  LoopLifeCore
 //
 //  Created by Martin Svoboda on 11.07.2025.
@@ -9,14 +9,14 @@
 import Foundation
 import LoopLifeResources
 
-public struct Activity: Storable {
+public struct Ring: Storable {
 	public let id: String
 	public var name: String
 	public var targetCount: Int
 	public var startDate: Date
 	public var endDate: Date
 	public var lastUpdate: Date
-	public var logIds: [ActivityLog.ID]
+	public var logIds: [RingLog.ID]
 	
 	public init(
 		id: String = UUID().uuidString,
@@ -25,7 +25,7 @@ public struct Activity: Storable {
 		startDate: Date,
 		endDate: Date,
 		lastUpdate: Date = .now,
-		logIds: [ActivityLog.ID] = []
+		logIds: [RingLog.ID] = []
 	) {
 		self.id = id
 		self.name = name
@@ -39,12 +39,12 @@ public struct Activity: Storable {
 		date: Date? = nil,
 		completionRatio: CGFloat = 1,
 		note: String? = nil
-	) -> ActivityLog {
+	) -> RingLog {
 		let id = "\(id).\(UUID().uuidString)"
 		let createdAt = Date()
 		let date = date ?? createdAt
 		
-		let newLog = ActivityLog(
+		let newLog = RingLog(
 			id: id,
 			date: date,
 			completionRatio: completionRatio,
@@ -58,7 +58,7 @@ public struct Activity: Storable {
 	}
 }
 
-public extension Activity {
+public extension Ring {
 	var completedCount: Int {
 		logIds.count
 	}

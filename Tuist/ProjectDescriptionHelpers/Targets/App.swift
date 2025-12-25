@@ -33,11 +33,11 @@ public let app = Target.target(
 		.setBuildNumber
 	],
 	dependencies: [
-		.target(activity),
 		.target(core),
 		.target(designSystem),
 		.target(example),
 		.target(home),
+		.target(ring),
 		.target(sheet),
 		.target(undefinedRoute)
 	],

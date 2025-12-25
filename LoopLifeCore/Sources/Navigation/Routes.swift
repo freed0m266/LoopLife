@@ -15,9 +15,9 @@ public enum RoutePath {
 }
 
 public enum Route: Hashable {
-	case activityDetail(Activity.ID)
-	case addActivity
+	case addRing
 	case exampleDetail(Example.ID)
+	case ringDetail(Ring.ID)
 }
 
 extension Route: Identifiable {

@@ -10,7 +10,7 @@ import SwiftUI
 import LoopLifeCore
 import LoopLifeUI
 
-import Activity
+import Ring
 import Sheet
 import UndefinedRoute
 
@@ -24,11 +24,11 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 	
 	public var body: some View {
 		NavigationStack(path: $router.homePath) {
-			ActivityListView(viewModel: viewModel.activityListViewModel)
+			RingListView(viewModel: viewModel.ringListViewModel)
 				.navigationDestination(for: Route.self) { screen in
 					switch screen {
-					case .activityDetail(let id):
-						ActivityDetailView(viewModel: activityDetailVM(id: id))
+					case .ringDetail(let id):
+						RingDetailView(viewModel: ringDetailVM(id: id))
 					default:
 						UndefinedRouteView()
 					}

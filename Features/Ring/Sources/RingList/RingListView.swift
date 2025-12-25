@@ -1,6 +1,6 @@
 //
-//  ActivityListView.swift
-//  Activity
+//  RingListView.swift
+//  Ring
 //
 //  Created by Martin Svoboda on 26.06.2025.
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.
@@ -11,10 +11,10 @@ import LoopLifeCore
 import LoopLifeResources
 import LoopLifeUI
 
-public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
+public struct RingListView<ViewModel: RingListViewModeling>: View {
 	@StateObject private var viewModel: ViewModel
 	
-	typealias Texts = L10n.ActivityList
+	typealias Texts = L10n.RingList
 	
 	public init(viewModel: ViewModel) {
 		_viewModel = .init(wrappedValue: viewModel)
@@ -23,12 +23,14 @@ public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
     public var body: some View {
 		ScreenView(title: Texts.title, headline: viewModel.currentDate.dayWeekMonthFormat) {
 			VStack(spacing: 16) {
-				if viewModel.activities.isNotEmpty {
-					ForEach(viewModel.activities) { activity in
-						LLActivityCard(activity: activity) {
-							viewModel.recordLog(for: activity)
+				if viewModel.rings.isNotEmpty {
+					ForEach(viewModel.rings) { ring in
+						RingDashboard(ring: ring) {
+							viewModel.recordLog(for: ring)
 						}
 					}
+					
+					placeholder
 				} else {
 					placeholder
 				}
@@ -38,7 +40,7 @@ public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
 		}
 		.toolbar {
 			Button {
-				presentSheet(item: .addActivity)
+				presentSheet(item: .addRing)
 			} label: {
 				Icon.plus.size(17, weight: .medium)
 			}
@@ -50,7 +52,7 @@ public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
 	
 	private var placeholder: some View {
 		Button {
-			presentSheet(item: .addActivity)
+			presentSheet(item: .addRing)
 		} label: {
 			HStack(spacing: 16) {
 				ZStack {
@@ -89,7 +91,7 @@ public struct ActivityListView<ViewModel: ActivityListViewModeling>: View {
 
 #if DEBUG
 #Preview {
-	ActivityListView(viewModel: ActivityListViewModelMock())
+	RingListView(viewModel: RingListViewModelMock())
 		.inPreview()
 }
 #endif

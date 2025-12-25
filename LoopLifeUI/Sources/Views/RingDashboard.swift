@@ -39,35 +39,18 @@ public struct RingDashboard: View {
 			navigateTo(route: .ringDetail(ring.id))
 		} label: {
 			VStack(spacing: 0) {
-				title
+				lastUpdate
 				
 				divider
 				
-				HStack(spacing: 24) {
-					rings
-					
-					VStack(alignment: .leading, spacing: 12) {
-						infoTextBlock(
-							headline: Texts.categoryHeadline,
-							value: ring.name.uppercased(),
-							color: .skyBlue
-						)
-						
-						infoTextBlock(
-							headline: Texts.deadlineHeadline,
-							value: Texts.deadlineValue(ring.daysRemaining).uppercased(),
-							color: .basicRed
-						)
-						
-						infoTextBlock(
-							headline: Texts.goalHeadline,
-							value: Texts.goalValue(ring.progressRatioText).uppercased(),
-							color: .mintGreen
-						)
-					}
-					.maxWidthLeading()
-				}
-				.padding(16)
+				RingCard(
+					name: ring.name,
+					daysRemaining: ring.daysRemaining,
+					progressRatioText: ring.progressRatioText,
+					timeRatio: ring.timeRatio,
+					progressRatio: ring.progressRatio,
+					action: action
+				)
 			}
 			.background {
 				LinearGradient.backgroundSoft
@@ -77,7 +60,7 @@ public struct RingDashboard: View {
 		.buttonStyle(.plain)
 	}
 	
-	private var title: some View {
+	private var lastUpdate: some View {
 		HStack(spacing: 8) {
 			Icon.clockArrowCirclepath
 				.size(14, weight: .medium)
@@ -97,47 +80,6 @@ public struct RingDashboard: View {
 		Rectangle()
 			.foregroundColor(.backgroundSecondary)
 			.frame(height: 0.5)
-	}
-	
-	private var rings: some View {
-		ZStack {
-			RingProgress(
-				progress: ring.timeRatio,
-				ringSize: 140,
-				ringThickness: 16,
-				startColor: .basicRed,
-				endColor: .basicMagenta
-			)
-			
-			RingProgress(
-				progress: ring.progressRatio,
-				ringSize: 104,
-				ringThickness: 16,
-				startColor: .mintGreen,
-				endColor: .basicBlue
-			)
-			
-			Button(action: action) {
-				Icon.plus
-					.padding(26)
-					.backgroundColor(.iconPrimary.opacity(0.01))
-					.clipShape(.circle)
-			}
-		}
-	}
-	
-	private func infoTextBlock(headline: String, value: String, color: ColorItem) -> some View {
-		VStack(alignment: .leading, spacing: 0) {
-			Text(headline)
-				.labelMedium()
-				.foregroundColor(.foregroundPrimary)
-			
-			Text(value)
-				.labelLarge()
-				.foregroundColor(color)
-				.animation(.default, value: ring.progressRatio)
-				.contentTransition(.numericText())
-		}
 	}
 }
 

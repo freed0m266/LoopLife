@@ -13,6 +13,7 @@ public let sheet = Feature(
 		.target(name: core.name),
 		.target(name: designSystem.name),
 		.target(name: resources.name),
+		.target(ring),
 		.target(undefinedRoute)
 	],
 	hasTests: false

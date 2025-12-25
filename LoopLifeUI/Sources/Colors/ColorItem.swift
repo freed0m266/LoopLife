@@ -47,6 +47,8 @@ public extension ColorItem {
 	static var foregroundSecondary: ColorItem = "999999"
 	/// #99A6B5
 	static var foregroundDisabled: ColorItem = "99A6B5"
+	/// #515151
+	static var foregroundPlaceholder: ColorItem = "515151"
 	/// #000000
 	static var foregroundOnPrimary: ColorItem = "000000"
 	
@@ -181,7 +183,6 @@ struct ColorItems_Previews: PreviewProvider {
 				color(title: "basicRed", color: .basicRed)
 				color(title: "basicOrange", color: .basicOrange)
 				color(title: "basicGreen", color: .basicGreen)
-				color()
 				
 				Divider().padding(.vertical)
 				Divider().padding(.vertical)

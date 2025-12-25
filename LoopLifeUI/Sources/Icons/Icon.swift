@@ -56,6 +56,8 @@ public extension Icon {
 	static var plusCircleFill: Icon = "plus.circle.fill"
 	/// arrow.trianglehead.clockwise
 	static var arrowClockwise: Icon = "arrow.trianglehead.clockwise"
+	/// clock.arrow.circlepath
+	static var clockArrowCirclepath: Icon = "clock.arrow.circlepath"
 	/// circle.circle
 	static var circleCircle: Icon = "circle.circle"
 }

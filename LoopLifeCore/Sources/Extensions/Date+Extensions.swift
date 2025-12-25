@@ -9,13 +9,94 @@
 import Foundation
 
 public extension Date {
-	/// EEEE d. M.
-	var dayWeekMonthFormat: String {
-		dayMonthYearDateFormatter.string(from: self)
+	func plus(minutes: Int) -> Date {
+		// swiftlint:disable:next force_unwrapping
+		Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
+	}
+	
+	func plus(hours: Int) -> Date {
+		// swiftlint:disable:next force_unwrapping
+		Calendar.current.date(byAdding: .hour, value: hours, to: self)!
+	}
+	
+	func plus(days: Int) -> Date {
+		// swiftlint:disable:next force_unwrapping
+		Calendar.current.date(byAdding: .day, value: days, to: self)!
+	}
+	
+	func plus(months: Int) -> Date {
+		// swiftlint:disable:next force_unwrapping
+		Calendar.current.date(byAdding: .month, value: months, to: self)!
+	}
+	
+	func plus(years: Int) -> Date {
+		// swiftlint:disable:next force_unwrapping
+		Calendar.current.date(byAdding: .year, value: years, to: self)!
 	}
 }
 
+public extension Date {
+	var startOfMonth: Date {
+		Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)) ?? self
+	}
+	
+	var startOfYear: Date {
+		Calendar.current.date(from: Calendar.current.dateComponents([.year], from: self)) ?? self
+	}
+}
+
+public extension Date {
+	var startOfDay: Date {
+		Calendar.current.startOfDay(for: self)
+	}
+	
+	var isToday: Bool {
+		Calendar.current.isDateInToday(self)
+	}
+	
+	var isYesterday: Bool {
+		Calendar.current.isDateInYesterday(self)
+	}
+	
+	var daysElapsed: Int {
+		Calendar.current.dateComponents([.day], from: startOfDay, to: .now.startOfDay).day ?? 0
+	}
+	
+	var daysRemaining: Int {
+		Calendar.current.dateComponents([.day], from: .now.startOfDay, to: startOfDay).day ?? 0
+	}
+}
+
+public extension Date {
+	/// d. M.
+	var dayMonthFormat: String {
+		dayMonthDateFormatter.string(from: self)
+	}
+	
+	/// d. M. yyyy
+	var dayMonthYearFormat: String {
+		dayMonthYearDateFormatter.string(from: self)
+	}
+	
+	/// EEEE d. M.
+	var dayWeekMonthFormat: String {
+		dayWeekMonthDateFormatter.string(from: self)
+	}
+}
+
+private var dayMonthDateFormatter: DateFormatter = {
+	let dateFormatter = DateFormatter()
+	dateFormatter.dateFormat = "d. M."
+	return dateFormatter
+}()
+
 private var dayMonthYearDateFormatter: DateFormatter = {
+	let dateFormatter = DateFormatter()
+	dateFormatter.dateFormat = "d. M. yyyy"
+	return dateFormatter
+}()
+
+private var dayWeekMonthDateFormatter: DateFormatter = {
 	let dateFormatter = DateFormatter()
 	dateFormatter.dateFormat = "EEEE d. M."
 	return dateFormatter

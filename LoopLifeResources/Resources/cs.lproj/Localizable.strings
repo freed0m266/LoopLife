@@ -6,11 +6,15 @@
 "activityDetail.title" = "";
 "activityList.title" = "";
 "activityList.emptyListText" = "";
+"addActivity.title" = "";
 "activityCard.categoryHeadline" = "";
 "activityCard.deadlineHeadline" = "";
 "activityCard.goalHeadline" = "";
 "activityCard.deadlineValue" = "";
 "activityCard.goalValue" = "";
+"activityCard.lastUpdate" = "";
+"activityCard.lastUpdateToday" = "";
+"activityCard.lastUpdateYesterday" = "";
 "undefinedRoute.title" = "";
 "undefinedRoute.text" = "";
 "category.fitness" = "";

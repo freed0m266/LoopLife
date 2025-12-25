@@ -12,19 +12,17 @@ public extension Activity {
 	static var mock1: Activity {
 		mock(
 			id: "1",
-			title: "Gym",
+			name: "Fitness",
 			targetCount: 10,
-			category: .fitness,
-			logIds: [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+			logIds: [ "1", "2", "3", "4", "5", "6", "7" ]
 		)
 	}
 	
 	static var mock2: Activity {
 		mock(
 			id: "2",
-			title: "Read books",
+			name: "Reading",
 			targetCount: 5,
-			category: .reading,
 			logIds: [ "1", "2" ]
 		)
 	}
@@ -32,9 +30,8 @@ public extension Activity {
 	static var mock3: Activity {
 		mock(
 			id: "3",
-			title: "Save money",
+			name: "Finance",
 			targetCount: 10,
-			category: .finance,
 			logIds: [ "1", "2", "3", "4", "5" ]
 		)
 	}
@@ -53,20 +50,20 @@ public extension [Activity] {
 fileprivate extension Activity {
 	static func mock(
 		id: String,
-		title: String,
+		name: String,
 		targetCount: Int,
 		startDate: Date = .mock2024,
 		endDate: Date = .mock2026,
-		category: Category,
+		lastUpdate: Date = .mock2024,
 		logIds: [ActivityLog.ID] = []
 	) -> Activity {
 		.init(
 			id: id,
-			title: title,
+			name: name,
 			targetCount: targetCount,
 			startDate: startDate,
 			endDate: endDate,
-			category: category,
+			lastUpdate: lastUpdate,
 			logIds: logIds
 		)
 	}

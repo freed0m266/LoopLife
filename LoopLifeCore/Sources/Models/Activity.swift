@@ -11,13 +11,30 @@ import LoopLifeResources
 
 public struct Activity: Storable {
 	public let id: String
-	public var title: String
+	public var name: String
 	public var targetCount: Int
 	public var startDate: Date
 	public var endDate: Date
-	public var category: Category
+	public var lastUpdate: Date
 	public var logIds: [ActivityLog.ID]
 	
+	public init(
+		id: String = UUID().uuidString,
+		name: String,
+		targetCount: Int,
+		startDate: Date,
+		endDate: Date,
+		lastUpdate: Date = .now,
+		logIds: [ActivityLog.ID] = []
+	) {
+		self.id = id
+		self.name = name
+		self.targetCount = targetCount
+		self.startDate = startDate
+		self.endDate = endDate
+		self.lastUpdate = lastUpdate
+		self.logIds = logIds
+	}
 	public mutating func newLog(
 		date: Date? = nil,
 		completionRatio: CGFloat = 1,
@@ -36,31 +53,8 @@ public struct Activity: Storable {
 		)
 		
 		logIds.append(newLog.id)
+		lastUpdate = .now
 		return newLog
-	}
-}
-
-extension Activity {
-	public enum Category: String, Identifiable, Codable, CaseIterable {
-		case fitness
-		case reading
-		case finance
-		case addiction
-		case habit
-		
-		public var id: Category {
-			self
-		}
-		
-		public var name: String {
-			switch self {
-			case .fitness: L10n.Category.fitness
-			case .reading: L10n.Category.reading
-			case .finance: L10n.Category.finance
-			case .addiction: L10n.Category.addiction
-			case .habit: L10n.Category.habit
-			}
-		}
 	}
 }
 
@@ -70,11 +64,11 @@ public extension Activity {
 	}
 	
 	var daysElapsed: Int {
-		Calendar.current.dateComponents([.day], from: startDate, to: .now).day ?? 0
+		startDate.daysElapsed
 	}
 	
 	var daysRemaining: Int {
-		Calendar.current.dateComponents([.day], from: .now, to: endDate).day ?? 0
+		endDate.daysRemaining
 	}
 	
 	var daysTotal: Int {

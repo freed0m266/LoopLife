@@ -6,11 +6,15 @@
 "activityDetail.title" = "LoopLife";
 "activityList.title" = "Summary";
 "activityList.emptyListText" = "You have no rings yet.";
+"addActivity.title" = "Add Ring";
 "activityCard.categoryHeadline" = "Category";
 "activityCard.deadlineHeadline" = "Deadline";
 "activityCard.goalHeadline" = "Goal";
 "activityCard.deadlineValue" = "%@ days";
 "activityCard.goalValue" = "%@ done";
+"activityCard.lastUpdate" = "%@ days ago";
+"activityCard.lastUpdateToday" = "Today";
+"activityCard.lastUpdateYesterday" = "Yesterday";
 "undefinedRoute.title" = "Something went wrong";
 "undefinedRoute.text" = "Page not found.";
 "category.fitness" = "Fitness";

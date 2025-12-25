@@ -14,6 +14,16 @@ public struct LLActivityCard: View {
 	let activity: Activity
 	let action: () -> Void
 	
+	private var lastUpdateText: String {
+		if activity.lastUpdate.isToday {
+			Texts.lastUpdateToday
+		} else if activity.lastUpdate.isYesterday {
+			Texts.lastUpdateYesterday
+		} else {
+			Texts.lastUpdate(activity.lastUpdate.daysElapsed)
+		}
+	}
+	
 	typealias Texts = L10n.ActivityCard
 	
 	public init(
@@ -39,7 +49,7 @@ public struct LLActivityCard: View {
 					VStack(alignment: .leading, spacing: 12) {
 						infoTextBlock(
 							headline: Texts.categoryHeadline,
-							value: activity.category.name.uppercased(),
+							value: activity.name.uppercased(),
 							color: .skyBlue
 						)
 						
@@ -68,12 +78,19 @@ public struct LLActivityCard: View {
 	}
 	
 	private var title: some View {
-		Text(activity.title)
-			.labelLarge()
-			.foregroundColor(.foregroundPrimary)
-			.padding(.horizontal, 12)
-			.padding(.vertical, 8)
-			.maxWidthLeading()
+		HStack(spacing: 8) {
+			Icon.clockArrowCirclepath
+				.size(14, weight: .medium)
+			
+			Text(lastUpdateText)
+				.labelMedium()
+				.maxWidthLeading()
+				.animation(.default, value: activity.lastUpdate)
+				.contentTransition(.numericText())
+		}
+		.foregroundColor(.foregroundSecondary)
+		.padding(.horizontal, 12)
+		.padding(.vertical, 8)
 	}
 	
 	private var divider: some View {
@@ -118,6 +135,8 @@ public struct LLActivityCard: View {
 			Text(value)
 				.labelLarge()
 				.foregroundColor(color)
+				.animation(.default, value: activity.progressRatio)
+				.contentTransition(.numericText())
 		}
 	}
 }

@@ -5,7 +5,15 @@
 "error.defaultTitle" = "Error";
 "ringList.title" = "Summary";
 "ringList.emptyListText" = "You have no rings yet.";
-"addRing.title" = "Add Ring";
+"addRing.title" = "New Ring";
+"addRing.categoryHeadline" = "Category";
+"addRing.deadlineHeadline" = "Deadline";
+"addRing.goalHeadline" = "Goal";
+"addRing.categoryPlaceholder" = "Text";
+"addRing.deadlinePlaceholder" = "Date";
+"addRing.goalPlaceholder" = "Number";
+"addRing.deadlineValueSingular" = "%@ day";
+"addRing.deadlineValuePlural" = "%@ days";
 "ringCard.categoryHeadline" = "Category";
 "ringCard.deadlineHeadline" = "Deadline";
 "ringCard.goalHeadline" = "Goal";

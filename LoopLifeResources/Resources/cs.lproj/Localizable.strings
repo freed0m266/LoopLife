@@ -6,6 +6,14 @@
 "ringList.title" = "";
 "ringList.emptyListText" = "";
 "addRing.title" = "";
+"addRing.categoryHeadline" = "";
+"addRing.deadlineHeadline" = "";
+"addRing.goalHeadline" = "";
+"addRing.categoryPlaceholder" = "";
+"addRing.deadlinePlaceholder" = "";
+"addRing.goalPlaceholder" = "";
+"addRing.deadlineValueSingular" = "";
+"addRing.deadlineValuePlural" = "";
 "ringCard.categoryHeadline" = "";
 "ringCard.deadlineHeadline" = "";
 "ringCard.goalHeadline" = "";

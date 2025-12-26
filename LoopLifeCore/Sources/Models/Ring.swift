@@ -22,7 +22,7 @@ public struct Ring: Storable {
 		id: String = UUID().uuidString,
 		name: String,
 		targetCount: Int,
-		startDate: Date,
+		startDate: Date = .now.startOfDay,
 		endDate: Date,
 		lastUpdate: Date = .now,
 		logIds: [RingLog.ID] = []
@@ -64,11 +64,11 @@ public extension Ring {
 	}
 	
 	var daysElapsed: Int {
-		startDate.daysElapsed
+		startDate.daysElapsed()
 	}
 	
 	var daysRemaining: Int {
-		endDate.daysRemaining
+		endDate.daysRemaining()
 	}
 	
 	var daysTotal: Int {

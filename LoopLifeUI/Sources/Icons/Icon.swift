@@ -34,6 +34,8 @@ public extension Icon {
 }
 
 public extension Icon {
+	/// checkmark
+	static var checkmark: Icon = "checkmark"
 	/// checkmark.circle.fill
 	static var checkmarkFill: Icon = "checkmark.circle.fill"
 	/// xmark

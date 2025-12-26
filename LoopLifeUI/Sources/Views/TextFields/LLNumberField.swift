@@ -13,6 +13,7 @@ public struct LLNumberField<T: FormattableNumber>: View {
 	@Binding private var number: T?
 	@FocusState private var isActive: Bool
 	
+	private let numberColor: ColorItem
 	private let maxNumberLength: Int
 	private let maxDecimalLength: Int
 	private let placeholder: String
@@ -22,6 +23,7 @@ public struct LLNumberField<T: FormattableNumber>: View {
 	public init(
 		headline: String? = nil,
 		number: Binding<T?>,
+		numberColor: ColorItem = .foregroundPrimary,
 		placeholder: String = "",
 		maxNumberLength: Int = 5,
 		maxDecimalLength: Int = 0,
@@ -29,6 +31,7 @@ public struct LLNumberField<T: FormattableNumber>: View {
 	) {
 		self.headline = headline
 		self._number = number
+		self.numberColor = numberColor
 		self.placeholder = placeholder
 		self.maxNumberLength = maxNumberLength
 		self.maxDecimalLength = maxDecimalLength
@@ -54,7 +57,7 @@ public struct LLNumberField<T: FormattableNumber>: View {
 			.titleLarge()
 			.padding(.vertical, 12)
 			.padding(.horizontal, 16)
-			.foregroundColor(.foregroundPrimary)
+			.foregroundColor(numberColor)
 			.background {
 				LinearGradient.backgroundSoft
 			}

@@ -13,6 +13,7 @@ public struct LLTextField: View {
 	@Binding private var text: String?
 	@FocusState private var isActive: Bool
 	
+	private let textColor: ColorItem
 	private let placeholder: String
 	private let headline: String?
 	private let initialValueIsActive: Bool
@@ -20,11 +21,13 @@ public struct LLTextField: View {
 	public init(
 		headline: String? = nil,
 		text: Binding<String?>,
+		textColor: ColorItem = .foregroundPrimary,
 		placeholder: String = "",
 		isActive: Bool = false
 	) {
 		self.headline = headline
 		self._text = text
+		self.textColor = textColor
 		self.placeholder = placeholder
 		self.initialValueIsActive = isActive
 	}
@@ -48,7 +51,7 @@ public struct LLTextField: View {
 			.titleLarge()
 			.padding(.vertical, 12)
 			.padding(.horizontal, 16)
-			.foregroundColor(.foregroundPrimary)
+			.foregroundColor(textColor)
 			.background {
 				LinearGradient.backgroundSoft
 			}

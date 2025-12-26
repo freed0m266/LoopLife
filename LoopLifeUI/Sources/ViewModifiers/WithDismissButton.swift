@@ -12,7 +12,7 @@ struct WithDismissButtonModifier: ViewModifier {
 	func body(content: Content) -> some View {
 		content
 			.toolbar {
-				ToolbarItem(placement: .destructiveAction) {
+				ToolbarItem(placement: .topBarLeading) {
 					Button {
 						content.closeSheet()
 					} label: {

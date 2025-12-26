@@ -20,7 +20,7 @@ public struct RingDashboard: View {
 		} else if ring.lastUpdate.isYesterday {
 			Texts.lastUpdateYesterday
 		} else {
-			Texts.lastUpdate(ring.lastUpdate.daysElapsed)
+			Texts.lastUpdate(ring.lastUpdate.daysElapsed())
 		}
 	}
 	

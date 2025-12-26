@@ -57,31 +57,42 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 	// MARK: - Public API
 	
 	func rings() -> AnyPublisher<[Ring], Error> {
-		ringsSubject.onReceiveSubscription { [unowned self] _ in
-			loadItems(subject: ringsSubject)
+		ringsSubject.onReceiveSubscription { _ in
+			DispatchQueue.global().async {
+				self.loadItems(subject: self.ringsSubject)
+			}
 		}
 	}
 	
 	func ringLogs(ids: [RingLog]) -> AnyPublisher<[RingLog], Error> {
-		ringLogsSubject.onReceiveSubscription { [unowned self] _ in
-			loadItems(subject: ringLogsSubject)
+		ringLogsSubject.onReceiveSubscription { _ in
+			DispatchQueue.global().async {
+				self.loadItems(subject: self.ringLogsSubject)
+			}
 		}
 	}
 	
 	func ring(id: Ring.ID) -> AnyPublisher<Ring, Error> {
-		ringSubject.onReceiveSubscription { [unowned self] _ in
-			loadItem(id: id, subject: ringSubject)
+		ringSubject.onReceiveSubscription { _ in
+			DispatchQueue.global().async {
+				self.loadItem(id: id, subject: self.ringSubject)
+			}
 		}
 	}
 	
 	func ringLog(id: RingLog.ID) -> AnyPublisher<RingLog, Error> {
-		ringLogSubject.onReceiveSubscription { [unowned self] _ in
-			loadItem(id: id, subject: ringLogSubject)
+		ringLogSubject.onReceiveSubscription { _ in
+			DispatchQueue.global().async {
+				self.loadItem(id: id, subject: self.ringLogSubject)
+			}
 		}
 	}
 	
 	func save(ring: Ring) throws {
 		try saveItem(item: ring)
+		
+		// Refresh rings
+		loadItems(subject: ringsSubject)
 	}
 	
 	func recordLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws {

@@ -58,12 +58,12 @@ public extension Date {
 		Calendar.current.isDateInYesterday(self)
 	}
 	
-	var daysElapsed: Int {
-		Calendar.current.dateComponents([.day], from: startOfDay, to: .now.startOfDay).day ?? 0
+	func daysElapsed(from other: Date = .now) -> Int {
+		Calendar.current.dateComponents([.day], from: startOfDay, to: other.startOfDay).day ?? 0
 	}
 	
-	var daysRemaining: Int {
-		Calendar.current.dateComponents([.day], from: .now.startOfDay, to: startOfDay).day ?? 0
+	func daysRemaining(to other: Date = .now) -> Int {
+		Calendar.current.dateComponents([.day], from: other.startOfDay, to: startOfDay).day ?? 0
 	}
 }
 

@@ -39,6 +39,8 @@ public struct LLDatePicker: View {
 			)
 			.titleLarge()
 			.foregroundColor(textColor)
+			.animation(.default, value: text)
+			.contentTransition(.numericText())
 			.padding(.vertical, 12)
 			.padding(.horizontal, 16)
 			.background {

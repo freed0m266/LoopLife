@@ -29,8 +29,6 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 							viewModel.recordLog(for: ring)
 						}
 					}
-					
-					placeholder
 				} else {
 					placeholder
 				}

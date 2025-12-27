@@ -68,6 +68,11 @@ public extension Date {
 }
 
 public extension Date {
+	/// H:mm
+	var hourMinuteFormat: String {
+		hourMinuteDateFormatter.string(from: self)
+	}
+	
 	/// d. M.
 	var dayMonthFormat: String {
 		dayMonthDateFormatter.string(from: self)
@@ -82,7 +87,18 @@ public extension Date {
 	var dayWeekMonthFormat: String {
 		dayWeekMonthDateFormatter.string(from: self)
 	}
+	
+	/// d. M. yyyy • H:mm
+	var dayMonthYearHourMinuteFormat: String {
+		dayMonthYearFormat + " • " + hourMinuteFormat
+	}
 }
+
+private var hourMinuteDateFormatter: DateFormatter = {
+	let dateFormatter = DateFormatter()
+	dateFormatter.dateFormat = "H:mm"
+	return dateFormatter
+}()
 
 private var dayMonthDateFormatter: DateFormatter = {
 	let dateFormatter = DateFormatter()

@@ -51,6 +51,7 @@ public struct RingDashboard: View {
 					progressRatio: ring.progressRatio,
 					action: action
 				)
+				.disabled(ring.lastUpdate.isToday)
 			}
 			.background {
 				LinearGradient.backgroundSoft

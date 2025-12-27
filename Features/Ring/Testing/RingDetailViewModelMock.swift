@@ -10,4 +10,5 @@ import LoopLifeCore
 
 final class RingDetailViewModelMock: RingDetailViewModeling {
 	var ring: Ring? = .mock1
+	var ringLogs: [RingLog] = .mock
 }

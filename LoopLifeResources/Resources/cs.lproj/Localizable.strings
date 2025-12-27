@@ -3,6 +3,9 @@
 "general.cancel" = "";
 "general.ok" = "";
 "error.defaultTitle" = "";
+"ringDetail.deleteAlertTitle" = "";
+"ringDetail.deleteAlertMessage" = "";
+"ringDetail.deleteAlertButton" = "";
 "ringList.title" = "";
 "ringList.emptyListText" = "";
 "addRing.title" = "";
@@ -22,5 +25,6 @@
 "ringCard.lastUpdate" = "";
 "ringCard.lastUpdateToday" = "";
 "ringCard.lastUpdateYesterday" = "";
+"ringCard.lastUpdateEmpty" = "";
 "undefinedRoute.title" = "";
 "undefinedRoute.text" = "";

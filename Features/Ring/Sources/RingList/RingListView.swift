@@ -53,23 +53,19 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 			presentSheet(item: .addRing)
 		} label: {
 			HStack(spacing: 16) {
-				ZStack {
-					RingProgress(
-						progress: 0.84,
-						ringSize: 140,
-						ringThickness: 16,
-						startColor: .basicRed,
-						endColor: .basicMagenta
-					)
-					
-					RingProgress(
+				RingGraph(
+					innerProps: .init(
 						progress: 0.67,
-						ringSize: 104,
-						ringThickness: 16,
 						startColor: .mintGreen,
 						endColor: .basicBlue
-					)
-				}
+					),
+					outerProps: .init(
+						progress: 0.84,
+						startColor: .basicRed,
+						endColor: .basicMagenta
+					),
+					style: .small
+				)
 				.saturation(0)
 				
 				VStack(spacing: 16) {

@@ -11,7 +11,7 @@ import Combine
 
 public protocol RingsRepositoring {
 	func rings() -> AnyPublisher<[Ring], Error>
-	func ringLogs(ids: [RingLog]) -> AnyPublisher<[RingLog], Error>
+	func ringLogs(ids: [RingLog.ID]) -> AnyPublisher<[RingLog], Error>
 	
 	func ring(id: Ring.ID) -> AnyPublisher<Ring, Error>
 	func ringLog(id: RingLog.ID) -> AnyPublisher<RingLog, Error>
@@ -64,10 +64,10 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		}
 	}
 	
-	func ringLogs(ids: [RingLog]) -> AnyPublisher<[RingLog], Error> {
+	func ringLogs(ids: [RingLog.ID]) -> AnyPublisher<[RingLog], Error> {
 		ringLogsSubject.onReceiveSubscription { _ in
 			DispatchQueue.global().async {
-				self.loadItems(subject: self.ringLogsSubject)
+				self.loadItems(ids: ids, subject: self.ringLogsSubject)
 			}
 		}
 	}

@@ -16,6 +16,7 @@ public enum RoutePath {
 
 public enum Route: Hashable {
 	case addRing
+	case addRingLog
 	case exampleDetail(Example.ID)
 	case ringDetail(Ring.ID)
 }

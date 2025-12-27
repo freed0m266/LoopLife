@@ -12,7 +12,7 @@ public extension Ring {
 	static var mock1: Ring {
 		mock(
 			id: "1",
-			name: "Fitness",
+			name: "Workout",
 			targetCount: 10,
 			logIds: [ "1", "2", "3", "4", "5", "6", "7" ]
 		)

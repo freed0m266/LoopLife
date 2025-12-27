@@ -20,7 +20,7 @@ public protocol RingsRepositoring {
 	
 	func recordLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws
 	
-	func deleteRing(id: Ring.ID) throws
+	func deleteRing(id: Ring.ID, logIds: [RingLog.ID]) throws
 	func deleteRingLog(id: RingLog.ID) throws
 }
 
@@ -115,8 +115,15 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		try saveItem(item: ringLog)
 	}
 	
-	func deleteRing(id: Ring.ID) throws {
+	func deleteRing(id: Ring.ID, logIds: [RingLog.ID]) throws {
 		try deleteItem(id: id, entityType: Ring.entityType)
+		
+		if logIds.isNotEmpty {
+			try deleteItems(ids: logIds, entityType: RingLog.entityType)
+		}
+		
+		// Refresh rings
+		loadItems(subject: ringsSubject)
 	}
 	
 	func deleteRingLog(id: RingLog.ID) throws {

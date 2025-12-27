@@ -15,12 +15,14 @@ public struct RingDashboard: View {
 	let action: () -> Void
 	
 	private var lastUpdateText: String {
-		if ring.lastUpdate.isToday {
-			Texts.lastUpdateToday
-		} else if ring.lastUpdate.isYesterday {
-			Texts.lastUpdateYesterday
+		guard let lastUpdate = ring.lastUpdate else { return Texts.lastUpdateEmpty }
+		
+		if lastUpdate.isToday {
+			return Texts.lastUpdateToday
+		} else if lastUpdate.isYesterday {
+			return Texts.lastUpdateYesterday
 		} else {
-			Texts.lastUpdate(ring.lastUpdate.daysElapsed())
+			return Texts.lastUpdate(lastUpdate.daysElapsed())
 		}
 	}
 	
@@ -51,7 +53,7 @@ public struct RingDashboard: View {
 					progressRatio: ring.progressRatio,
 					action: action
 				)
-				.disabled(ring.lastUpdate.isToday)
+				.disabled(ring.lastUpdate?.isToday == true)
 			}
 			.background {
 				LinearGradient.backgroundSoft

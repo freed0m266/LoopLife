@@ -46,6 +46,10 @@ open class BaseRepository {
 		try coreDataManager.save(item: item)
 	}
 	
+	func deleteItems(ids: [String] = [], entityType: String) throws {
+		try coreDataManager.delete(ids: ids, entityType: entityType)
+	}
+	
 	func deleteItem(id: String, entityType: String) throws {
 		let key = EntityKey(id: id, entityType: entityType)
 		try coreDataManager.delete(key: key)

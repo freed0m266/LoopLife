@@ -42,6 +42,8 @@ public extension Icon {
 	static var xmark: Icon = "xmark"
 	/// xmark.circle.fill
 	static var xmarkFill: Icon = "xmark.circle.fill"
+	/// trash
+	static var trash: Icon = "trash"
 	/// chevron.right
 	static var chevronRight: Icon = "chevron.right"
 	/// info.circle

@@ -15,7 +15,7 @@ public struct Ring: Storable {
 	public var targetCount: Int
 	public var startDate: Date
 	public var endDate: Date
-	public var lastUpdate: Date
+	public var lastUpdate: Date?
 	public var logIds: [RingLog.ID]
 	
 	public init(
@@ -24,7 +24,7 @@ public struct Ring: Storable {
 		targetCount: Int,
 		startDate: Date = .now.startOfDay,
 		endDate: Date,
-		lastUpdate: Date = .now,
+		lastUpdate: Date? = nil,
 		logIds: [RingLog.ID] = []
 	) {
 		self.id = id

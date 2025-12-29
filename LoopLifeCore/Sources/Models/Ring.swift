@@ -79,6 +79,10 @@ public extension Ring {
 		"\(completedCount)/\(targetCount)"
 	}
 	
+	var paceIndexText: String {
+		"\(CGFloat(progressRatio / timeRatio * 100).formatted(maxPrecision: 0)) %"
+	}
+	
 	var progressRatio: Double {
 		Double(completedCount) / Double(targetCount)
 	}

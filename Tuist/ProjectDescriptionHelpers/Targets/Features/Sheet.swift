@@ -14,6 +14,7 @@ public let sheet = Feature(
 		.target(name: designSystem.name),
 		.target(name: resources.name),
 		.target(ring),
+		.target(ringLog),
 		.target(undefinedRoute)
 	],
 	hasTests: false

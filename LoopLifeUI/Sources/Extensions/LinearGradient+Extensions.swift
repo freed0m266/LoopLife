@@ -9,39 +9,6 @@
 import SwiftUI
 
 public extension LinearGradient {
-	static var primaryRing: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "00C2FF"),
-				Color(hexString: "6A00FF")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
-	static var successRing: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "00FF94"),
-				Color(hexString: "00C2FF")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
-	static var dangerZoneRing: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "FF5C5C"),
-				Color(hexString: "FFA26B")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
 	static var backgroundSoft: LinearGradient {
 		.init(
 			colors: [
@@ -53,58 +20,16 @@ public extension LinearGradient {
 		)
 	}
 	
-	static var fitness: LinearGradient {
+	static var basicRedMagenta: LinearGradient {
 		.init(
 			colors: [
-				Color(hexString: "00C2FF"),
-				Color(hexString: "6A00FF")
+				ColorItem.basicRed.color,
+				ColorItem.basicMagenta.color
 			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
-	static var reading: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "FFA26B"),
-				Color(hexString: "FF5C5C")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
-	static var finance: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "00FF94"),
-				Color(hexString: "00C2FF")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
-	static var habit: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "FFD500"),
-				Color(hexString: "FF6A00")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
-		)
-	}
-	
-	static var custom: LinearGradient {
-		.init(
-			colors: [
-				Color(hexString: "A3A3A3"),
-				Color(hexString: "595959")
-			],
-			startPoint: .topLeading,
-			endPoint: .bottomTrailing
+			startPoint: .leading,
+			endPoint: .topTrailing
+//			startPoint: .topLeading,
+//			endPoint: .bottomTrailing
 		)
 	}
 }
@@ -115,23 +40,9 @@ struct LinearGradients_Previews: PreviewProvider {
 	static var previews: some View {
 		ScrollView {
 			VStack(spacing: 16) {
-				preview(of: .primaryRing, title: "primaryRing")
-
-				preview(of: .successRing, title: "successRing")
-
-				preview(of: .dangerZoneRing, title: "dangerZoneRing")
-
-				preview(of: .fitness, title: "fitness")
-				
-				preview(of: .reading, title: "reading")
-				
-				preview(of: .finance, title: "finance")
-				
-				preview(of: .habit, title: "habit")
-				
-				preview(of: .custom, title: "custom")
-
 				preview(of: .backgroundSoft, title: "backgroundSoft", textColor: .foregroundPrimary)
+				
+				preview(of: .basicRedMagenta, title: "basicRedMagenta", textColor: .foregroundPrimary)
 			}
 			.padding(16)
 		}

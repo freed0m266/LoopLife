@@ -11,6 +11,7 @@ import LoopLifeCore
 import LoopLifeUI
 
 import Ring
+import RingLog
 import UndefinedRoute
 
 public struct SheetView<ViewModel: SheetViewModel>: View {
@@ -30,6 +31,8 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 				switch route {
 				case .addRing:
 					AddRingView(viewModel: addRingVM())
+				case let .addRingLog(ringId):
+					AddRingLogView(viewModel: addRingLogVM(ringId: ringId))
 				default:
 					UndefinedRouteView()
 				}

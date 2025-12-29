@@ -33,8 +33,8 @@ public extension View {
 	/// Title Large
 	///
 	/// * Font: `SFPro.bold`
-	/// * Size: `14`
-	/// * Line height: `18`
+	/// * Size: `34`
+	/// * Line height: `41`
 	func titleLarge() -> some View {
 		font(SFPro.bold.font(size: 34), lineHeight: 41, textStyle: .title)
 	}

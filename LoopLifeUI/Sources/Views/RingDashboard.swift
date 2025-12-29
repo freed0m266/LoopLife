@@ -81,7 +81,7 @@ public struct RingDashboard: View {
 	
 	private var divider: some View {
 		Rectangle()
-			.foregroundColor(.backgroundSecondary)
+			.foregroundColor(.backgroundTertiary)
 			.frame(height: 0.5)
 	}
 }

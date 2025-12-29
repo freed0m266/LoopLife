@@ -61,8 +61,10 @@ public extension ColorItem {
 	
 	/// #000000
 	static var backgroundPrimary: ColorItem = "000000"
+	/// #101010
+	static var backgroundSecondary: ColorItem = "101010"
 	/// #404040
-	static var backgroundSecondary: ColorItem = "404040"
+	static var backgroundTertiary: ColorItem = "404040"
 	/// #445161
 	static var backgroundDisabled: ColorItem = "445161"
 	

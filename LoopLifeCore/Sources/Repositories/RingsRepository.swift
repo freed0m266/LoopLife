@@ -109,6 +109,7 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		
 		// Refresh rings
 		loadItems(subject: ringsSubject)
+		loadItem(id: ring.id, subject: ringSubject)
 	}
 	
 	func save(ringLog: RingLog) throws {

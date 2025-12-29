@@ -12,6 +12,7 @@ struct CardStyleModifier: ViewModifier {
 	let verticalPadding: CGFloat
 	let horizontalPadding: CGFloat
 	let backgroundGradient: LinearGradient
+	let opacity: CGFloat
 	let cornerRadius: CGFloat
 	
 	func body(content: Content) -> some View {
@@ -20,6 +21,7 @@ struct CardStyleModifier: ViewModifier {
 			.padding(.vertical, verticalPadding)
 			.background {
 				backgroundGradient
+					.opacity(opacity)
 					.cornerRadius(cornerRadius)
 			}
 	}
@@ -30,6 +32,7 @@ public extension View {
 		verticalPadding: CGFloat = 16,
 		horizontalPadding: CGFloat = 16,
 		backgroundGradient: LinearGradient = .backgroundSoft,
+		opacity: CGFloat = 1.0,
 		cornerRadius: CGFloat = 16
 	) -> some View {
 		modifier(
@@ -37,6 +40,7 @@ public extension View {
 				verticalPadding: verticalPadding,
 				horizontalPadding: horizontalPadding,
 				backgroundGradient: backgroundGradient,
+				opacity: opacity,
 				cornerRadius: cornerRadius
 			)
 		)

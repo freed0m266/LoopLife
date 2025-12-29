@@ -21,9 +21,10 @@
 "addRing.goalPlaceholder" = "Number";
 "addRing.deadlineValueSingular" = "%@ day";
 "addRing.deadlineValuePlural" = "%@ days";
-"addRingLog.title" = "New Record";
-"addRingLog.dateText" = "Date";
-"addRingLog.timeText" = "Time";
+"ringLog.addTitle" = "Add Record";
+"ringLog.editTitle" = "Edit Record";
+"ringLog.dateText" = "Date";
+"ringLog.timeText" = "Time";
 "ringCard.categoryHeadline" = "Category";
 "ringCard.deadlineHeadline" = "Deadline";
 "ringCard.goalHeadline" = "Goal";

@@ -21,9 +21,10 @@
 "addRing.goalPlaceholder" = "";
 "addRing.deadlineValueSingular" = "";
 "addRing.deadlineValuePlural" = "";
-"addRingLog.title" = "";
-"addRingLog.dateText" = "";
-"addRingLog.timeText" = "";
+"ringLog.addTitle" = "";
+"ringLog.editTitle" = "";
+"ringLog.dateText" = "";
+"ringLog.timeText" = "";
 "ringCard.categoryHeadline" = "";
 "ringCard.deadlineHeadline" = "";
 "ringCard.goalHeadline" = "";

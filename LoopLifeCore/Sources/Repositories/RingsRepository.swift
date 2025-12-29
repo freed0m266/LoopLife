@@ -18,21 +18,36 @@ public protocol RingsRepositoring {
 	
 	func save(ring: Ring) throws
 	
-	func recordLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws
+	func addLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws
+	func editLog(log: RingLog, date: Date?, completionRatio: CGFloat?, note: String?) throws
 	
 	func deleteRing(id: Ring.ID, logIds: [RingLog.ID]) throws
-	func deleteRingLog(id: RingLog.ID, ringId: Ring.ID) throws
+	func deleteLog(for ring: Ring, logId: RingLog.ID) throws
 }
 
 public extension RingsRepositoring {
-	func recordLog(
+	func addLog(
 		for ring: Ring,
 		date: Date? = nil,
 		completionRatio: CGFloat = 1,
 		note: String? = nil
 	) throws {
-		try recordLog(
+		try addLog(
 			for: ring,
+			date: date,
+			completionRatio: completionRatio,
+			note: note
+		)
+	}
+	
+	func editLog(
+		log: RingLog,
+		date: Date? = nil,
+		completionRatio: CGFloat? = nil,
+		note: String? = nil
+	) throws {
+		try editLog(
+			log: log,
 			date: date,
 			completionRatio: completionRatio,
 			note: note
@@ -95,7 +110,7 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		loadItems(subject: ringsSubject)
 	}
 	
-	func recordLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws {
+	func addLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws {
 		var ring = ring
 		
 		let newLog = ring.newLog(
@@ -110,6 +125,21 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		// Refresh rings
 		loadItems(subject: ringsSubject)
 		loadItem(id: ring.id, subject: ringSubject)
+	}
+	
+	func editLog(log: RingLog, date: Date?, completionRatio: CGFloat?, note: String?) throws {
+		let editedLog = RingLog(
+			id: log.id,
+			date: date ?? log.date,
+			completionRatio: completionRatio ?? log.completionRatio,
+			note: note ?? log.note,
+			createdAt: log.createdAt,
+			updatedAt: .now
+		)
+		try saveItem(item: editedLog)
+		
+		// Refresh logs
+		loadItems(subject: ringLogsSubject)
 	}
 	
 	func save(ringLog: RingLog) throws {
@@ -127,11 +157,23 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		loadItems(subject: ringsSubject)
 	}
 	
-	func deleteRingLog(id: RingLog.ID, ringId: Ring.ID) throws {
-		try deleteItem(id: id, entityType: RingLog.entityType)
+	func deleteLog(for ring: Ring, logId: RingLog.ID) throws {
+		let updatedLogIds = ring.logIds.filter { $0 != logId }
+		let updatedRing = Ring(
+			id: ring.id,
+			name: ring.name,
+			targetCount: ring.targetCount,
+			startDate: ring.startDate,
+			endDate: ring.endDate,
+			lastUpdate: ring.lastUpdate,
+			logIds: updatedLogIds
+		)
+		
+		try deleteItem(id: logId, entityType: RingLog.entityType)
+		try saveItem(item: updatedRing)
 		
 		// Refresh rings
 		loadItems(subject: ringsSubject)
-		loadItem(id: ringId, subject: ringSubject)
+		loadItem(id: ring.id, subject: ringSubject)
 	}
 }

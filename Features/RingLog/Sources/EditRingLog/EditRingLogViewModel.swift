@@ -52,6 +52,9 @@ final class EditRingLogViewModel: BaseViewModel, EditRingLogViewModeling {
 		do {
 			guard let ringLog else { return }
 			try dependencies.ringsRepository.editLog(log: ringLog, date: date)
+			
+			// Refresh logs on ring's detail
+			_ = dependencies.ringsRepository.ring(id: ringId)
 		} catch {
 			showError(error)
 		}

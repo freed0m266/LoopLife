@@ -137,9 +137,6 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 			updatedAt: .now
 		)
 		try saveItem(item: editedLog)
-		
-		// Refresh logs
-		loadItems(subject: ringLogsSubject)
 	}
 	
 	func save(ringLog: RingLog) throws {

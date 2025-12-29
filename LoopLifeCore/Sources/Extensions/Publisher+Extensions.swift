@@ -11,7 +11,6 @@ import Combine
 extension Publisher where Output: Equatable {
 	func onReceiveSubscription(_ perform: @escaping (Subscription) -> Void) -> AnyPublisher<Output, Failure> {
 		handleEvents(receiveSubscription: perform)
-			.removeDuplicates()
 			.eraseToAnyPublisher()
 	}
 }

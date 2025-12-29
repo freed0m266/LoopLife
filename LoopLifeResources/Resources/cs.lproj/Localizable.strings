@@ -6,6 +6,8 @@
 "ringDetail.deleteAlertTitle" = "";
 "ringDetail.deleteAlertMessage" = "";
 "ringDetail.deleteAlertButton" = "";
+"ringDetail.startDateHeadline" = "";
+"ringDetail.endDateHeadline" = "";
 "ringList.title" = "";
 "ringList.emptyListText" = "";
 "addRing.title" = "";
@@ -17,6 +19,9 @@
 "addRing.goalPlaceholder" = "";
 "addRing.deadlineValueSingular" = "";
 "addRing.deadlineValuePlural" = "";
+"addRingLog.title" = "";
+"addRingLog.dateText" = "";
+"addRingLog.timeText" = "";
 "ringCard.categoryHeadline" = "";
 "ringCard.deadlineHeadline" = "";
 "ringCard.goalHeadline" = "";

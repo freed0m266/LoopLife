@@ -6,6 +6,8 @@
 "ringDetail.deleteAlertTitle" = "Delete Ring";
 "ringDetail.deleteAlertMessage" = "Are you sure you want to delete this ring? This action cannot be undone.";
 "ringDetail.deleteAlertButton" = "Delete";
+"ringDetail.startDateHeadline" = "Start";
+"ringDetail.endDateHeadline" = "Deadline";
 "ringList.title" = "Summary";
 "ringList.emptyListText" = "You have no rings yet.";
 "addRing.title" = "New Ring";
@@ -17,6 +19,9 @@
 "addRing.goalPlaceholder" = "Number";
 "addRing.deadlineValueSingular" = "%@ day";
 "addRing.deadlineValuePlural" = "%@ days";
+"addRingLog.title" = "New Record";
+"addRingLog.dateText" = "Date";
+"addRingLog.timeText" = "Time";
 "ringCard.categoryHeadline" = "Category";
 "ringCard.deadlineHeadline" = "Deadline";
 "ringCard.goalHeadline" = "Goal";

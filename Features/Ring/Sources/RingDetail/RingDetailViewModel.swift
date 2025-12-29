@@ -9,9 +9,14 @@
 import Combine
 import LoopLifeCore
 
+import Foundation
+
 public protocol RingDetailViewModeling: ObservableObject {
 	var ring: Ring? { get }
 	var ringLogs: [RingLog] { get }
+	var isDeleteAlertShown: Bool { get set }
+	
+	func deleteRing()
 }
 
 public func ringDetailVM(id: Ring.ID) -> some RingDetailViewModeling {
@@ -21,6 +26,7 @@ public func ringDetailVM(id: Ring.ID) -> some RingDetailViewModeling {
 final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	@Published var ring: Ring?
 	@Published var ringLogs: [RingLog] = []
+	@Published var isDeleteAlertShown = false
 	
     private let dependencies: RingDetailDependencies
 	private let id: Ring.ID
@@ -34,6 +40,18 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 		setupBindings()
     }
 	
+	// MARK: - Public API
+
+	func deleteRing() {
+		do {
+			guard let logIds = ring?.logIds else { return }
+			try dependencies.ringsRepository.deleteRing(id: id, logIds: logIds)
+			navigateBack()
+		} catch {
+			showError(error)
+		}
+	}
+	
 	// MARK: - Private API
 	
 	private func setupBindings() {
@@ -43,10 +61,36 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 		
 		$ring
 			.sink { [weak self] ring in
-				guard let self, let ring else { return }
+				guard let self, let ring, ring.logIds.isNotEmpty else { return }
 
 				dependencies.ringsRepository.ringLogs(ids: ring.logIds)
+					.map { $0.sortedBy(\.date, descending: true) }
 					.assign(to: \.ringLogs, on: self)
+			}
+			.store(in: &cancellables)
+		
+		$ringLogs
+			.sink { [weak self] ringLogs in
+				guard let self, let ring else { return }
+				
+				let targetCount = ring.targetCount
+				let startDate = ring.startDate
+				let daysTotal = ring.daysTotal
+				
+				var vertices: [Vertex] = []
+				
+				ringLogs.enumerated().forEach { index, log in
+					let progressRatio = Double(ringLogs.count - index) / Double(targetCount)
+					
+					let daysElapsed = Double(startDate.daysElapsed(until: log.date))
+					let timeRatio = Double(daysElapsed) / Double(daysTotal)
+					
+					let vertex = Vertex(
+						x: daysElapsed,
+						y: progressRatio / timeRatio
+					)
+					vertices.append(vertex)
+				}
 			}
 			.store(in: &cancellables)
 	}

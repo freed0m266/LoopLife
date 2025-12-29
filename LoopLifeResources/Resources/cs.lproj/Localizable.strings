@@ -8,6 +8,7 @@
 "ringDetail.deleteAlertButton" = "";
 "ringDetail.startDateHeadline" = "";
 "ringDetail.endDateHeadline" = "";
+"ringDetail.allRecordsHeadline" = "";
 "ringList.title" = "";
 "ringList.emptyListText" = "";
 "addRing.title" = "";

@@ -8,6 +8,7 @@
 "ringDetail.deleteAlertButton" = "Delete";
 "ringDetail.startDateHeadline" = "Start";
 "ringDetail.endDateHeadline" = "Deadline";
+"ringDetail.allRecordsHeadline" = "All Records";
 "ringList.title" = "Summary";
 "ringList.emptyListText" = "You have no rings yet.";
 "addRing.title" = "New Ring";

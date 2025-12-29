@@ -40,7 +40,7 @@ final class RingListViewModel: BaseViewModel, RingListViewModeling {
 	
 	func recordLog(for ring: Ring) {
 		do {
-			try dependencies.ringsRepository.recordLog(for: ring)
+			try dependencies.ringsRepository.addLog(for: ring)
 		} catch {
 			showError(error)
 		}

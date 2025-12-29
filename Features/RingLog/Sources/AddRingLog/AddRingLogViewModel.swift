@@ -41,7 +41,7 @@ final class AddRingLogViewModel: BaseViewModel, AddRingLogViewModeling {
 	func saveRingLog() {
 		do {
 			guard let ring else { return }
-			try dependencies.ringsRepository.recordLog(for: ring, date: date)
+			try dependencies.ringsRepository.addLog(for: ring, date: date)
 		} catch {
 			showError(error)
 		}

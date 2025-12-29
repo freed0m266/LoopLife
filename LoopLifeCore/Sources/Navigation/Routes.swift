@@ -16,10 +16,10 @@ public enum RoutePath {
 
 public enum Route: Hashable {
 	case addRing
-	case addRingLog(Ring.ID)
-	case editRingLog(RingLog.ID)
-	case exampleDetail(Example.ID)
-	case ringDetail(Ring.ID)
+	case addRingLog(ringId: Ring.ID)
+	case editRingLog(ringId: Ring.ID, logId: RingLog.ID)
+	case exampleDetail(exampleId: Example.ID)
+	case ringDetail(ringId: Ring.ID)
 }
 
 extension Route: Identifiable {

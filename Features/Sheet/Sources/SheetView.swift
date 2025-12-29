@@ -33,6 +33,8 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 					AddRingView(viewModel: addRingVM())
 				case let .addRingLog(ringId):
 					AddRingLogView(viewModel: addRingLogVM(ringId: ringId))
+				case let .editRingLog(ringId, logId):
+					EditRingLogView(viewModel: editRingLogVM(ringId: ringId, logId: logId))
 				default:
 					UndefinedRouteView()
 				}
@@ -53,7 +55,7 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 
 #if DEBUG
 #Preview {
-	SheetView(viewModel: SheetViewModel(), route: .exampleDetail(""))
+	SheetView(viewModel: SheetViewModel(), route: .exampleDetail(exampleId: ""))
 		.inPreview(withSheet: true)
 }
 #endif

@@ -20,7 +20,7 @@ public struct ExampleListView<ViewModel: ExampleListViewModeling>: View {
 		ScreenView(title: "ExampleList") {
 			LLList(headline: "Headline", items: viewModel.examples) { item in
 				ListButton(title: item.text, icon: Icon.info) {
-					navigateTo(route: .exampleDetail(item.id))
+					navigateTo(route: .exampleDetail(exampleId: item.id))
 				}
 			}
 			.padding(.vertical, 16)

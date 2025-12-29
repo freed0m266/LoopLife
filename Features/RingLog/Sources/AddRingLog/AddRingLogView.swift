@@ -13,7 +13,7 @@ import LoopLifeResources
 public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 	@StateObject private var viewModel: ViewModel
 	
-	typealias Texts = L10n.AddRingLog
+	typealias Texts = L10n.RingLog
 	
 	public init(viewModel: ViewModel) {
 		_viewModel = .init(wrappedValue: viewModel)
@@ -21,7 +21,7 @@ public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 
     public var body: some View {
 		ScreenView(
-			title: Texts.title,
+			title: Texts.addTitle,
 			subtitle: viewModel.ring?.name,
 			backgroundColor: .backgroundSecondary
 		) {

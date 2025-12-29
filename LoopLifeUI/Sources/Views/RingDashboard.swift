@@ -38,7 +38,7 @@ public struct RingDashboard: View {
 	
 	public var body: some View {
 		Button {
-			navigateTo(route: .ringDetail(ring.id))
+			navigateTo(route: .ringDetail(ringId: ring.id))
 		} label: {
 			VStack(spacing: 0) {
 				lastUpdate
@@ -53,7 +53,6 @@ public struct RingDashboard: View {
 					progressRatio: ring.progressRatio,
 					action: action
 				)
-				.disabled(ring.lastUpdate?.isToday == true)
 			}
 			.background {
 				LinearGradient.backgroundSoft

@@ -55,7 +55,8 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	
 	func deleteRingLog(logId: RingLog.ID) {
 		do {
-			try dependencies.ringsRepository.deleteRingLog(id: logId, ringId: id)
+			guard let ring else { return }
+			try dependencies.ringsRepository.deleteLog(for: ring, logId: logId)
 		} catch {
 			showError(error)
 		}

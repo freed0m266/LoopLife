@@ -36,7 +36,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 						),
 						style: .large
 					) {
-						presentSheet(item: .addRingLog(ring.id))
+						presentSheet(item: .addRingLog(ringId: ring.id))
 					}
 					
 					VStack(spacing: 8) {
@@ -95,14 +95,14 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	}
 	
 	@ViewBuilder private var ringLogs: some View {
-		if viewModel.ringLogs.isNotEmpty {
+		if viewModel.ringLogs.isNotEmpty, let ringId = viewModel.ring?.id {
 			VStack(spacing: 0) {
 				LLHeadline(Texts.allRecordsHeadline)
 				
 				VStack(spacing: 0) {
 					ForEach(Array(viewModel.ringLogs.enumerated()), id: \.element.id) { index, log in
 						Button {
-							presentSheet(item: .editRingLog(log.id))
+							presentSheet(item: .editRingLog(ringId: ringId, logId: log.id))
 						} label: {
 							HStack(spacing: 16) {
 								Text((viewModel.ringLogs.count - index).description)

@@ -2,6 +2,7 @@
 "general.no" = "No";
 "general.cancel" = "Cancel";
 "general.ok" = "OK";
+"general.delete" = "Delete";
 "error.defaultTitle" = "Error";
 "ringDetail.deleteAlertTitle" = "Delete Ring";
 "ringDetail.deleteAlertMessage" = "Are you sure you want to delete this ring? This action cannot be undone.";

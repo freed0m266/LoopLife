@@ -16,4 +16,5 @@ final class RingDetailViewModelMock: RingDetailViewModeling {
 	var ringLogs: [RingLog] = .mock
 	
 	func deleteRing() { }
+	func deleteRingLog(logId: RingLog.ID) { }
 }

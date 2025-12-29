@@ -115,7 +115,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 								
 								Text(log.date.hourMinuteFormat)
 									.foregroundColor(.foregroundSecondary)
-									
+								
 								Icon.chevronRight
 									.size(12)
 									.foregroundColor(.foregroundSecondary)
@@ -124,6 +124,13 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 							.backgroundColor(.backgroundPrimary.opacity(0.01)) // Tap area
 						}
 						.buttonStyle(.plain)
+						.contextMenu {
+							Button(role: .destructive) {
+								viewModel.deleteRingLog(logId: log.id)
+							} label: {
+								Text(L10n.General.delete)
+							}
+						}
 						
 						if index != viewModel.ringLogs.count - 1 {
 							Divider()

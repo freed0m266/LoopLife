@@ -2,6 +2,7 @@
 "general.no" = "";
 "general.cancel" = "";
 "general.ok" = "";
+"general.delete" = "";
 "error.defaultTitle" = "";
 "ringDetail.deleteAlertTitle" = "";
 "ringDetail.deleteAlertMessage" = "";

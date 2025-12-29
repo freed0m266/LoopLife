@@ -17,6 +17,7 @@ public protocol RingDetailViewModeling: ObservableObject {
 	var isDeleteAlertShown: Bool { get set }
 	
 	func deleteRing()
+	func deleteRingLog(logId: RingLog.ID)
 }
 
 public func ringDetailVM(id: Ring.ID) -> some RingDetailViewModeling {
@@ -47,6 +48,14 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 			guard let logIds = ring?.logIds else { return }
 			try dependencies.ringsRepository.deleteRing(id: id, logIds: logIds)
 			navigateBack()
+		} catch {
+			showError(error)
+		}
+	}
+	
+	func deleteRingLog(logId: RingLog.ID) {
+		do {
+			try dependencies.ringsRepository.deleteRingLog(id: logId, ringId: id)
 		} catch {
 			showError(error)
 		}

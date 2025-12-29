@@ -26,7 +26,10 @@ public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 	}
 
     public var body: some View {
-		ScreenView(title: Texts.title) {
+		ScreenView(
+			title: Texts.title,
+			backgroundColor: .backgroundSecondary
+		) {
 			VStack(spacing: 8) {
 				RingCard(
 					name: viewModel.name,
@@ -52,6 +55,7 @@ public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 				LLDatePicker(
 					headline: Texts.deadlineHeadline,
 					date: $viewModel.endDate,
+					dateComponents: .date,
 					text: deadlinePickerText,
 					textColor: viewModel.isEndDateFilled ? .basicMagenta : .foregroundPlaceholder
 				)

@@ -1,7 +1,7 @@
 import ProjectDescription
 
 // MARK: - Settings
-private let targetName = "LoopLifeTesting"
+private let targetName = "iRingsTesting"
 private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).testing"
 
 // MARK: - Target

@@ -8,7 +8,7 @@
 
 import Foundation
 import Combine
-import LoopLifeCore
+import iRingsCore
 
 public protocol RingListViewModeling: ObservableObject {
 	var rings: [Ring] { get }

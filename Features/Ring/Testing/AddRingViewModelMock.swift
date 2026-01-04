@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 final class AddRingViewModelMock: AddRingViewModeling {
 	@Published var name: String? = "Workout"

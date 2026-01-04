@@ -6,7 +6,7 @@
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.
 //
 
-import LoopLifeCore
+import iRingsCore
 
 final class ExampleListViewModelMock: ExampleListViewModeling {
 	var examples: [Example] = .mock

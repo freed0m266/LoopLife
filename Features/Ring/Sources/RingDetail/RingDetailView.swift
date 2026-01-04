@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import LoopLifeResources
-import LoopLifeUI
+import iRingsResources
+import iRingsUI
 
 public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import LoopLifeTesting
+import iRingsTesting
 @testable import RingLog
 
 class EditRingLogSnapshots: XCTestCase {

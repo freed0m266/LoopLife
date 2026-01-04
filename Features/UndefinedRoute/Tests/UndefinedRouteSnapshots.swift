@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import LoopLifeTesting
+import iRingsTesting
 @testable import UndefinedRoute
 
 class UndefinedRouteSnapshots: XCTestCase {

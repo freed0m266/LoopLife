@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import LoopLifeUI
+import iRingsUI
 
 public struct ExampleListView<ViewModel: ExampleListViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 final class EditRingLogViewModelMock: EditRingLogViewModeling {
 	@Published var date: Date = .now

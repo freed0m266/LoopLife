@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 public protocol AddRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }

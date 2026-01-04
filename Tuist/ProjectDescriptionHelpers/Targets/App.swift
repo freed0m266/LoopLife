@@ -1,6 +1,6 @@
 import ProjectDescription
 
-private let targetName = "LoopLife"
+private let targetName = "iRings"
 private let bundleID = AppSetup.current.bundleID
 private let appName = AppSetup.current.appName
 private let iconName = AppSetup.current.iconName

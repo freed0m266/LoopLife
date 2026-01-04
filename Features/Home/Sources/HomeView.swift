@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import LoopLifeCore
-import LoopLifeUI
+import iRingsCore
+import iRingsUI
 
 import Ring
 import Sheet

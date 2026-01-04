@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import LoopLifeTesting
+import iRingsTesting
 @testable import Ring
 
 class RingListSnapshots: XCTestCase {

@@ -1,6 +1,6 @@
 import ProjectDescription
 
-private let targetName = "LoopLifeUI"
+private let targetName = "iRingsUI"
 private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).ui"
 
 public let designSystem = Target.target(

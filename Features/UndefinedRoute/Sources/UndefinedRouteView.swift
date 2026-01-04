@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import LoopLifeUI
-import LoopLifeResources
+import iRingsUI
+import iRingsResources
 
 public struct UndefinedRouteView: View {
 	

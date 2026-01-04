@@ -13,7 +13,7 @@ let services: [Service] = []
 let appTargets: [Target] = features.flatMap(\.allTargets) + services.flatMap(\.allTargets)
 
 let project = Project(
-    name: "LoopLife",
+    name: "iRings",
     organizationName: "Freedom Martin, s.r.o.",
     options: .options(
         developmentRegion: "en"

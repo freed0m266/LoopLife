@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 final class AddRingLogViewModelMock: AddRingLogViewModeling {
 	@Published var ring: Ring? = .mock1

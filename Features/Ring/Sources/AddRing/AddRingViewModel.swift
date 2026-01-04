@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 public protocol AddRingViewModeling: ObservableObject {
 	var name: String? { get set }

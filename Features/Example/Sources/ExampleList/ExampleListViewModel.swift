@@ -7,7 +7,7 @@
 //
 
 import Combine
-import LoopLifeCore
+import iRingsCore
 
 public protocol ExampleListViewModeling: ObservableObject {
 	var examples: [Example] { get }

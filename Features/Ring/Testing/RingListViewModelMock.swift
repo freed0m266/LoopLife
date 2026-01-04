@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 final class RingListViewModelMock: RingListViewModeling {
 	var rings: [Ring] = .mock

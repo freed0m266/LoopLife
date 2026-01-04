@@ -7,7 +7,7 @@
 //
 
 import Combine
-import LoopLifeCore
+import iRingsCore
 
 import Foundation
 
@@ -79,29 +79,29 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 			}
 			.store(in: &cancellables)
 		
-		$ringLogs
-			.sink { [weak self] ringLogs in
-				guard let self, let ring else { return }
-				
-				let targetCount = ring.targetCount
-				let startDate = ring.startDate
-				let daysTotal = ring.daysTotal
-				
-				var vertices: [Vertex] = []
-				
-				ringLogs.enumerated().forEach { index, log in
-					let progressRatio = Double(ringLogs.count - index) / Double(targetCount)
-					
-					let daysElapsed = Double(startDate.daysElapsed(until: log.date))
-					let timeRatio = Double(daysElapsed) / Double(daysTotal)
-					
-					let vertex = Vertex(
-						x: daysElapsed,
-						y: progressRatio / timeRatio
-					)
-					vertices.append(vertex)
-				}
-			}
-			.store(in: &cancellables)
+//		$ringLogs
+//			.sink { [weak self] ringLogs in
+//				guard let self, let ring else { return }
+//				
+//				let targetCount = ring.targetCount
+//				let startDate = ring.startDate
+//				let daysTotal = ring.daysTotal
+//				
+//				var vertices: [Vertex] = []
+//				
+//				ringLogs.enumerated().forEach { index, log in
+//					let progressRatio = Double(ringLogs.count - index) / Double(targetCount)
+//					
+//					let daysElapsed = Double(startDate.daysElapsed(until: log.date))
+//					let timeRatio = Double(daysElapsed) / Double(daysTotal)
+//					
+//					let vertex = Vertex(
+//						x: daysElapsed,
+//						y: progressRatio / timeRatio
+//					)
+//					vertices.append(vertex)
+//				}
+//			}
+//			.store(in: &cancellables)
 	}
 }

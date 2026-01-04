@@ -13,7 +13,7 @@ public struct Feature: Sendable {
 		hasTests: Bool = true,
 		hasTesting: Bool = false
 	) {
-		let mainBundleID = "com.freedommartin.looplife.feature." + name.toBundleID()
+		let mainBundleID = "com.freedommartin.irings.feature." + name.toBundleID()
 		
 		let sources = SourceFilesList.sourceFilesList(
 			globs: [

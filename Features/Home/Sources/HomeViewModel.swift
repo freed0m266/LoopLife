@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 import Ring
 
 public final class HomeViewModel: BaseViewModel, ObservableObject {

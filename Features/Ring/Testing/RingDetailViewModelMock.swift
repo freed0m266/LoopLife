@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import LoopLifeCore
+import iRingsCore
 
 final class RingDetailViewModelMock: RingDetailViewModeling {
 	@Published var isDeleteAlertShown = false

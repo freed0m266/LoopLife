@@ -8,7 +8,7 @@ public struct AppSetup {
 	
 	public let environment: Environment
 	public let configuration: Configuration
-	public let moduleBundleIDPrefix = "com.freedommartin.looplife"
+	public let moduleBundleIDPrefix = "com.freedommartin.irings"
 	
 	public var bundleID: String {
 		switch configuration {
@@ -76,15 +76,15 @@ public struct AppSetup {
 
 extension AppSetup {
 	public var appName: String {
-		["LoopLife", environment.appNameValue].joined(separator: " ")
+		["iRings", environment.appNameValue].joined(separator: " ")
 	}
 	
 	public var iconName: String {
-		"Icon-LoopLife"
+		"Icon-iRings"
 	}
 	
 	public var logoName: String {
-		"Logo-LoopLife"
+		"Logo-iRings"
 	}
 }
 

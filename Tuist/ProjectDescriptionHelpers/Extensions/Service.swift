@@ -13,7 +13,7 @@ public struct Service: Sendable {
 		dependencies: [TargetDependency],
 		hasResources: Bool = false
 	) {
-		let mainBundleID = "com.freedommartin.looplife." + name.toBundleID()
+		let mainBundleID = "com.freedommartin.irings." + name.toBundleID()
 		
 		interface = .target(
 			name: name + "_Interface",

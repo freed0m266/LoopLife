@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
-import LoopLifeCore
-import LoopLifeUI
-import LoopLifeResources
+import iRingsCore
+import iRingsUI
+import iRingsResources
 
 public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

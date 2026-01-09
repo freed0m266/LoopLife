@@ -36,16 +36,14 @@ public extension Date {
 }
 
 public extension Date {
+	var startOfYear: Date {
+		Calendar.current.date(from: Calendar.current.dateComponents([.year], from: self)) ?? self
+	}
+	
 	var startOfMonth: Date {
 		Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)) ?? self
 	}
 	
-	var startOfYear: Date {
-		Calendar.current.date(from: Calendar.current.dateComponents([.year], from: self)) ?? self
-	}
-}
-
-public extension Date {
 	var startOfDay: Date {
 		Calendar.current.startOfDay(for: self)
 	}
@@ -91,6 +89,12 @@ public extension Date {
 	/// d. M. yyyy • H:mm
 	var dayMonthYearHourMinuteFormat: String {
 		dayMonthYearFormat + " • " + hourMinuteFormat
+	}
+}
+
+public extension Date {
+	static var placeholder: Date {
+		fromComponents(year: 2000, month: 1, day: 1)
 	}
 }
 

@@ -64,6 +64,8 @@ public extension Icon {
 	static var clockArrowCirclepath: Icon = "clock.arrow.circlepath"
 	/// circle.circle
 	static var circleCircle: Icon = "circle.circle"
+	/// slider.horizontal.3
+	static var sliderHorizontal: Icon = "slider.horizontal.3"
 }
 
 #Preview {

@@ -35,6 +35,7 @@ public struct Ring: Storable {
 		self.lastUpdate = lastUpdate
 		self.logIds = logIds
 	}
+	
 	public mutating func newLog(
 		date: Date? = nil,
 		completionRatio: CGFloat = 1,

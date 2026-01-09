@@ -14,7 +14,7 @@ import iRingsResources
 public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 	@StateObject private var viewModel: ViewModel
 	
-	typealias Texts = L10n.AddRing
+	typealias Texts = L10n.RingForm
 	
 	var deadlinePickerText: String {
 		guard let days = viewModel.daysRemaining else { return Texts.deadlinePlaceholder }
@@ -27,7 +27,7 @@ public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 
     public var body: some View {
 		ScreenView(
-			title: Texts.title,
+			title: Texts.newTitle,
 			backgroundColor: .backgroundSecondary
 		) {
 			VStack(spacing: 8) {
@@ -53,7 +53,7 @@ public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 				)
 				
 				LLDatePicker(
-					headline: Texts.deadlineHeadline,
+					headline: Texts.endDateHeadline,
 					date: $viewModel.endDate,
 					dateComponents: .date,
 					text: deadlinePickerText,

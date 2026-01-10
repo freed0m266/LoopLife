@@ -41,6 +41,7 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 				presentSheet(item: .addRing)
 			} label: {
 				Icon.plus.size(17, weight: .medium)
+					.largerTapArea()
 			}
 		}
 		.willEnterForeground {

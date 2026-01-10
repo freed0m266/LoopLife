@@ -49,6 +49,7 @@ public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 				closeSheet()
 			} label: {
 				Icon.checkmark.size(15, weight: .medium)
+					.largerTapArea()
 			}
 		}
 		.presentationDetents([.medium])

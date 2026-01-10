@@ -49,6 +49,7 @@ public struct EditRingLogView<ViewModel: EditRingLogViewModeling>: View {
 				closeSheet()
 			} label: {
 				Icon.checkmark.size(15, weight: .medium)
+					.largerTapArea()
 			}
 			.disabled(viewModel.isEditButtonDisabled)
 		}

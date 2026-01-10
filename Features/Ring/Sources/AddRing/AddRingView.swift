@@ -76,6 +76,7 @@ public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 				closeSheet()
 			} label: {
 				Icon.checkmark.size(15, weight: .medium)
+					.largerTapArea()
 			}
 			.disabled(viewModel.isSaveButtonDisabled)
 		}

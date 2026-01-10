@@ -17,6 +17,7 @@ struct WithDismissButtonModifier: ViewModifier {
 						content.closeSheet()
 					} label: {
 						Icon.xmark.size(15, weight: .medium)
+							.largerTapArea()
 					}
 				}
 			}

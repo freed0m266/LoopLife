@@ -33,6 +33,8 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 					AddRingView(viewModel: addRingVM())
 				case let .addRingLog(ringId):
 					AddRingLogView(viewModel: addRingLogVM(ringId: ringId))
+				case let .editRing(ringId):
+					EditRingView(viewModel: editRingVM(ringId: ringId))
 				case let .editRingLog(ringId, logId):
 					EditRingLogView(viewModel: editRingLogVM(ringId: ringId, logId: logId))
 				default:

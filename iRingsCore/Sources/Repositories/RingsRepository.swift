@@ -108,6 +108,7 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		
 		// Refresh rings
 		loadItems(subject: ringsSubject)
+		loadItem(id: ring.id, subject: ringSubject)
 	}
 	
 	func addLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws {

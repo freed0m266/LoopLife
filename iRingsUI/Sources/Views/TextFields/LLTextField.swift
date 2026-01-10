@@ -61,6 +61,11 @@ public struct LLTextField: View {
 				// Clear value if input is empty
 				text = newValue.isEmpty ? nil : newValue
 			}
+			.onChange(of: text) { _, newValue in
+				if let text {
+					inputString = text
+				}
+			}
 			.onAppear {
 				isActive = initialValueIsActive
 				// Initialize the input string

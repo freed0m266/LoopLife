@@ -22,52 +22,15 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	public var body: some View {
 		ScreenView(title: viewModel.ring.name) {
 			VStack(spacing: 40) {
-				if let ring = viewModel.ring {
-					RingGraph(
-						innerProps: .init(
-							progress: ring.progressRatio,
-							startColor: .mintGreen,
-							endColor: .basicBlue
-						),
-						outerProps: .init(
-							progress: ring.timeRatio,
-							startColor: .basicRed,
-							endColor: .basicMagenta
-						),
-						style: .large
-					) {
-						presentSheet(item: .addRingLog(ringId: ring.id))
-					}
+				if viewModel.ring != .empty {
+					ringGraph
 					
-					VStack(spacing: 8) {
-						HStack {
-							Text(Texts.startDateHeadline.uppercased())
-								.labelLarge()
-								.foregroundColor(.foregroundSecondary)
-								.maxWidthLeading()
-							
-							Text(ring.startDate.dayMonthYearFormat)
-								.textLarge()
-								.foregroundColor(.foregroundPrimary)
-						}
-						
-						Divider()
-						
-						HStack {
-							Text(Texts.endDateHeadline.uppercased())
-								.labelLarge()
-								.foregroundColor(.foregroundSecondary)
-								.maxWidthLeading()
-							
-							Text(ring.endDate.dayMonthYearFormat)
-								.textLarge()
-								.foregroundColor(.foregroundPrimary)
-						}
-					}
-					.padding(.horizontal, 16)
+					ringDates
+					
+					ringLogs
+					
+					deleteButton
 				}
-				
-				ringLogs
 			}
 			.alert(isPresented: $viewModel.isDeleteAlertShown) {
 				Alert(
@@ -84,31 +47,72 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 			}
 			.toolbar {
 				Button {
-					viewModel.isDeleteAlertShown = true
+					presentSheet(item: .editRing(ringId: viewModel.ring.id))
 				} label: {
-					Icon.trash.size(17)
-						.foregroundColor(.foregroundPrimary)
+					Icon.sliderHorizontal
+						.largerTapArea()
 				}
 			}
 		}
 		.isTitleInline()
 	}
 	
-	@ViewBuilder private var ringLogs: some View {
-		if viewModel.ringLogs.isNotEmpty, let ringId = viewModel.ring?.id {
-			VStack(spacing: 0) {
-				LLHeadline(Texts.allRecordsHeadline)
+	private var ringGraph: some View {
+		RingGraph(
+			innerProps: .init(
+				progress: viewModel.ring.progressRatio,
+				startColor: .mintGreen,
+				endColor: .basicBlue
+			),
+			outerProps: .init(
+				progress: viewModel.ring.timeRatio,
+				startColor: .basicRed,
+				endColor: .basicMagenta
+			),
+			style: .large
+		) {
+			presentSheet(item: .addRingLog(ringId: viewModel.ring.id))
+		}
+	}
+	
+	private var ringDates: some View {
+		VStack(spacing: 2) {
+			HStack {
+				Text(Texts.startDateHeadline.uppercased())
 				
+				Spacer()
+				
+				Text(Texts.endDateHeadline.uppercased())
+			}
+			.labelLarge()
+			.foregroundColor(.basicRed)
+			
+			Divider()
+			
+			HStack {
+				Text(viewModel.ring.startDate.dayMonthYearFormat)
+					
+				Spacer()
+				
+				Text(viewModel.ring.endDate.dayMonthYearFormat)
+			}
+			.textLarge()
+			.foregroundColor(.foregroundPrimary)
+		}
+		.padding(.horizontal, 16)
+	}
+	
+	private var ringLogs: some View {
+		VStack(spacing: 0) {
+			LLHeadline("\(Texts.recordsHeadline) (\(viewModel.ringLogs.count))")
+			
+			if viewModel.ringLogs.isNotEmpty {
 				VStack(spacing: 0) {
 					ForEach(Array(viewModel.ringLogs.enumerated()), id: \.element.id) { index, log in
 						Button {
-							presentSheet(item: .editRingLog(ringId: ringId, logId: log.id))
+							presentSheet(item: .editRingLog(ringId: viewModel.ring.id, logId: log.id))
 						} label: {
 							HStack(spacing: 16) {
-								Text((viewModel.ringLogs.count - index).description)
-									.labelMedium()
-									.foregroundColor(.foregroundPlaceholder)
-								
 								Text(log.date.dayMonthYearFormat)
 									.foregroundColor(.foregroundPrimary)
 									.maxWidthLeading()
@@ -134,15 +138,33 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 						
 						if index != viewModel.ringLogs.count - 1 {
 							Divider()
-								.padding(.leading, 20)
 								.padding(.trailing, 20)
 						}
 					}
 				}
 				.cardStyle(verticalPadding: 0, opacity: 0.7)
+			} else {
+				Text(Texts.recordsEmptyTitle.uppercased())
+					.titleMedium()
+					.foregroundColor(.foregroundSecondary.opacity(0.5))
+					.frame(maxWidth: .infinity)
+					.padding(.vertical, 64)
+					.cardStyle(verticalPadding: 0, opacity: 0.3)
 			}
 		}
-		
+	}
+	
+	private var deleteButton: some View {
+		Button {
+			viewModel.isDeleteAlertShown = true
+		} label: {
+			Text(Texts.deleteButton)
+				.textLarge()
+				.foregroundColor(.coralRed)
+				.frame(maxWidth: .infinity)
+				.cardStyle(opacity: 0.3)
+				.padding(.vertical, 8)
+		}
 	}
 }
 

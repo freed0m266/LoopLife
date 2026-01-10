@@ -12,7 +12,7 @@ import iRingsCore
 import Foundation
 
 public protocol RingDetailViewModeling: ObservableObject {
-	var ring: Ring? { get }
+	var ring: Ring { get }
 	var ringLogs: [RingLog] { get }
 	var isDeleteAlertShown: Bool { get set }
 	
@@ -25,7 +25,7 @@ public func ringDetailVM(id: Ring.ID) -> some RingDetailViewModeling {
 }
 
 final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
-	@Published var ring: Ring?
+	@Published var ring: Ring = .empty
 	@Published var ringLogs: [RingLog] = []
 	@Published var isDeleteAlertShown = false
 	
@@ -45,8 +45,7 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 
 	func deleteRing() {
 		do {
-			guard let logIds = ring?.logIds else { return }
-			try dependencies.ringsRepository.deleteRing(id: id, logIds: logIds)
+			try dependencies.ringsRepository.deleteRing(id: id, logIds: ring.logIds)
 			navigateBack()
 		} catch {
 			showError(error)
@@ -55,7 +54,6 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	
 	func deleteRingLog(logId: RingLog.ID) {
 		do {
-			guard let ring else { return }
 			try dependencies.ringsRepository.deleteLog(for: ring, logId: logId)
 		} catch {
 			showError(error)
@@ -66,12 +64,11 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	
 	private func setupBindings() {
 		dependencies.ringsRepository.ring(id: id)
-			.map(Optional.some)
 			.assign(to: \.ring, on: self)
 		
 		$ring
 			.sink { [weak self] ring in
-				guard let self, let ring, ring.logIds.isNotEmpty else { return }
+				guard let self, ring.logIds.isNotEmpty else { return }
 
 				dependencies.ringsRepository.ringLogs(ids: ring.logIds)
 					.map { $0.sortedBy(\.date, descending: true) }

@@ -20,7 +20,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	}
 	
 	public var body: some View {
-		ScreenView(title: viewModel.ring?.name) {
+		ScreenView(title: viewModel.ring.name) {
 			VStack(spacing: 40) {
 				if let ring = viewModel.ring {
 					RingGraph(

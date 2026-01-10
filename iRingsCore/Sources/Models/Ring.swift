@@ -92,3 +92,17 @@ public extension Ring {
 		Double(daysElapsed) / Double(daysTotal)
 	}
 }
+
+public extension Ring {
+	static var empty: Self {
+		.init(
+			id: "",
+			name: "",
+			targetCount: 0,
+			startDate: .placeholder,
+			endDate: .placeholder,
+			lastUpdate: nil,
+			logIds: []
+		)
+	}
+}

@@ -12,7 +12,7 @@ import iRingsCore
 final class RingDetailViewModelMock: RingDetailViewModeling {
 	@Published var isDeleteAlertShown = false
 	
-	var ring: Ring? = .mock1
+	var ring: Ring = .mock1
 	var ringLogs: [RingLog] = .mock
 	
 	func deleteRing() { }

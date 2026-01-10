@@ -6,6 +6,7 @@
 "error.defaultTitle" = "Error";
 "ringDetail.startDateHeadline" = "Start";
 "ringDetail.endDateHeadline" = "Deadline";
+"ringDetail.paceIndexHeadline" = "Current Pace: %@ \%%";
 "ringDetail.recordsHeadline" = "All Records";
 "ringDetail.recordsEmptyTitle" = "You have no records yet.";
 "ringDetail.deleteButton" = "Delete Ring";

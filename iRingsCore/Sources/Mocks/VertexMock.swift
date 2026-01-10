@@ -21,3 +21,11 @@ public extension [Vertex] {
 		].sorted()
 	}
 }
+
+private extension Date {
+	static func date(from string: String) -> Date? {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+		return formatter.date(from: string)
+	}
+}

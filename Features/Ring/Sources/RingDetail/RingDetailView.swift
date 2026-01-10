@@ -27,6 +27,15 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 					
 					ringDates
 					
+					VStack(spacing: 8) {
+						LLHeadline(Texts.paceIndexHeadline(viewModel.ring.paceIndexText))
+						
+						TimelineChart(
+							vertices: viewModel.vertices,
+							color: ColorItem.mintGreen.color
+						)
+					}
+					
 					ringLogs
 					
 					deleteButton

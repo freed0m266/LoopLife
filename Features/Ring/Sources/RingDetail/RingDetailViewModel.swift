@@ -14,6 +14,7 @@ import Foundation
 public protocol RingDetailViewModeling: ObservableObject {
 	var ring: Ring { get }
 	var ringLogs: [RingLog] { get }
+	var vertices: [Vertex] { get }
 	var isDeleteAlertShown: Bool { get set }
 	
 	func deleteRing()
@@ -27,6 +28,7 @@ public func ringDetailVM(id: Ring.ID) -> some RingDetailViewModeling {
 final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	@Published var ring: Ring = .empty
 	@Published var ringLogs: [RingLog] = []
+	@Published var vertices: [Vertex] = []
 	@Published var isDeleteAlertShown = false
 	
     private let dependencies: RingDetailDependencies
@@ -76,29 +78,50 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 			}
 			.store(in: &cancellables)
 		
-//		$ringLogs
-//			.sink { [weak self] ringLogs in
-//				guard let self, let ring else { return }
-//				
-//				let targetCount = ring.targetCount
-//				let startDate = ring.startDate
-//				let daysTotal = ring.daysTotal
-//				
-//				var vertices: [Vertex] = []
-//				
-//				ringLogs.enumerated().forEach { index, log in
-//					let progressRatio = Double(ringLogs.count - index) / Double(targetCount)
-//					
-//					let daysElapsed = Double(startDate.daysElapsed(until: log.date))
-//					let timeRatio = Double(daysElapsed) / Double(daysTotal)
-//					
-//					let vertex = Vertex(
-//						x: daysElapsed,
-//						y: progressRatio / timeRatio
-//					)
-//					vertices.append(vertex)
-//				}
-//			}
-//			.store(in: &cancellables)
+		$ringLogs
+			.dropFirst()
+			.sink { [weak self] ringLogs in
+				guard let self else { return }
+
+				let targetCount = ring.targetCount
+				let startDate = ring.startDate
+				let daysTotal = ring.daysTotal
+				let progressRatio = ring.progressRatio
+				
+				let startToday = Date.now.startOfDay
+				let endToday = startToday.plus(days: 1)
+				let twoWeeksAgo = startToday.plus(days: -14)
+				
+				let daysElapsed = endToday.days(from: startDate)
+				let timeRatio = daysElapsed / Double(daysTotal)
+				
+				var vertices: [Vertex] = [
+					Vertex(date: endToday, value: progressRatio / timeRatio * 100)
+				]
+				
+				if startDate > twoWeeksAgo {
+					vertices.append(Vertex(date: startDate, value: 100))
+				}
+				
+				ringLogs.enumerated().forEach { index, log in
+					guard log.date > twoWeeksAgo else { return }
+					
+					let progressRatio = Double(ringLogs.count - index) / Double(targetCount)
+					let daysElapsed = log.date.days(from: startDate)
+					let timeRatio = daysElapsed / Double(daysTotal)
+					
+					let vertex = Vertex(
+						date: log.date,
+						value: progressRatio / timeRatio * 100
+					)
+					vertices.append(vertex)
+				}
+				
+				vertices = vertices.sorted()
+				DispatchQueue.main.async { [weak self] in
+					self?.vertices = vertices
+				}
+			}
+			.store(in: &cancellables)
 	}
 }

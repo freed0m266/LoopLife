@@ -6,6 +6,7 @@
 "error.defaultTitle" = "";
 "ringDetail.startDateHeadline" = "";
 "ringDetail.endDateHeadline" = "";
+"ringDetail.paceIndexHeadline" = "";
 "ringDetail.recordsHeadline" = "";
 "ringDetail.recordsEmptyTitle" = "";
 "ringDetail.deleteButton" = "";

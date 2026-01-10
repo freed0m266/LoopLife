@@ -36,6 +36,21 @@ public extension Date {
 }
 
 public extension Date {
+	func days(from startDate: Date) -> CGFloat {
+		let calendar: Calendar = .current
+		let dayIndex = calendar.dateComponents([.day], from: startDate, to: startOfDay).day ?? 0
+		let secondsInDay: CGFloat = 24 * 60 * 60
+		
+		let secondsSinceStartOfDay =
+		CGFloat(calendar.component(.hour, from: self)) * 3600 +
+		CGFloat(calendar.component(.minute, from: self)) * 60 +
+		CGFloat(calendar.component(.second, from: self))
+		
+		return CGFloat(dayIndex) + secondsSinceStartOfDay / secondsInDay
+	}
+}
+
+public extension Date {
 	var startOfYear: Date {
 		Calendar.current.date(from: Calendar.current.dateComponents([.year], from: self)) ?? self
 	}

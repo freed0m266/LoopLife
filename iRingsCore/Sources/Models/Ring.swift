@@ -81,7 +81,7 @@ public extension Ring {
 	}
 	
 	var paceIndexText: String {
-		"\(CGFloat(progressRatio / timeRatio * 100).formatted(maxPrecision: 0)) %"
+		"\(CGFloat(progressRatio / timeRatio * 100).formatted(maxPrecision: 0))"
 	}
 	
 	var progressRatio: Double {

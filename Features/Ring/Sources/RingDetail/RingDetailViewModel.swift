@@ -12,6 +12,7 @@ import iRingsCore
 import Foundation
 
 public protocol RingDetailViewModeling: ObservableObject {
+	var title: String { get }
 	var ring: Ring { get }
 	var ringLogs: [RingLog] { get }
 	var vertices: [Vertex] { get }
@@ -21,8 +22,8 @@ public protocol RingDetailViewModeling: ObservableObject {
 	func deleteRingLog(logId: RingLog.ID)
 }
 
-public func ringDetailVM(id: Ring.ID) -> some RingDetailViewModeling {
-	RingDetailViewModel(dependencies: dependencies.ringDetail, id: id)
+public func ringDetailVM(id: Ring.ID, title: String) -> some RingDetailViewModeling {
+	RingDetailViewModel(dependencies: dependencies.ringDetail, id: id, title: title)
 }
 
 final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
@@ -33,12 +34,14 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	
     private let dependencies: RingDetailDependencies
 	private let id: Ring.ID
+	let title: String
 	
     // MARK: - Init
 
-	init(dependencies: RingDetailDependencies, id: Ring.ID) {
+	init(dependencies: RingDetailDependencies, id: Ring.ID, title: String) {
         self.dependencies = dependencies
 		self.id = id
+		self.title = title
 		super.init()
 		setupBindings()
     }

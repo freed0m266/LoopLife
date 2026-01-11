@@ -38,7 +38,7 @@ public struct RingDashboard: View {
 	
 	public var body: some View {
 		Button {
-			navigateTo(route: .ringDetail(ringId: ring.id))
+			navigateTo(route: .ringDetail(ringId: ring.id, title: ring.name))
 		} label: {
 			VStack(spacing: 0) {
 				lastUpdate

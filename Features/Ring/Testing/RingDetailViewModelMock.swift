@@ -12,6 +12,7 @@ import iRingsCore
 final class RingDetailViewModelMock: RingDetailViewModeling {
 	@Published var isDeleteAlertShown = false
 	
+	var title: String = "Workout"
 	var ring: Ring = .mock1
 	var ringLogs: [RingLog] = .mock
 	var vertices: [Vertex] = .mock

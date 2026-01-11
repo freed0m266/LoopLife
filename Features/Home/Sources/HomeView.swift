@@ -27,8 +27,8 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 			RingListView(viewModel: viewModel.ringListViewModel)
 				.navigationDestination(for: Route.self) { screen in
 					switch screen {
-					case let .ringDetail(id):
-						RingDetailView(viewModel: ringDetailVM(id: id))
+					case let .ringDetail(id, title):
+						RingDetailView(viewModel: ringDetailVM(id: id, title: title))
 					default:
 						UndefinedRouteView()
 					}

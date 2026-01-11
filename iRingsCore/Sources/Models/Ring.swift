@@ -6,6 +6,7 @@
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.
 //
 
+import BaseKitX
 import Foundation
 import iRingsResources
 

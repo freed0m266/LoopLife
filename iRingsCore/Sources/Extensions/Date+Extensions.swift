@@ -9,33 +9,6 @@
 import Foundation
 
 public extension Date {
-	func plus(minutes: Int) -> Date {
-		// swiftlint:disable:next force_unwrapping
-		Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
-	}
-	
-	func plus(hours: Int) -> Date {
-		// swiftlint:disable:next force_unwrapping
-		Calendar.current.date(byAdding: .hour, value: hours, to: self)!
-	}
-	
-	func plus(days: Int) -> Date {
-		// swiftlint:disable:next force_unwrapping
-		Calendar.current.date(byAdding: .day, value: days, to: self)!
-	}
-	
-	func plus(months: Int) -> Date {
-		// swiftlint:disable:next force_unwrapping
-		Calendar.current.date(byAdding: .month, value: months, to: self)!
-	}
-	
-	func plus(years: Int) -> Date {
-		// swiftlint:disable:next force_unwrapping
-		Calendar.current.date(byAdding: .year, value: years, to: self)!
-	}
-}
-
-public extension Date {
 	func days(from startDate: Date) -> CGFloat {
 		let calendar: Calendar = .current
 		let dayIndex = calendar.dateComponents([.day], from: startDate, to: startOfDay).day ?? 0
@@ -57,18 +30,6 @@ public extension Date {
 	
 	var startOfMonth: Date {
 		Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)) ?? self
-	}
-	
-	var startOfDay: Date {
-		Calendar.current.startOfDay(for: self)
-	}
-	
-	var isToday: Bool {
-		Calendar.current.isDateInToday(self)
-	}
-	
-	var isYesterday: Bool {
-		Calendar.current.isDateInYesterday(self)
 	}
 	
 	func daysElapsed(until other: Date = .now) -> Int {

@@ -7,9 +7,8 @@
 //
 
 import Combine
-import iRingsCore
-
 import Foundation
+import iRingsCore
 
 public protocol RingDetailViewModeling: ObservableObject {
 	var title: String { get }

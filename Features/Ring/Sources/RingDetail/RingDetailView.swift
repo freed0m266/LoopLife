@@ -20,7 +20,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	}
 	
 	public var body: some View {
-		ScreenView(title: viewModel.title) {
+		ScreenView(title: viewModel.title, subtitle: viewModel.ring.progressRatioText) {
 			VStack(spacing: 40) {
 				if viewModel.ring != .empty {
 					ringGraph

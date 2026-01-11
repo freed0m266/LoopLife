@@ -52,11 +52,19 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 					.navigationBarTitleDisplayMode(.inline)
 					.toolbar {
 						ToolbarItem(placement: .principal) {
-							Text(title ?? "")
-								.font(.headline)
-								.lineLimit(1)
-								.animation(.easeOut, value: isInlineVisible)
-								.opacity(isTitleInline || isInlineVisible ? 1 : 0)
+							VStack(spacing: 0) {
+								Text(title ?? "")
+									.font(.headline)
+									.lineLimit(1)
+									.animation(.easeOut, value: isInlineVisible)
+									.opacity(isTitleInline || isInlineVisible ? 1 : 0)
+								
+								if let subtitle, isTitleInline {
+									Text(subtitle)
+										.labelMini()
+										.foregroundColor(.foregroundSecondary)
+								}
+							}
 						}
 					}
 			}

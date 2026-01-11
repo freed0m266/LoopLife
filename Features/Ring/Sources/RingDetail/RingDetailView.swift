@@ -27,20 +27,14 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 					
 					ringDates
 					
-					VStack(spacing: 8) {
-						LLHeadline(Texts.paceIndexHeadline(viewModel.ring.paceIndexText))
-						
-						TimelineChart(
-							vertices: viewModel.vertices,
-							color: ColorItem.mintGreen.color
-						)
-					}
+					timelineChart
 					
 					ringLogs
 					
 					deleteButton
 				}
 			}
+			.padding(.top, 16)
 			.alert(isPresented: $viewModel.isDeleteAlertShown) {
 				Alert(
 					title: Text(Texts.deleteAlertTitle),
@@ -109,6 +103,17 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 			.foregroundColor(.foregroundPrimary)
 		}
 		.padding(.horizontal, 16)
+	}
+	
+	private var timelineChart: some View {
+		VStack(spacing: 8) {
+			LLHeadline(Texts.paceIndexHeadline(viewModel.ring.paceIndexText))
+			
+			TimelineChart(
+				vertices: viewModel.vertices,
+				color: ColorItem.mintGreen.color
+			)
+		}
 	}
 	
 	private var ringLogs: some View {

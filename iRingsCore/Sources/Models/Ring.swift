@@ -89,7 +89,7 @@ public extension Ring {
 	}
 	
 	var timeRatio: Double {
-		Double(daysElapsed) / Double(daysTotal)
+		Date.now.days(from: startDate) / Double(daysTotal)
 	}
 }
 

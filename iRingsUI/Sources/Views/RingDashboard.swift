@@ -54,10 +54,12 @@ public struct RingDashboard: View {
 					action: action
 				)
 			}
-			.background {
-				LinearGradient.backgroundSoft
-			}
-			.cornerRadius(16)
+			.cardStyle(
+				verticalPadding: 0,
+				horizontalPadding: 0,
+				backgroundGradient: .backgroundSoft,
+				opacity: 0.7,
+			)
 		}
 		.buttonStyle(.plain)
 	}

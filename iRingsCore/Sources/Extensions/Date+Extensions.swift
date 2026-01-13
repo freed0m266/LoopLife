@@ -24,14 +24,6 @@ public extension Date {
 }
 
 public extension Date {
-	var startOfYear: Date {
-		Calendar.current.date(from: Calendar.current.dateComponents([.year], from: self)) ?? self
-	}
-	
-	var startOfMonth: Date {
-		Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)) ?? self
-	}
-	
 	func daysElapsed(until other: Date = .now) -> Int {
 		Calendar.current.dateComponents([.day], from: startOfDay, to: other.startOfDay).day ?? 0
 	}

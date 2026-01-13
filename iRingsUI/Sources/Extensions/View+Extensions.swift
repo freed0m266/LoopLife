@@ -9,34 +9,6 @@
 import SwiftUI
 
 public extension View {
-	func hideKeyboardOnTap() -> some View {
-		onTapGesture {
-			UIApplication.resignFirstResponder()
-		}
-	}
-	
-	func openSystemSettings() {
-		UIApplication.openSystemSettings()
-	}
-}
-
-public extension View {
-	func loadingSign(when condition: Bool) -> some View {
-		toolbar {
-			if condition {
-				ProgressView()
-			}
-		}
-	}
-}
-
-public extension View {
-	func maxWidthLeading() -> some View {
-		frame(maxWidth: .infinity, alignment: .leading)
-	}
-}
-
-public extension View {
 	func measureSizeOnChange<V>(
 		of value: V,
 		action: @escaping (CGSize) -> Void
@@ -48,17 +20,6 @@ public extension View {
 						action(proxy.size)
 					}
 					.onChange(of: value) {
-						action(proxy.size)
-					}
-			}
-		}
-	}
-	
-	func measureSize(action: @escaping (CGSize) -> Void) -> some View {
-		overlay {
-			GeometryReader { proxy in
-				Color.clear
-					.onAppear {
 						action(proxy.size)
 					}
 			}

@@ -36,11 +36,11 @@ extension ItemEntity {
 }
 
 extension ItemEntity {
-	static func batchDeleteRequest(for entityTypes: [String]? = nil) -> NSBatchDeleteRequest {
+	static func batchDeleteRequest(excluding entityTypes: [String]? = nil) -> NSBatchDeleteRequest {
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ItemEntity")
 		
 		if let entityTypes {
-			request.predicate = NSCompoundPredicate.orPredicate(entityTypes: entityTypes)
+			request.predicate = NSPredicate(format: "NOT (type IN %@)", entityTypes)
 		}
 		
 		return NSBatchDeleteRequest(fetchRequest: request)

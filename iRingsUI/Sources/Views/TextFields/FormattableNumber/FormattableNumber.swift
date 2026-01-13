@@ -15,7 +15,7 @@ public protocol FormattableNumber: Equatable {
 
 extension FormattableNumber {
 	static func nsNumber(from localizedText: String) -> NSNumber? {
-		let cleanedText = localizedText.withoutSpaces
+		let cleanedText = localizedText.withoutWhitespace
 			.replacingOccurrences(of: NumberFormatter.decimal.groupingSeparator ?? "", with: "")
 		
 		return NumberFormatter.decimal.number(from: cleanedText)

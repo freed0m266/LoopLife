@@ -108,7 +108,7 @@ public struct LLNumberField<T: FormattableNumber>: View {
 				}
 				
 				// Attempt to parse the normalized text
-				guard let validNumber = T(localizedText: text.withoutSpaces) else {
+				guard let validNumber = T(localizedText: text.withoutWhitespace) else {
 					// Revert to last valid formatted value on parse failure
 					inputString = number?.formatted(maxPrecision: maxDecimalLength) ?? ""
 					return

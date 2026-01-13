@@ -12,23 +12,28 @@ public struct LLDatePicker: View {
 	@Binding private var date: Date
 	
 	private let headline: String?
-	private let text: String
-	private let textColor: ColorItem
+	private let title: String
+	private let titleColor: ColorItem
+	private let components: DatePicker<Text>.Components
+	private let from: Date?
+	private let to: Date?
 	
-	private let dateComponents: DatePicker<Text>.Components
-
 	public init(
 		headline: String? = nil,
 		date: Binding<Date>,
-		dateComponents: DatePicker<Text>.Components,
-		text: String,
-		textColor: ColorItem
+		components: DatePicker<Text>.Components,
+		title: String,
+		titleColor: ColorItem,
+		from: Date? = nil,
+		to: Date? = nil
 	) {
 		self.headline = headline
 		self._date = date
-		self.dateComponents = dateComponents
-		self.text = text
-		self.textColor = textColor
+		self.components = components
+		self.title = title
+		self.titleColor = titleColor
+		self.from = from
+		self.to = to
 	}
 	public var body: some View {
 		VStack(spacing: 0) {
@@ -37,13 +42,15 @@ public struct LLDatePicker: View {
 			}
 			
 			DatePicker(
-				text,
+				title,
 				selection: $date,
-				displayedComponents: dateComponents
+				components: components,
+				from: from,
+				to: to
 			)
 			.titleLarge()
-			.foregroundColor(textColor)
-			.animation(.default, value: text)
+			.foregroundColor(titleColor)
+			.animation(.default, value: title)
 			.contentTransition(.numericText())
 			.padding(.vertical, 12)
 			.padding(.horizontal, 16)
@@ -58,9 +65,9 @@ public struct LLDatePicker: View {
 #Preview {
 	LLDatePicker(
 		date: .constant(.now),
-		dateComponents: .date,
-		text: "26 days",
-		textColor: .basicMagenta
+		components: .date,
+		title: "26 days",
+		titleColor: .basicMagenta
 	)
 	.padding(16)
 }

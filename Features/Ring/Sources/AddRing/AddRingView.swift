@@ -55,9 +55,10 @@ public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 				LLDatePicker(
 					headline: Texts.endDateHeadline,
 					date: $viewModel.endDate,
-					dateComponents: .date,
-					text: deadlinePickerText,
-					textColor: viewModel.isEndDateFilled ? .basicMagenta : .foregroundPlaceholder
+					components: .date,
+					title: deadlinePickerText,
+					titleColor: viewModel.isEndDateFilled ? .basicMagenta : .foregroundPlaceholder,
+					from: .now
 				)
 				
 				LLNumberField(

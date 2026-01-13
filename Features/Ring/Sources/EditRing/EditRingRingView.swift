@@ -38,7 +38,8 @@ public struct EditRingView<ViewModel: EditRingViewModeling>: View {
 						DatePicker(
 							Texts.startDateHeadline,
 							selection: $viewModel.startDate,
-							displayedComponents: .date
+							components: .date,
+							to: .now
 						)
 						
 						Divider()
@@ -46,7 +47,8 @@ public struct EditRingView<ViewModel: EditRingViewModeling>: View {
 						DatePicker(
 							Texts.endDateHeadline,
 							selection: $viewModel.endDate,
-							displayedComponents: .date
+							components: .date,
+							from: .now
 						)
 					}
 					.titleLarge()

@@ -28,16 +28,17 @@ public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 			VStack(spacing: 16) {
 				LLDatePicker(
 					date: $viewModel.date,
-					dateComponents: .date,
-					text: Texts.dateText,
-					textColor: .foregroundPrimary
+					components: .date,
+					title: Texts.dateText,
+					titleColor: .foregroundPrimary,
+					to: .now
 				)
 				
 				LLDatePicker(
 					date: $viewModel.date,
-					dateComponents: .hourAndMinute,
-					text: Texts.timeText,
-					textColor: .foregroundPrimary
+					components: .hourAndMinute,
+					title: Texts.timeText,
+					titleColor: .foregroundPrimary
 				)
 			}
 			.padding(.top, 16)

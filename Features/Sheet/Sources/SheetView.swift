@@ -52,6 +52,7 @@ public struct SheetView<ViewModel: SheetViewModel>: View {
 			}
 			.withDismissButton()
 		}
+		.toast($router.toastItem)
 	}
 }
 

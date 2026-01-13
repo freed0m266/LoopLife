@@ -10,6 +10,10 @@ import SwiftUI
 import iRingsCore
 
 public extension View {
+	var isSheetShown: Bool {
+		router.sheetItem != nil
+	}
+	
 	func navigateTo(route: Route) {
 		router.navigateTo(route: route)
 	}
@@ -30,7 +34,7 @@ public extension View {
 		router.closeSheet()
 	}
 	
-	func presentToast(item: ToastItem, duration: TimeInterval = 3.0) {
+	func presentToast(item: ToastItem, duration: TimeInterval = 2.0) {
 		router.presentToast(item: item, duration: duration)
 	}
 	

@@ -37,6 +37,7 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 		.onAppear {
 			setActive(path: .home)
 		}
+		.toast($router.toastItem, isActive: !isSheetShown)
 		.sheet(item: $router.sheetItem) { route in
 			SheetView(viewModel: SheetViewModel(), route: route)
 		}

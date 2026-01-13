@@ -3,6 +3,7 @@
 "general.cancel" = "Cancel";
 "general.ok" = "OK";
 "general.delete" = "Delete";
+"general.recordRingLogToast" = "%@ completed";
 "error.defaultTitle" = "Error";
 "ringDetail.startDateHeadline" = "Start";
 "ringDetail.endDateHeadline" = "Deadline";

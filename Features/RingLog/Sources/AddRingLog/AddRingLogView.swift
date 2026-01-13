@@ -45,8 +45,11 @@ public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 		.hideKeyboardOnTap()
 		.toolbar {
 			Button {
-				viewModel.saveRingLog()
-				closeSheet()
+				if let ring = viewModel.ring {
+					viewModel.saveRingLog()
+					closeSheet()
+					presentToast(item: .success(L10n.General.recordRingLogToast(ring.name)))
+				}
 			} label: {
 				Icon.checkmark.size(15, weight: .medium)
 					.largerTapArea()

@@ -17,7 +17,7 @@ struct ToastModifier: ViewModifier {
 			.overlay(alignment: .top) {
 				ToastView(item: $item)
 			}
-			.animation(.default, value: item)
+			.animation(.snappy, value: item)
 	}
 }
 

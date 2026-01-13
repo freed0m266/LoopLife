@@ -12,6 +12,13 @@ public struct ToastItem {
 	public let text: String
 	public let type: ToastType
 	
+	public var hapticType: HapticType? {
+		switch type {
+		case .success: .success
+		case .fail: .fail
+		}
+	}
+	
 	public init(text: String, type: ToastType) {
 		self.text = text
 		self.type = type
@@ -20,13 +27,8 @@ public struct ToastItem {
 
 public extension ToastItem {
 	enum ToastType {
-		case loading
 		case success
 		case fail
-	}
-	
-	static func loading(_ message: String) -> ToastItem {
-		.init(text: message, type: .loading)
 	}
 	
 	static func success(_ message: String) -> ToastItem {

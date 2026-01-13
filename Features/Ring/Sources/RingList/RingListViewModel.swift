@@ -23,7 +23,7 @@ public func ringListVM() -> some RingListViewModeling {
 }
 
 final class RingListViewModel: BaseViewModel, RingListViewModeling {
-	@Published var rings: [Ring] = [.mock1]
+	@Published var rings: [Ring] = []
 	@Published var currentDate: Date = .now
 	
     private let dependencies: RingListDependencies

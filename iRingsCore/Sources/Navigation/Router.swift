@@ -94,6 +94,7 @@ public final class Router: ObservableObject {
 	
 	public func presentToast(item: ToastItem, duration: TimeInterval) {
 		toastItem = item
+		Haptics.hapticFeedback(type: item.hapticType)
 		
 		DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
 			self?.toastItem = nil

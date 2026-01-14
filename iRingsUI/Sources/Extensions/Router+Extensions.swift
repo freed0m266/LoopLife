@@ -38,6 +38,10 @@ public extension View {
 		router.presentToast(item: item, duration: duration)
 	}
 	
+	func presentConfettiCannon() {
+		router.presentConfettiCannon()
+	}
+	
 	func setActive(path: RoutePath) {
 		router.setActive(path: path)
 	}

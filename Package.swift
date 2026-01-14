@@ -21,6 +21,10 @@ let package = Package(
 			from: "2.3.0"
 		),
 		.package(
+			url: "https://github.com/simibac/ConfettiSwiftUI",
+			from: "3.0.0"
+		),
+		.package(
 			url: "https://github.com/freed0m266/BaseKitX",
 			from: "1.3.0"
 		)

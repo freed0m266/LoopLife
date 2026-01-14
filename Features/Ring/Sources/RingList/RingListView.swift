@@ -27,7 +27,6 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 					ForEach(viewModel.rings) { ring in
 						RingDashboard(ring: ring) {
 							viewModel.recordLog(for: ring)
-							presentToast(item: .success(L10n.General.recordRingLogToast(ring.name)))
 						}
 					}
 				} else {

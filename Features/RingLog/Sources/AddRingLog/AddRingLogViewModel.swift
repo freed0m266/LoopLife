@@ -8,6 +8,7 @@
 
 import Foundation
 import iRingsCore
+import iRingsResources
 
 public protocol AddRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }
@@ -42,6 +43,13 @@ final class AddRingLogViewModel: BaseViewModel, AddRingLogViewModeling {
 		do {
 			guard let ring else { return }
 			try dependencies.ringsRepository.addLog(for: ring, date: date)
+
+			presentToast(item: .success(L10n.General.recordRingLogToast(ring.name)))
+			closeSheet()
+			
+			if ring.shouldCelebrateMilestone {
+				presentConfettiCannon()
+			}
 		} catch {
 			showError(error)
 		}

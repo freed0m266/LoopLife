@@ -92,6 +92,10 @@ public extension Ring {
 	var timeRatio: Double {
 		Date.now.days(from: startDate) / Double(daysTotal)
 	}
+	
+	var shouldCelebrateMilestone: Bool {
+		(logIds.count + 1).isMultiple(of: 10)
+	}
 }
 
 public extension Ring {

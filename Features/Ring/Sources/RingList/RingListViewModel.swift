@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import iRingsCore
+import iRingsResources
 
 public protocol RingListViewModeling: ObservableObject {
 	var rings: [Ring] { get }
@@ -41,6 +42,12 @@ final class RingListViewModel: BaseViewModel, RingListViewModeling {
 	func recordLog(for ring: Ring) {
 		do {
 			try dependencies.ringsRepository.addLog(for: ring)
+			
+			presentToast(item: .success(L10n.General.recordRingLogToast(ring.name)))
+			
+			if ring.shouldCelebrateMilestone {
+				presentConfettiCannon()
+			}
 		} catch {
 			showError(error)
 		}

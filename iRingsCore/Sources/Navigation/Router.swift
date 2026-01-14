@@ -14,6 +14,7 @@ public final class Router: ObservableObject {
 	
 	@Published public var toastItem: ToastItem?
 	@Published public var sheetItem: Route?
+	@Published public var confettiCannonTrigger = false
 	
 	@Published public var examplePath: [Route] = []
 	@Published public var homePath: [Route] = []
@@ -99,6 +100,10 @@ public final class Router: ObservableObject {
 		DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
 			self?.toastItem = nil
 		}
+	}
+	
+	public func presentConfettiCannon() {
+		confettiCannonTrigger.toggle()
 	}
 	
 	public func setActive(path: RoutePath) {

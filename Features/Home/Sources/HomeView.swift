@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 import iRingsCore
 import iRingsUI
 
@@ -38,6 +39,7 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 			setActive(path: .home)
 		}
 		.toast($router.toastItem, isActive: !isSheetShown)
+		.confettiCannon(trigger: $router.confettiCannonTrigger, hapticFeedback: false)
 		.sheet(item: $router.sheetItem) { route in
 			SheetView(viewModel: SheetViewModel(), route: route)
 		}

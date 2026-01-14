@@ -13,6 +13,7 @@ public let designSystem = Target.target(
     dependencies: [
         .target(name: resources.name),
         .target(name: core.name),
+		.external(name: "ConfettiSwiftUI"),
 		.external(name: "MKRingProgressView")
     ]
 )

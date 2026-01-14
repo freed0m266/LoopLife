@@ -60,6 +60,12 @@ public extension BaseViewModel {
 			self?.router.presentToast(item: item, duration: duration)
 		}
 	}
+	
+	func presentConfettiCannon() {
+		DispatchQueue.main.async { [weak self] in
+			self?.router.presentConfettiCannon()
+		}
+	}
 }
 
 extension Publisher {

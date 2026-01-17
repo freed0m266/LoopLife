@@ -16,6 +16,7 @@ public protocol RingDetailViewModeling: ObservableObject {
 	var ringLogs: [RingLog] { get }
 	var vertices: [Vertex] { get }
 	var isDeleteAlertShown: Bool { get set }
+	var isPaceInfoAlertShown: Bool { get set }
 	
 	func deleteRing()
 	func deleteRingLog(logId: RingLog.ID)
@@ -30,6 +31,7 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 	@Published var ringLogs: [RingLog] = []
 	@Published var vertices: [Vertex] = []
 	@Published var isDeleteAlertShown = false
+	@Published var isPaceInfoAlertShown = false
 	
     private let dependencies: RingDetailDependencies
 	private let id: Ring.ID

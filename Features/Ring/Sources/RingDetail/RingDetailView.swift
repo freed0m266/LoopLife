@@ -48,6 +48,12 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 					)
 				)
 			}
+			.alert(isPresented: $viewModel.isPaceInfoAlertShown) {
+				Alert(
+					title: Text(Texts.paceInfoAlertTitle),
+					message: Text(Texts.paceInfoAlertMessage)
+				)
+			}
 			.toolbar {
 				Button {
 					presentSheet(item: .editRing(ringId: viewModel.ring.id))
@@ -107,7 +113,17 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	
 	private var timelineChart: some View {
 		VStack(spacing: 8) {
-			LLHeadline(Texts.paceIndexHeadline(viewModel.ring.paceIndexText))
+			HStack(spacing: 0) {
+				LLHeadline(Texts.paceIndexHeadline(viewModel.ring.paceIndexText))
+				
+				Button {
+					viewModel.isPaceInfoAlertShown = true
+				} label: {
+					Icon.info.size(15, weight: .medium)
+						.foregroundColor(.foregroundSecondary)
+						.padding(.trailing, 16)
+				}
+			}
 			
 			TimelineChart(
 				vertices: viewModel.vertices,

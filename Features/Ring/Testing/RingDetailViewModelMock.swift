@@ -11,6 +11,7 @@ import iRingsCore
 
 final class RingDetailViewModelMock: RingDetailViewModeling {
 	@Published var isDeleteAlertShown = false
+	@Published var isPaceInfoAlertShown = false
 	
 	var title: String = "Workout"
 	var ring: Ring = .mock1

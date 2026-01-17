@@ -35,25 +35,6 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 				}
 			}
 			.padding(.top, 16)
-			.alert(isPresented: $viewModel.isDeleteAlertShown) {
-				Alert(
-					title: Text(Texts.deleteAlertTitle),
-					message: Text(Texts.deleteAlertMessage),
-					primaryButton: .destructive(
-						Text(Texts.deleteAlertButton),
-						action: viewModel.deleteRing)
-					,
-					secondaryButton: .cancel(
-						Text(L10n.General.cancel)
-					)
-				)
-			}
-			.alert(isPresented: $viewModel.isPaceInfoAlertShown) {
-				Alert(
-					title: Text(Texts.paceInfoAlertTitle),
-					message: Text(Texts.paceInfoAlertMessage)
-				)
-			}
 			.toolbar {
 				Button {
 					presentSheet(item: .editRing(ringId: viewModel.ring.id))
@@ -122,6 +103,12 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 					Icon.info.size(15, weight: .medium)
 						.foregroundColor(.foregroundSecondary)
 						.padding(.trailing, 16)
+				}
+				.alert(isPresented: $viewModel.isPaceInfoAlertShown) {
+					Alert(
+						title: Text(Texts.paceInfoAlertTitle),
+						message: Text(Texts.paceInfoAlertMessage)
+					)
 				}
 			}
 			
@@ -194,6 +181,19 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 				.frame(maxWidth: .infinity)
 				.cardStyle(opacity: 0.3)
 				.padding(.vertical, 8)
+		}
+		.alert(isPresented: $viewModel.isDeleteAlertShown) {
+			Alert(
+				title: Text(Texts.deleteAlertTitle),
+				message: Text(Texts.deleteAlertMessage),
+				primaryButton: .destructive(
+					Text(Texts.deleteAlertButton),
+					action: viewModel.deleteRing)
+				,
+				secondaryButton: .cancel(
+					Text(L10n.General.cancel)
+				)
+			)
 		}
 	}
 }

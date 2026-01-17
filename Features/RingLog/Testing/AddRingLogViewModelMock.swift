@@ -13,6 +13,7 @@ final class AddRingLogViewModelMock: AddRingLogViewModeling {
 	@Published var ring: Ring? = .mock1
 	@Published var date: Date = .now
 	@Published var note: String?
+	@Published var isKeyboardVisible = false
 	
 	func saveRingLog() { }
 }

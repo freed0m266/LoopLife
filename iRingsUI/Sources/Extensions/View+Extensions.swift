@@ -67,4 +67,21 @@ public extension View {
 			perform: { _ in action() }
 		)
 	}
+	
+	/// When keyboard shown
+	func keyboardResponder(action: @escaping (Bool) -> Void) -> some View {
+		onReceive(
+			NotificationCenter.default.publisher(
+				for: UIApplication.keyboardWillShowNotification
+			),
+			perform: { _ in action(true) }
+		)
+		.onReceive(
+			NotificationCenter.default.publisher(
+				for: UIApplication.keyboardWillHideNotification
+			),
+			perform: { _ in action(false) }
+		)
+		
+	}
 }

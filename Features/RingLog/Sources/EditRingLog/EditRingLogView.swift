@@ -41,24 +41,35 @@ public struct EditRingLogView<ViewModel: EditRingLogViewModeling>: View {
 					titleColor: .foregroundPrimary
 				)
 				
-				LLTextField(
-					text: $viewModel.note,
-					textColor: .foregroundPrimary,
-					placeholder: Texts.notePlaceholder
+				LLTextEditor(
+					Texts.notePlaceholder,
+					text: $viewModel.note
 				)
 			}
 			.padding(.top, 16)
 		}
 		.hideKeyboardOnTap()
 		.toolbar {
-			Button {
-				viewModel.editRingLog()
-				closeSheet()
-			} label: {
-				Icon.checkmark.size(15, weight: .medium)
-					.largerTapArea()
+			ToolbarItem(placement: .confirmationAction) {
+				Button {
+					viewModel.editRingLog()
+					closeSheet()
+				} label: {
+					Icon.checkmark.size(15, weight: .medium)
+				}
+				.disabled(viewModel.isEditButtonDisabled)
 			}
-			.disabled(viewModel.isEditButtonDisabled)
+		}
+		.toolbar {
+			if viewModel.isKeyboardVisible {
+				Icon.keyboardChevronDown.size(15, weight: .medium)
+					.foregroundColor(.mintGreen)
+					.padding(.leading, 8)
+					.hideKeyboardOnTap()
+			}
+		}
+		.keyboardResponder { isVisible in
+			viewModel.isKeyboardVisible = isVisible
 		}
 		.presentationDetents([.medium, .large])
     }

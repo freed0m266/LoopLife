@@ -14,6 +14,7 @@ public protocol AddRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }
 	var date: Date { get set }
 	var note: String? { get set }
+	var isKeyboardVisible: Bool { get set }
 	
 	func saveRingLog()
 }
@@ -26,6 +27,7 @@ final class AddRingLogViewModel: BaseViewModel, AddRingLogViewModeling {
 	@Published var ring: Ring?
 	@Published var date: Date = .now
 	@Published var note: String?
+	@Published var isKeyboardVisible = false
 	
     private let dependencies: AddRingLogDependencies
 	private let ringId: Ring.ID

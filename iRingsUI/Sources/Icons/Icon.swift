@@ -34,38 +34,40 @@ public extension Icon {
 }
 
 public extension Icon {
+	/// arrow.trianglehead.clockwise
+	static var arrowClockwise: Icon = "arrow.trianglehead.clockwise"
 	/// checkmark
 	static var checkmark: Icon = "checkmark"
 	/// checkmark.circle.fill
 	static var checkmarkFill: Icon = "checkmark.circle.fill"
-	/// xmark
-	static var xmark: Icon = "xmark"
-	/// xmark.circle.fill
-	static var xmarkFill: Icon = "xmark.circle.fill"
-	/// trash
-	static var trash: Icon = "trash"
 	/// chevron.right
 	static var chevronRight: Icon = "chevron.right"
-	/// info.circle
-	static var info: Icon = "info.circle"
+	/// circle.circle
+	static var circleCircle: Icon = "circle.circle"
+	/// clock.arrow.circlepath
+	static var clockArrowCirclepath: Icon = "clock.arrow.circlepath"
 	/// doc.on.doc
 	static var copy: Icon = "doc.on.doc"
-	/// exclamationmark.triangle
-	static var warningTriangle: Icon = "exclamationmark.triangle"
+	/// info.circle
+	static var info: Icon = "info.circle"
+	/// keyboard.chevron.compact.down
+	static var keyboardChevronDown: Icon = "keyboard.chevron.compact.down"
 	/// plus
 	static var plus: Icon = "plus"
 	/// plus.circle
 	static var plusCircle: Icon = "plus.circle"
 	/// plus.circle.fill
 	static var plusCircleFill: Icon = "plus.circle.fill"
-	/// arrow.trianglehead.clockwise
-	static var arrowClockwise: Icon = "arrow.trianglehead.clockwise"
-	/// clock.arrow.circlepath
-	static var clockArrowCirclepath: Icon = "clock.arrow.circlepath"
-	/// circle.circle
-	static var circleCircle: Icon = "circle.circle"
 	/// slider.horizontal.3
 	static var sliderHorizontal: Icon = "slider.horizontal.3"
+	/// trash
+	static var trash: Icon = "trash"
+	/// exclamationmark.triangle
+	static var warningTriangle: Icon = "exclamationmark.triangle"
+	/// xmark
+	static var xmark: Icon = "xmark"
+	/// xmark.circle.fill
+	static var xmarkFill: Icon = "xmark.circle.fill"
 }
 
 #Preview {

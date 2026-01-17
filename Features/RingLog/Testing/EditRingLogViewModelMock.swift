@@ -12,6 +12,7 @@ import iRingsCore
 final class EditRingLogViewModelMock: EditRingLogViewModeling {
 	@Published var date: Date = .now
 	@Published var note: String?
+	@Published var isKeyboardVisible = false
 	
 	var ring: Ring? = .mock1
 	var isEditButtonDisabled: Bool = false

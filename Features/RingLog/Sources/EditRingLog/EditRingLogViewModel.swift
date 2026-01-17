@@ -13,6 +13,7 @@ public protocol EditRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }
 	var date: Date { get set }
 	var note: String? { get set }
+	var isKeyboardVisible: Bool { get set }
 	var isEditButtonDisabled: Bool { get }
 	
 	func editRingLog()
@@ -26,6 +27,7 @@ final class EditRingLogViewModel: BaseViewModel, EditRingLogViewModeling {
 	@Published var ring: Ring?
 	@Published var date: Date = .now
 	@Published var note: String?
+	@Published var isKeyboardVisible = false
 	@Published private var ringLog: RingLog?
 	
 	var isEditButtonDisabled: Bool {

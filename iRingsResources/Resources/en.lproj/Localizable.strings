@@ -32,6 +32,7 @@
 "ringLog.editTitle" = "Edit Record";
 "ringLog.dateText" = "Date";
 "ringLog.timeText" = "Time";
+"ringLog.notePlaceholder" = "Tap here to add a note...";
 "ringCard.categoryHeadline" = "Category";
 "ringCard.deadlineHeadline" = "Deadline";
 "ringCard.goalHeadline" = "Goal";

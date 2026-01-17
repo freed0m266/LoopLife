@@ -12,6 +12,7 @@ import iRingsCore
 final class AddRingLogViewModelMock: AddRingLogViewModeling {
 	@Published var ring: Ring? = .mock1
 	@Published var date: Date = .now
+	@Published var note: String?
 	
 	func saveRingLog() { }
 }

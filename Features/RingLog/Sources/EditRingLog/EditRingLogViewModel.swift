@@ -12,6 +12,7 @@ import iRingsCore
 public protocol EditRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }
 	var date: Date { get set }
+	var note: String? { get set }
 	var isEditButtonDisabled: Bool { get }
 	
 	func editRingLog()
@@ -24,9 +25,12 @@ public func editRingLogVM(ringId: Ring.ID, logId: RingLog.ID) -> some EditRingLo
 final class EditRingLogViewModel: BaseViewModel, EditRingLogViewModeling {
 	@Published var ring: Ring?
 	@Published var date: Date = .now
-	@Published var isEditButtonDisabled = true
-	
+	@Published var note: String?
 	@Published private var ringLog: RingLog?
+	
+	var isEditButtonDisabled: Bool {
+		date == ringLog?.date && note == ringLog?.note
+	}
 	
     private let dependencies: EditRingLogDependencies
 	private let ringId: Ring.ID
@@ -51,7 +55,11 @@ final class EditRingLogViewModel: BaseViewModel, EditRingLogViewModeling {
 	func editRingLog() {
 		do {
 			guard let ringLog else { return }
-			try dependencies.ringsRepository.editLog(log: ringLog, date: date)
+			try dependencies.ringsRepository.editLog(
+				log: ringLog,
+				date: date,
+				note: note
+			)
 			
 			// Refresh logs on ring's detail
 			_ = dependencies.ringsRepository.ring(id: ringId)
@@ -76,14 +84,7 @@ final class EditRingLogViewModel: BaseViewModel, EditRingLogViewModeling {
 			.sink { [weak self] log in
 				guard let log else { return }
 				self?.date = log.date
-			}
-			.store(in: &cancellables)
-		
-		$date
-			.dropFirst(2)
-			.receive(on: DispatchQueue.main)
-			.sink { [weak self] _ in
-				self?.isEditButtonDisabled = false
+				self?.note = log.note
 			}
 			.store(in: &cancellables)
 	}

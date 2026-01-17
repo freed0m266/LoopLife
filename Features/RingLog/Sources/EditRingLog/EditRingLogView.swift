@@ -40,6 +40,12 @@ public struct EditRingLogView<ViewModel: EditRingLogViewModeling>: View {
 					title: Texts.timeText,
 					titleColor: .foregroundPrimary
 				)
+				
+				LLTextField(
+					text: $viewModel.note,
+					textColor: .foregroundPrimary,
+					placeholder: Texts.notePlaceholder
+				)
 			}
 			.padding(.top, 16)
 		}
@@ -54,7 +60,7 @@ public struct EditRingLogView<ViewModel: EditRingLogViewModeling>: View {
 			}
 			.disabled(viewModel.isEditButtonDisabled)
 		}
-		.presentationDetents([.medium])
+		.presentationDetents([.medium, .large])
     }
 }
 

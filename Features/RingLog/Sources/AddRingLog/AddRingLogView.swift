@@ -40,6 +40,12 @@ public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 					title: Texts.timeText,
 					titleColor: .foregroundPrimary
 				)
+				
+				LLTextField(
+					text: $viewModel.note,
+					textColor: .foregroundPrimary,
+					placeholder: Texts.notePlaceholder
+				)
 			}
 			.padding(.top, 16)
 		}
@@ -50,7 +56,7 @@ public struct AddRingLogView<ViewModel: AddRingLogViewModeling>: View {
 					.largerTapArea()
 			}
 		}
-		.presentationDetents([.medium])
+		.presentationDetents([.medium, .large])
     }
 }
 

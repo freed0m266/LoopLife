@@ -19,7 +19,7 @@ public protocol RingsRepositoring {
 	func save(ring: Ring) throws
 	
 	func addLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws
-	func editLog(log: RingLog, date: Date?, completionRatio: CGFloat?, note: String?) throws
+	func editLog(log: RingLog, date: Date, completionRatio: CGFloat, note: String?) throws
 	
 	func deleteRing(id: Ring.ID, logIds: [RingLog.ID]) throws
 	func deleteLog(for ring: Ring, logId: RingLog.ID) throws
@@ -42,8 +42,8 @@ public extension RingsRepositoring {
 	
 	func editLog(
 		log: RingLog,
-		date: Date? = nil,
-		completionRatio: CGFloat? = nil,
+		date: Date,
+		completionRatio: CGFloat = 1,
 		note: String? = nil
 	) throws {
 		try editLog(
@@ -128,12 +128,12 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		loadItem(id: ring.id, subject: ringSubject)
 	}
 	
-	func editLog(log: RingLog, date: Date?, completionRatio: CGFloat?, note: String?) throws {
+	func editLog(log: RingLog, date: Date, completionRatio: CGFloat, note: String?) throws {
 		let editedLog = RingLog(
 			id: log.id,
-			date: date ?? log.date,
-			completionRatio: completionRatio ?? log.completionRatio,
-			note: note ?? log.note,
+			date: date,
+			completionRatio: completionRatio,
+			note: note,
 			createdAt: log.createdAt,
 			updatedAt: .now
 		)

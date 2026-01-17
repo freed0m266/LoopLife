@@ -13,6 +13,7 @@ import iRingsResources
 public protocol AddRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }
 	var date: Date { get set }
+	var note: String? { get set }
 	
 	func saveRingLog()
 }
@@ -24,6 +25,7 @@ public func addRingLogVM(ringId: Ring.ID) -> some AddRingLogViewModeling {
 final class AddRingLogViewModel: BaseViewModel, AddRingLogViewModeling {
 	@Published var ring: Ring?
 	@Published var date: Date = .now
+	@Published var note: String?
 	
     private let dependencies: AddRingLogDependencies
 	private let ringId: Ring.ID
@@ -42,7 +44,11 @@ final class AddRingLogViewModel: BaseViewModel, AddRingLogViewModeling {
 	func saveRingLog() {
 		do {
 			guard let ring else { return }
-			try dependencies.ringsRepository.addLog(for: ring, date: date)
+			try dependencies.ringsRepository.addLog(
+				for: ring,
+				date: date,
+				note: note
+			)
 
 			presentToast(item: .success(L10n.General.recordRingLogToast(ring.name)))
 			closeSheet()

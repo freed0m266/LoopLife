@@ -22,7 +22,7 @@ struct ToastModifier: ViewModifier {
 }
 
 public extension View {
-	func toast(_ item: Binding<ToastItem?>, isActive: Bool = true) -> some View {
+	func toast(_ item: Binding<ToastItem?>) -> some View {
 		modifier(ToastModifier(item: item))
 	}
 }

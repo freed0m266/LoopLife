@@ -14,6 +14,7 @@ public let home = Feature(
 		.target(name: designSystem.name),
 		.target(name: resources.name),
 		.target(ring),
+		.target(settings),
 		.target(sheet),
 		.target(undefinedRoute)
 	],

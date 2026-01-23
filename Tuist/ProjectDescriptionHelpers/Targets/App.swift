@@ -40,6 +40,7 @@ public let app = Target.target(
 		.target(ring),
 		.target(ringForm),
 		.target(ringLog),
+		.target(settings),
 		.target(sheet),
 		.target(undefinedRoute)
 	],

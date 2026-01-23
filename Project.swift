@@ -7,6 +7,7 @@ let features: [Feature] = [
 	ring,
 	ringForm,
 	ringLog,
+	settings,
 	sheet,
 	undefinedRoute
 ]

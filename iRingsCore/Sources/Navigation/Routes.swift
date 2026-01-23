@@ -21,6 +21,7 @@ public enum Route: Hashable {
 	case editRingLog(ringId: Ring.ID, logId: RingLog.ID)
 	case exampleDetail(exampleId: Example.ID)
 	case ringDetail(ringId: Ring.ID, title: String)
+	case settings
 }
 
 extension Route: Identifiable {

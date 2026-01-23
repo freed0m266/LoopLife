@@ -74,7 +74,12 @@ final class RingDetailViewModel: BaseViewModel, RingDetailViewModeling {
 		
 		$ring
 			.sink { [weak self] ring in
-				guard let self, ring.logIds.isNotEmpty else { return }
+				guard let self, ring.logIds.isNotEmpty else {
+					DispatchQueue.main.async { [weak self] in
+						self?.ringLogs = []
+					}
+					return
+				}
 
 				dependencies.ringsRepository.ringLogs(ids: ring.logIds)
 					.map { $0.sortedBy(\.date, descending: true) }

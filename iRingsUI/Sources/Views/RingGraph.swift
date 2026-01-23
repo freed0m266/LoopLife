@@ -60,7 +60,7 @@ public struct RingGraph: View {
 		var buttonPadding: CGFloat {
 			switch self {
 			case .small: 26
-			case .large: 24
+			case .large: 46
 			}
 		}
 	}
@@ -105,6 +105,7 @@ public struct RingGraph: View {
 					Icon.plus
 						.size(style.buttonSize)
 						.padding(style.buttonPadding)
+						.foregroundColor(.basicWhite)
 						.backgroundColor(.iconPrimary.opacity(0.01))
 						.clipShape(.circle)
 				}

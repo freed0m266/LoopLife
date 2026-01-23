@@ -48,6 +48,8 @@ public extension Icon {
 	static var clockArrowCirclepath: Icon = "clock.arrow.circlepath"
 	/// doc.on.doc
 	static var copy: Icon = "doc.on.doc"
+	/// gearshape
+	static var gearshape: Icon = "gearshape"
 	/// info.circle
 	static var info: Icon = "info.circle"
 	/// keyboard.chevron.compact.down
@@ -58,6 +60,10 @@ public extension Icon {
 	static var plusCircle: Icon = "plus.circle"
 	/// plus.circle.fill
 	static var plusCircleFill: Icon = "plus.circle.fill"
+	/// record.circle
+	static var recordCircle: Icon = "record.circle"
+	/// record.circle.fill
+	static var recordCircleFill: Icon = "record.circle.fill"
 	/// slider.horizontal.3
 	static var sliderHorizontal: Icon = "slider.horizontal.3"
 	/// trash

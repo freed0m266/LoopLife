@@ -34,7 +34,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 					deleteButton
 				}
 			}
-			.padding(.top, 16)
+			.padding(.vertical, 16)
 			.toolbar {
 				Button {
 					presentSheet(item: .editRing(ringId: viewModel.ring.id))
@@ -129,13 +129,19 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 						Button {
 							presentSheet(item: .editRingLog(ringId: viewModel.ring.id, logId: log.id))
 						} label: {
-							HStack(spacing: 16) {
+							HStack(spacing: 0) {
+								(log.note == nil ? Icon.recordCircle : Icon.recordCircleFill)
+									.size(10)
+									.foregroundColor(.foregroundSecondary)
+									.padding(.trailing, 12)
+								
 								Text(log.date.dayMonthYearFormat)
 									.foregroundColor(.foregroundPrimary)
 									.maxWidthLeading()
 								
 								Text(log.date.hourMinuteFormat)
 									.foregroundColor(.foregroundSecondary)
+									.padding(.trailing, 16)
 								
 								Icon.chevronRight
 									.size(12)
@@ -156,6 +162,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 						if index != viewModel.ringLogs.count - 1 {
 							Divider()
 								.padding(.trailing, 20)
+								.padding(.leading, 24)
 						}
 					}
 				}

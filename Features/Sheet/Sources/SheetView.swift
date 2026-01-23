@@ -10,7 +10,7 @@ import SwiftUI
 import iRingsCore
 import iRingsUI
 
-import Ring
+import RingForm
 import RingLog
 import UndefinedRoute
 

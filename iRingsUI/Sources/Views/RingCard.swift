@@ -103,6 +103,7 @@ public struct RingCard: View {
 				Button(action: action) {
 					Icon.plus
 						.padding(26)
+						.foregroundColor(.basicWhite)
 						.backgroundColor(.iconPrimary.opacity(0.01))
 						.clipShape(.circle)
 				}

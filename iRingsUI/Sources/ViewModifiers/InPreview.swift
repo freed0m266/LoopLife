@@ -14,7 +14,6 @@ struct InPreviewModifier: ViewModifier {
 	func body(content: Content) -> some View {
 		NavigationStack {
 			content
-				.tint(.mintGreen)
 			
 // TODO: Uncomment when Xcode fixes Preview bug (this worked fine before Xcode 16.0)
 //

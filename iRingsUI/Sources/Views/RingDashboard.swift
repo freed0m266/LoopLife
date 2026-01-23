@@ -58,7 +58,7 @@ public struct RingDashboard: View {
 				verticalPadding: 0,
 				horizontalPadding: 0,
 				backgroundGradient: .backgroundSoft,
-				opacity: 0.7,
+				opacity: 0.5,
 			)
 		}
 		.buttonStyle(.plain)

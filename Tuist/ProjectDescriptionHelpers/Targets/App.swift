@@ -38,6 +38,7 @@ public let app = Target.target(
 		.target(example),
 		.target(home),
 		.target(ring),
+		.target(ringForm),
 		.target(ringLog),
 		.target(sheet),
 		.target(undefinedRoute)

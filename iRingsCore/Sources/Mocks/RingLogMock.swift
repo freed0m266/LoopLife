@@ -33,7 +33,8 @@ public extension RingLog {
 	static var mock4: RingLog {
 		.mock(
 			id: "4",
-			date: .mock2024
+			date: .mock2024,
+			note: "Note"
 		)
 	}
 }
@@ -54,7 +55,7 @@ fileprivate extension RingLog {
 		id: String,
 		date: Date,
 		completionRatio: CGFloat = 1.0,
-		note: String? = "note",
+		note: String? = nil,
 		createdAt: Date = .now,
 		updatedAt: Date? = nil
 	) -> RingLog {

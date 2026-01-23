@@ -5,6 +5,7 @@ let features: [Feature] = [
 	example,
 	home,
 	ring,
+	ringForm,
 	ringLog,
 	sheet,
 	undefinedRoute

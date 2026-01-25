@@ -44,5 +44,8 @@
 "ringCard.lastUpdateToday" = "";
 "ringCard.lastUpdateYesterday" = "";
 "ringCard.lastUpdateEmpty" = "";
+"settings.title" = "";
+"settings.appName" = "";
+"settings.appAuthor" = "";
 "undefinedRoute.title" = "";
 "undefinedRoute.text" = "";

@@ -11,7 +11,7 @@ public let app = Target.target(
 	destinations: .init(arrayLiteral: .iPhone),
 	product: .app,
 	bundleId: bundleID,
-	deploymentTargets: .iOS("17.0"),
+	deploymentTargets: .iOS("26.0"),
 	infoPlist: .extendingDefault(
 		with: [
 			"CFBundleDisplayName": .string(appName),

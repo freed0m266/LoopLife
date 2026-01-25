@@ -25,7 +25,7 @@ let project = Project(
             "CODE_SIGN_STYLE": .string(AppSetup.current.codeSignStyle),
             "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
             "DEVELOPMENT_TEAM": "\(AppSetup.current.teamID)",
-            "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+            "IPHONEOS_DEPLOYMENT_TARGET": "26.0",
             "OTHER_LDFLAGS": "-ObjC",
             "MARKETING_VERSION": "0.1.0",
             "SUPPORTS_MACCATALYST": false

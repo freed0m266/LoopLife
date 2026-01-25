@@ -30,7 +30,7 @@ public let app = Target.target(
 		"\(resources.name)/Resources/**/InfoPlist.strings"
 	],
 	scripts: [
-		.setBuildNumber
+		.setBundleVersion
 	],
 	dependencies: [
 		.target(core),

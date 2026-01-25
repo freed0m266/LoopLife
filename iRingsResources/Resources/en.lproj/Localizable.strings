@@ -45,7 +45,7 @@
 "ringCard.lastUpdateYesterday" = "Yesterday";
 "ringCard.lastUpdateEmpty" = "No activity yet";
 "settings.title" = "Settings";
-"settings.appName" = "Cunda App %@";
+"settings.appName" = "iRings App %@";
 "settings.appAuthor" = "by Martin Freedom";
 "undefinedRoute.title" = "Something went wrong";
 "undefinedRoute.text" = "Page not found.";

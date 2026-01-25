@@ -54,6 +54,8 @@ public extension Icon {
 	static var info: Icon = "info.circle"
 	/// keyboard.chevron.compact.down
 	static var keyboardChevronDown: Icon = "keyboard.chevron.compact.down"
+	/// pencil.and.outline
+	static var pencilAndOutline: Icon = "pencil.and.outline"
 	/// plus
 	static var plus: Icon = "plus"
 	/// plus.circle

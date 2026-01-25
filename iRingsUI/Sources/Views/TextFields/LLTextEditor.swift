@@ -32,7 +32,7 @@ public struct LLTextEditor: View {
 		)
 		.focused($isActive)
 		.titleMedium()
-		.foregroundColor(.foregroundPrimary)
+		.foregroundColor(.skyBlue)
 		.padding(.vertical, 4)
 		.padding(.horizontal, 12)
 		.backgroundColor(.backgroundSecondary)

@@ -130,10 +130,20 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 							presentSheet(item: .editRingLog(ringId: viewModel.ring.id, logId: log.id))
 						} label: {
 							HStack(spacing: 0) {
-								(log.note == nil ? Icon.recordCircle : Icon.recordCircleFill)
-									.size(10)
-									.foregroundColor(.foregroundSecondary)
-									.padding(.trailing, 12)
+								Group {
+									if log.note == nil {
+										Icon.recordCircle
+											.size(16)
+											.foregroundColor(.mintGreen)
+									} else {
+										Icon.pencilAndOutline
+											.size(16, weight: .bold)
+											.foregroundColor(.skyBlue)
+									}
+								}
+								.opacity(0.5)
+								.frame(width: 18)
+								.padding(.trailing, 12)
 								
 								Text(log.date.dayMonthYearFormat)
 									.foregroundColor(.foregroundPrimary)
@@ -162,7 +172,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 						if index != viewModel.ringLogs.count - 1 {
 							Divider()
 								.padding(.trailing, 20)
-								.padding(.leading, 24)
+								.padding(.leading, 30)
 						}
 					}
 				}

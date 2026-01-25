@@ -13,7 +13,7 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 	let subtitle: String?
 	let headline: String?
 	let padding: CGFloat
-	let backgroundColor: ColorItem
+	let backgroundColor: ColorItem?
 	let content: () -> Content
 	let leading: () -> Leading
 	let trailing: () -> Trailing
@@ -28,7 +28,7 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 		subtitle: String? = nil,
 		headline: String? = nil,
 		padding: CGFloat = 16,
-		backgroundColor: ColorItem = .backgroundPrimary,
+		backgroundColor: ColorItem? = nil,
 		@ViewBuilder content: @escaping () -> Content,
 		@ViewBuilder leading: @escaping () -> Leading,
 		@ViewBuilder trailing: @escaping () -> Trailing
@@ -71,7 +71,15 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 			.padding([.horizontal, .bottom], padding)
 		}
 		.frame(maxWidth: .infinity)
-		.backgroundColor(backgroundColor)
+		.background {
+			if let backgroundColor {
+				backgroundColor.color
+					.ignoresSafeArea()
+			} else {
+				gradientBackground
+					.ignoresSafeArea()
+			}
+		}
 		.scrollDismissesKeyboard(.interactively)
 		.onPreferenceChange(OffsetPreferenceKey.self) { offset in
 			guard isInlineVisible != (offset < -titleViewHeight) else {
@@ -121,6 +129,24 @@ public struct ScreenView<Content: View, Leading: View, Trailing: View>: View {
 			.padding(.bottom, 8)
 		}
 	}
+	
+	private var gradientBackground: some View {
+		ZStack {
+			RadialGradient(
+				colors: [.blue.opacity(0.125), .clear],
+				center: .topLeading,
+				startRadius: 0,
+				endRadius: 500
+			)
+			
+			RadialGradient(
+				colors: [.white.opacity(0.015), .clear],
+				center: .center,
+				startRadius: 0,
+				endRadius: 400
+			)
+		}
+	}
 }
 
 extension ScreenView where Leading == EmptyView {
@@ -129,7 +155,7 @@ extension ScreenView where Leading == EmptyView {
 		subtitle: String? = nil,
 		headline: String? = nil,
 		padding: CGFloat = 16,
-		backgroundColor: ColorItem = .backgroundPrimary,
+		backgroundColor: ColorItem? = nil,
 		@ViewBuilder content: @escaping () -> Content,
 		@ViewBuilder trailing: @escaping () -> Trailing
 	) {
@@ -150,7 +176,7 @@ extension ScreenView where Trailing == EmptyView {
 		subtitle: String? = nil,
 		headline: String? = nil,
 		padding: CGFloat = 16,
-		backgroundColor: ColorItem = .backgroundPrimary,
+		backgroundColor: ColorItem? = nil,
 		@ViewBuilder content: @escaping () -> Content,
 		@ViewBuilder leading: @escaping () -> Leading
 	) {
@@ -171,7 +197,7 @@ extension ScreenView where Leading == EmptyView, Trailing == EmptyView {
 		subtitle: String? = nil,
 		headline: String? = nil,
 		padding: CGFloat = 16,
-		backgroundColor: ColorItem = .backgroundPrimary,
+		backgroundColor: ColorItem? = nil,
 		@ViewBuilder content: @escaping () -> Content
 	) {
 		self.title = title

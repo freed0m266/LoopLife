@@ -37,11 +37,22 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 			.padding(.vertical, 8)
 		}
 		.toolbar {
-			Button {
-				presentSheet(item: .addRing)
-			} label: {
-				Icon.plus.size(17, weight: .medium)
-					.largerTapArea()
+			ToolbarItem(placement: .primaryAction) {
+				Button {
+					presentSheet(item: .addRing)
+				} label: {
+					Icon.plus
+						.foregroundStyle(.white)
+				}
+				.buttonStyle(.glassProminent)
+			}
+			
+			ToolbarItem(placement: .topBarTrailing) {
+				Button {
+					navigateTo(route: .settings)
+				} label: {
+					Icon.gearshape
+				}
 			}
 		}
 		.willEnterForeground {

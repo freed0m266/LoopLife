@@ -6,8 +6,11 @@
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.
 //
 
+import Foundation
 import iRingsCore
 
 final class SettingsViewModelMock: SettingsViewModeling {
-	
+	// swiftlint:disable:next force_unwrapping
+	var appUrl = URL(string: Environment.appLinkUrlString)!
+	var version = "v26.4.12"
 }

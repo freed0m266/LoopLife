@@ -6,11 +6,12 @@
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.
 //
 
-import Combine
+import Foundation
 import iRingsCore
 
 public protocol SettingsViewModeling: ObservableObject {
-	
+	var version: String { get }
+	var appUrl: URL { get }
 }
 
 public func settingsVM() -> some SettingsViewModeling {
@@ -18,6 +19,16 @@ public func settingsVM() -> some SettingsViewModeling {
 }
 
 final class SettingsViewModel: BaseViewModel, SettingsViewModeling {
+	
+	var appUrl: URL {
+		// swiftlint:disable:next force_unwrapping
+		URL(string: Environment.appLinkUrlString)!
+	}
+	
+	var version: String {
+		guard let version = Bundle.main.version else { return "" }
+		return "v\(version)"
+	}
 	
     private let dependencies: SettingsDependencies
 	

@@ -12,6 +12,7 @@ import iRingsCore
 import iRingsUI
 
 import Ring
+import Settings
 import Sheet
 import UndefinedRoute
 
@@ -30,6 +31,8 @@ public struct HomeView<ViewModel: HomeViewModel>: View {
 					switch screen {
 					case let .ringDetail(id, title):
 						RingDetailView(viewModel: ringDetailVM(id: id, title: title))
+					case .settings:
+						SettingsView(viewModel: settingsVM())
 					default:
 						UndefinedRouteView()
 					}

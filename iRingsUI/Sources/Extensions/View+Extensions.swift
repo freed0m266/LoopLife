@@ -28,41 +28,11 @@ public extension View {
 }
 
 public extension View {
-	/// When app is entering to background
-	func onBackground(action: @escaping () -> Void) -> some View {
-		onReceive(
-			NotificationCenter.default.publisher(
-				for: UIApplication.willResignActiveNotification
-			),
-			perform: { _ in action() }
-		)
-	}
-	
-	/// When app did enter background
-	func didEnterBackground(action: @escaping () -> Void) -> some View {
-		onReceive(
-			NotificationCenter.default.publisher(
-				for: UIApplication.didEnterBackgroundNotification
-			),
-			perform: { _ in action() }
-		)
-	}
-	
 	/// When app will enter foreground
 	func willEnterForeground(action: @escaping () -> Void) -> some View {
 		onReceive(
 			NotificationCenter.default.publisher(
 				for: UIApplication.willEnterForegroundNotification
-			),
-			perform: { _ in action() }
-		)
-	}
-	
-	/// When app did enter foreground
-	func onForeground(action: @escaping () -> Void) -> some View {
-		onReceive(
-			NotificationCenter.default.publisher(
-				for: UIApplication.didBecomeActiveNotification
 			),
 			perform: { _ in action() }
 		)

@@ -66,6 +66,8 @@ public extension Icon {
 	static var recordCircleFill: Icon = "record.circle.fill"
 	/// slider.horizontal.3
 	static var sliderHorizontal: Icon = "slider.horizontal.3"
+	/// square.and.arrow.up
+	static var squareAndArrowUp: Icon = "square.and.arrow.up"
 	/// trash
 	static var trash: Icon = "trash"
 	/// exclamationmark.triangle

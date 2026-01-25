@@ -124,7 +124,7 @@ public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 			LLHeadline("\(Texts.recordsHeadline) (\(viewModel.ringLogs.count))")
 			
 			if viewModel.ringLogs.isNotEmpty {
-				VStack(spacing: 0) {
+				LazyVStack(spacing: 0) {
 					ForEach(Array(viewModel.ringLogs.enumerated()), id: \.element.id) { index, log in
 						Button {
 							presentSheet(item: .editRingLog(ringId: viewModel.ring.id, logId: log.id))

@@ -12,6 +12,10 @@ public enum Environment: String {
 	case testing = "Testing"
 	case production = "Production"
 	
+	var isDebug: Bool {
+		self == .development || self == .testing
+	}
+	
 	public var appNameValue: String {
 		switch self {
 		case .development: "DEV"

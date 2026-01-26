@@ -18,7 +18,7 @@ public struct Feature: Sendable {
 		let sources = SourceFilesList.sourceFilesList(
 			globs: [
 				"Features/\(name)/Sources/**",
-				hasTesting && Configuration.current.isDebug ? "Features/\(name)/Testing/**" : nil
+				hasTesting && Environment.current.isDebug ? "Features/\(name)/Testing/**" : nil
 			].compactMap { $0 }
 		)
 		

@@ -3,20 +3,19 @@ import struct ProjectDescription.SettingsDictionary
 
 public struct AppSetup {
 	public static var current: Self {
-		.init(environment: .current, configuration: .current)
+		.init(environment: .current)
 	}
 	
 	public let environment: Environment
-	public let configuration: Configuration
 	public let moduleBundleIDPrefix = "com.freedommartin.irings"
 	
 	public var bundleID: String {
-		switch configuration {
-		case .debug:
+		switch environment {
+		case .development:
 			moduleBundleIDPrefix + ".debug"
-		case .beta:
+		case .testing:
 			moduleBundleIDPrefix + ".beta"
-		case .release:
+		case .production:
 			moduleBundleIDPrefix
 		}
 	}
@@ -26,30 +25,15 @@ public struct AppSetup {
 	}
 	
 	public var codeSignStyle: String {
-		switch configuration {
-		case .debug: 
-			"Automatic"
-		case .beta, .release:
-			"Manual"
-		}
+		"Automatic"
 	}
 	
 	public var codeSigning: CodeSigning {
-		switch configuration {
-		case .debug:
-			.init(
-				developmentTeam: AppSetup.current.teamID,
-				identity: "Apple Development",
-				provisioningSpecifier: "" // Xcode will select `Automatic`
-			)
-		case .beta, .release:
-			.init(
-				developmentTeam: AppSetup.current.teamID,
-				identity: "Apple Distribution",
-				// TODO: Fill provisioningSpecifier
-				provisioningSpecifier: "" + bundleID
-			)
-		}
+		CodeSigning(
+			developmentTeam: AppSetup.current.teamID,
+			identity: "Apple Development",
+			provisioningSpecifier: "" // Xcode will select `Automatic`
+		)
 	}
 	
 	public var projectConfigurations: [ProjectDescription.Configuration] {
@@ -89,5 +73,5 @@ extension AppSetup {
 }
 
 extension AppSetup: CustomStringConvertible {
-	public var description: String { "\(configuration)/\(environment)" }
+	public var description: String { "\(environment)" }
 }

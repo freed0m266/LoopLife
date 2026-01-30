@@ -15,6 +15,7 @@ final class EditRingLogViewModelMock: EditRingLogViewModeling {
 	@Published var isKeyboardVisible = false
 	
 	var ring: Ring? = .mock1
+	var logNumber: Int = 26
 	var isEditButtonDisabled: Bool = false
 	
 	func editRingLog() { }

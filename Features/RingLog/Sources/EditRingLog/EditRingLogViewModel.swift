@@ -13,6 +13,7 @@ public protocol EditRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }
 	var date: Date { get set }
 	var note: String? { get set }
+	var logNumber: Int { get }
 	var isKeyboardVisible: Bool { get set }
 	var isEditButtonDisabled: Bool { get }
 	
@@ -29,6 +30,14 @@ final class EditRingLogViewModel: BaseViewModel, EditRingLogViewModeling {
 	@Published var note: String?
 	@Published var isKeyboardVisible = false
 	@Published private var ringLog: RingLog?
+	
+	var logNumber: Int {
+		if let index = ring?.logIds.firstIndex(of: logId) {
+			index + 1
+		} else {
+			0
+		}
+	}
 	
 	var isEditButtonDisabled: Bool {
 		date == ringLog?.date && note == ringLog?.note

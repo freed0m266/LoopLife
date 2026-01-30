@@ -191,7 +191,7 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 			L10n.Demo.noteTextThree, nil
 		]
 		
-		demoRing.logIds.enumerated().forEach { offset, id in
+		demoRing.logIds.reversed().enumerated().forEach { offset, id in
 			let log = RingLog(
 				id: id,
 				date: startOfToday

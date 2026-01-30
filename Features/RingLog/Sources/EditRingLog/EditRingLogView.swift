@@ -21,7 +21,7 @@ public struct EditRingLogView<ViewModel: EditRingLogViewModeling>: View {
 
     public var body: some View {
 		ScreenView(
-			title: Texts.editTitle,
+			title: Texts.editTitle(viewModel.logNumber),
 			subtitle: viewModel.ring?.name,
 			backgroundColor: .backgroundSecondary
 		) {

@@ -34,7 +34,7 @@
 "ringForm.deadlineValueSingular" = "%@ day";
 "ringForm.deadlineValuePlural" = "%@ days";
 "ringLog.addTitle" = "Add Record";
-"ringLog.editTitle" = "Edit Record";
+"ringLog.editTitle" = "Record #%@";
 "ringLog.dateText" = "Date";
 "ringLog.timeText" = "Time";
 "ringLog.notePlaceholder" = "Tap here to add a note...";

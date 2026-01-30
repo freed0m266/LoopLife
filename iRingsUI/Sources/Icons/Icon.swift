@@ -42,8 +42,8 @@ public extension Icon {
 	static var checkmarkFill: Icon = "checkmark.circle.fill"
 	/// chevron.right
 	static var chevronRight: Icon = "chevron.right"
-	/// circle.circle
-	static var circleCircle: Icon = "circle.circle"
+	/// circle.dashed
+	static var circleDashed: Icon = "circle.dashed"
 	/// clock.arrow.circlepath
 	static var clockArrowCirclepath: Icon = "clock.arrow.circlepath"
 	/// doc.on.doc

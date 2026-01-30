@@ -17,6 +17,9 @@
 "ringDetail.paceInfoAlertTitle" = "";
 "ringDetail.paceInfoAlertMessage" = "";
 "ringList.title" = "";
+"ringList.onboardingHeadline" = "";
+"ringList.onboardingText" = "";
+"ringList.emptyListTitle" = "";
 "ringList.emptyListText" = "";
 "ringForm.newTitle" = "";
 "ringForm.editTitle" = "";
@@ -47,5 +50,9 @@
 "settings.title" = "";
 "settings.appName" = "";
 "settings.appAuthor" = "";
+"demo.ringName" = "";
+"demo.noteTextOne" = "";
+"demo.noteTextTwo" = "";
+"demo.noteTextThree" = "";
 "undefinedRoute.title" = "";
 "undefinedRoute.text" = "";

@@ -17,7 +17,10 @@
 "ringDetail.paceInfoAlertTitle" = "What does Current Pace mean?";
 "ringDetail.paceInfoAlertMessage" = "Current Pace shows how well you're keeping up with your goal.\n\n= 100 %% – ideal pace\n> 100 %% – you're ahead of schedule\n< 100 %% – you need to speed up\n\nThis indicator is calculated from the ratio of your progress to elapsed time.";
 "ringList.title" = "Summary";
-"ringList.emptyListText" = "You have no rings yet.";
+"ringList.onboardingHeadline" = "Your journey starts here.";
+"ringList.onboardingText" = "Explore the demo above or tap 􀁍 in the top right corner to create your first goal!";
+"ringList.emptyListTitle" = "No Active Goals";
+"ringList.emptyListText" = "This screen is emptier than my wallet at the end of the month. Let’s change that!\nTap 􀁍 to create new goal.";
 "ringForm.newTitle" = "New Ring";
 "ringForm.editTitle" = "Edit Ring";
 "ringForm.categoryHeadline" = "Category";
@@ -47,5 +50,9 @@
 "settings.title" = "Settings";
 "settings.appName" = "iRings App %@";
 "settings.appAuthor" = "by Martin Freedom";
+"demo.ringName" = "Workout (Demo)";
+"demo.noteTextOne" = "Short morning workout; focused on consistency rather than intensity.";
+"demo.noteTextTwo" = "Completed despite low motivation; glad I didn’t skip today.";
+"demo.noteTextThree" = "Very tiring today, but still managed to finish on time.";
 "undefinedRoute.title" = "Something went wrong";
 "undefinedRoute.text" = "Page not found.";

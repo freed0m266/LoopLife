@@ -30,7 +30,7 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 						}
 					}
 				} else {
-					placeholder
+					emptyListCard
 				}
 			}
 			.padding(.horizontal, 2)
@@ -60,37 +60,25 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 		}
     }
 	
-	private var placeholder: some View {
-		Button {
-			presentSheet(item: .addRing)
-		} label: {
-			HStack(spacing: 16) {
-				RingGraph(
-					innerProps: .init(
-						progress: 0.67,
-						startColor: .mintGreen,
-						endColor: .basicBlue
-					),
-					outerProps: .init(
-						progress: 0.84,
-						startColor: .basicRed,
-						endColor: .basicMagenta
-					),
-					style: .small
-				)
-				.saturation(0)
-				
-				VStack(spacing: 16) {
-					Text(Texts.emptyListText.uppercased())
-						.titleMedium()
-						.foregroundColor(.foregroundPrimary)
-						.maxWidthLeading()
-				}
-				.multilineTextAlignment(.leading)
-				.padding(.horizontal, 12)
-			}
-			.cardStyle()
+	private var emptyListCard: some View {
+		VStack(alignment: .center, spacing: 0) {
+			Icon.circleDashed
+				.size(80)
+				.padding(.bottom, 24)
+			
+			Text(Texts.emptyListTitle)
+				.titleMedium()
+				.padding(.bottom, 16)
+			
+			Text(Texts.emptyListText)
+				.textLarge()
 		}
+		.foregroundColor(.foregroundSecondary)
+		.frame(maxWidth: .infinity)
+		.multilineTextAlignment(.center)
+		.padding(.vertical, 8)
+		.padding(.horizontal, 16)
+		.cardStyle(opacity: 0.5)
 		.padding(.vertical, 8)
 	}
 }

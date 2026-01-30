@@ -98,8 +98,8 @@ public extension Ring {
 	}
 }
 
-public extension Ring {
-	static var empty: Self {
+extension Ring {
+	public static var empty: Self {
 		.init(
 			id: "",
 			name: "",
@@ -109,5 +109,32 @@ public extension Ring {
 			lastUpdate: nil,
 			logIds: []
 		)
+	}
+}
+	
+extension Ring {
+	static func createDemo(startOfToday: Date) -> Self {
+		let demoLogIds = (0..<6).map { _ in
+			"\(demoRingId).\(UUID().uuidString)"
+		}
+		
+		let demoRing = Ring(
+			id: demoRingId,
+			name: L10n.Demo.ringName,
+			targetCount: 10,
+			startDate: startOfToday.minus(days: 15),
+			endDate: startOfToday.plus(days: 15),
+			lastUpdate: startOfToday.minus(days: 1),
+			logIds: demoLogIds
+		)
+		return demoRing
+	}
+	
+	public var isDemo: Bool {
+		id == Self.demoRingId
+	}
+	
+	private static var demoRingId: Ring.ID {
+		"demo-ring-id"
 	}
 }

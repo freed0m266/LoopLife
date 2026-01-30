@@ -14,6 +14,7 @@ import iRingsResources
 public protocol RingListViewModeling: ObservableObject {
 	var rings: [Ring] { get }
 	var currentDate: Date { get }
+	var isOnboardingCardShown: Bool { get }
 	
 	func recordLog(for ring: Ring)
 	func willEnterForeground()
@@ -26,6 +27,10 @@ public func ringListVM() -> some RingListViewModeling {
 final class RingListViewModel: BaseViewModel, RingListViewModeling {
 	@Published var rings: [Ring] = []
 	@Published var currentDate: Date = .now
+	
+	var isOnboardingCardShown: Bool {
+		rings.count == 1 && rings.first?.isDemo == true
+	}
 	
     private let dependencies: RingListDependencies
 

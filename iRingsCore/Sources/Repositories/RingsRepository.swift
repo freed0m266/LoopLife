@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import iRingsResources
 
 public protocol RingsRepositoring {
 	func rings() -> AnyPublisher<[Ring], Error>
@@ -56,6 +57,7 @@ public extension RingsRepositoring {
 }
 
 final class RingsRepository: BaseRepository, RingsRepositoring {
+	@UserStorage(.wasDemoRingEverCreated) private var wasDemoRingEverCreated = false
 	
 	private var ringsSubject = PassthroughSubject<[Ring], Error>()
 	private var ringLogsSubject = PassthroughSubject<[RingLog], Error>()
@@ -67,6 +69,7 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 	
 	override init(coreDataManager: CoreDataManaging) {
 		super.init(coreDataManager: coreDataManager)
+		setupDemoContent()
 	}
 	
 	// MARK: - Public API
@@ -173,5 +176,37 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		// Refresh rings
 		loadItems(subject: ringsSubject)
 		loadItem(id: ring.id, subject: ringSubject)
+	}
+	
+	// MARK: - Private API
+	
+	private func setupDemoContent() {
+		guard !wasDemoRingEverCreated else { return }
+		
+		let startOfToday = Date.now.startOfDay
+		let demoRing: Ring = .createDemo(startOfToday: startOfToday)
+		let notes: [String?] = [
+			L10n.Demo.noteTextOne, nil,
+			L10n.Demo.noteTextTwo, nil,
+			L10n.Demo.noteTextThree, nil
+		]
+		
+		demoRing.logIds.enumerated().forEach { offset, id in
+			let log = RingLog(
+				id: id,
+				date: startOfToday
+					.minus(days: Int(Double(offset) * 2.5) + 1)
+					.plus(hours: .random(in: 17..<20))
+					.plus(minutes: .random(in: 0..<60)),
+				completionRatio: 1,
+				note: notes[offset],
+				createdAt: startOfToday,
+				updatedAt: nil
+			)
+			try? save(ringLog: log)
+		}
+		try? save(ring: demoRing)
+		
+		wasDemoRingEverCreated = true
 	}
 }

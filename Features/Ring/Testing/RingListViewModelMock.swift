@@ -12,6 +12,7 @@ import iRingsCore
 final class RingListViewModelMock: RingListViewModeling {
 	var rings: [Ring] = .mock
 	var currentDate: Date = .mock2026
+	var isOnboardingCardShown: Bool = true
 	
 	func recordLog(for ring: Ring) { }
 	func willEnterForeground() { }

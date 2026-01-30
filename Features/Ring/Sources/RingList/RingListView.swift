@@ -29,6 +29,8 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 							viewModel.recordLog(for: ring)
 						}
 					}
+					
+					onboardingCard
 				} else {
 					emptyListCard
 				}
@@ -59,6 +61,25 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 			viewModel.willEnterForeground()
 		}
     }
+	
+	@ViewBuilder private var onboardingCard: some View {
+		if viewModel.isOnboardingCardShown {
+			VStack(alignment: .leading, spacing: 16) {
+				Text(Texts.onboardingHeadline)
+					.labelLarge()
+					.foregroundColor(.foregroundSecondary)
+				
+				Text(Texts.onboardingText)
+					.textLarge()
+			}
+			.foregroundColor(.foregroundSecondary)
+			.maxWidthLeading()
+			.multilineTextAlignment(.leading)
+			.padding(.trailing, 32)
+			.cardStyle(opacity: 0.5)
+			.padding(.vertical, 8)
+		}
+	}
 	
 	private var emptyListCard: some View {
 		VStack(alignment: .center, spacing: 0) {

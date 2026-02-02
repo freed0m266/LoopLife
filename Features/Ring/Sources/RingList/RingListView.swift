@@ -49,6 +49,7 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 				.buttonStyle(.glassProminent)
 			}
 			
+			#if DEBUG
 			ToolbarItem(placement: .topBarTrailing) {
 				Button {
 					navigateTo(route: .settings)
@@ -56,6 +57,7 @@ public struct RingListView<ViewModel: RingListViewModeling>: View {
 					Icon.gearshape
 				}
 			}
+			#endif
 		}
 		.willEnterForeground {
 			viewModel.willEnterForeground()

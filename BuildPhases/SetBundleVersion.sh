@@ -3,7 +3,7 @@
 # This script generates two types of versions for your iOS project:
 #
 # 1. A dotted version string (VERSION_STRING_BASE) in the format:
-#    YY.MM.DD (e.g., 25.04.23)
+#    YY.M.D (e.g., 25.4.23)
 #
 # 2. An integer version code (VERSION_CODE) formatted as:
 #    YYMMDD (e.g., 250423)
@@ -15,11 +15,10 @@
 # INFOPLIST_FILE must be set to the path of your Info.plist file.
 # -----------------------------------------------------------------------------
 
-# Generate date components: Short Year (25), Month (01-12), Day (01-31)
-read SHORT_YEAR MONTH DAY <<< $(date +"%y %m %d")
+# Generate date components: Short Year (25), Month (1-12), Day (1-31)
+read SHORT_YEAR MONTH DAY <<< $(date +"%y %-m %-d")
 
-# 1. Generate VERSION_STRING_BASE (e.g., 25.04.23)
-# Using the padded MONTH and DAY variables directly to keep leading zeros.
+# 1. Generate VERSION_STRING_BASE (e.g., 25.4.23)
 VERSION_STRING_BASE="${SHORT_YEAR}.${MONTH}.${DAY}"
 
 # Suffix is kept empty for production builds.
@@ -29,7 +28,7 @@ VERSION_STRING_SUFFIX=""
 FULL_VERSION_STRING="${VERSION_STRING_BASE}${VERSION_STRING_SUFFIX}"
 
 # 2. Generate VERSION_CODE (e.g., 250423)
-VERSION_CODE="${SHORT_YEAR}${MONTH}${DAY}"
+VERSION_CODE=$(printf "%02d%02d%02d" $SHORT_YEAR $MONTH $DAY)
 
 echo "ℹ️ Full Version String (CFBundleShortVersionString): $FULL_VERSION_STRING"
 echo "ℹ️ Using VERSION_CODE (CFBundleVersion): $VERSION_CODE"

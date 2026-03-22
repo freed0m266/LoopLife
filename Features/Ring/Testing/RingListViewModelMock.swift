@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 final class RingListViewModelMock: RingListViewModeling {
 	var rings: [Ring] = .mock

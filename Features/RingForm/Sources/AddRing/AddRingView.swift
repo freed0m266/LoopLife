@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
-import iRingsCore
-import iRingsUI
-import iRingsResources
+import TempooCore
+import TempooUI
+import TempooResources
 
 public struct AddRingView<ViewModel: AddRingViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

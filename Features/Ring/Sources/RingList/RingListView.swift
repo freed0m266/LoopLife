@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
-import iRingsCore
-import iRingsResources
-import iRingsUI
+import TempooCore
+import TempooResources
+import TempooUI
 
 public struct RingListView<ViewModel: RingListViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 final class RingDetailViewModelMock: RingDetailViewModeling {
 	@Published var isDeleteAlertShown = false

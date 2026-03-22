@@ -6,7 +6,7 @@
 //  Copyright © 2025 Freedom Martin, s.r.o. All rights reserved.
 //
 
-import iRingsCore
+import TempooCore
 
 final class ExampleDetailViewModelMock: ExampleDetailViewModeling {
 	var example: Example = .mock1

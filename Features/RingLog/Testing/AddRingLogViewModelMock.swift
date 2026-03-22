@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 final class AddRingLogViewModelMock: AddRingLogViewModeling {
 	@Published var ring: Ring? = .mock1

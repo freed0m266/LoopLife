@@ -8,7 +8,7 @@
 
 import Combine
 import Foundation
-import iRingsCore
+import TempooCore
 
 public protocol RingDetailViewModeling: ObservableObject {
 	var title: String { get }

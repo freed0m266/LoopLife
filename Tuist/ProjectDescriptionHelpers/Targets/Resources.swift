@@ -1,6 +1,6 @@
 import ProjectDescription
 
-private let targetName = "iRingsResources"
+private let targetName = "TempooResources"
 private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).resources"
 
 public let resources = Target.target(

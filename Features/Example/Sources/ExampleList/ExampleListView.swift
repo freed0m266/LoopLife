@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import iRingsUI
+import TempooUI
 
 public struct ExampleListView<ViewModel: ExampleListViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

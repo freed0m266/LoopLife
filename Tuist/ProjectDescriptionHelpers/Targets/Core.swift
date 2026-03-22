@@ -1,6 +1,6 @@
 import ProjectDescription
 
-private let targetName = "iRingsCore"
+private let targetName = "TempooCore"
 private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).core"
 
 public let core = Target.target(

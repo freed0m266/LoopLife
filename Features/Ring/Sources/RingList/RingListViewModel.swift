@@ -8,8 +8,8 @@
 
 import Foundation
 import Combine
-import iRingsCore
-import iRingsResources
+import TempooCore
+import TempooResources
 
 public protocol RingListViewModeling: ObservableObject {
 	var rings: [Ring] { get }

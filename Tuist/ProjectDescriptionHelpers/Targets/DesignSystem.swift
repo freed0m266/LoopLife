@@ -1,6 +1,6 @@
 import ProjectDescription
 
-private let targetName = "iRingsUI"
+private let targetName = "TempooUI"
 private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).ui"
 
 public let designSystem = Target.target(

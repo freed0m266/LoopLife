@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import iRingsCore
-import iRingsResources
+import TempooCore
+import TempooResources
 
 public protocol SettingsViewModeling: ObservableObject {
 	var version: String { get }
@@ -46,7 +46,7 @@ final class SettingsViewModel: BaseViewModel, SettingsViewModeling {
 	var exportFilename: String {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
-		return "iRings-Export-\(formatter.string(from: .now))"
+		return "Tempoo-Export-\(formatter.string(from: .now))"
 	}
 	
 	@Published var isExporting = false

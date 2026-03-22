@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import iRingsUI
-import iRingsResources
+import TempooUI
+import TempooResources
 
 public struct EditRingLogView<ViewModel: EditRingLogViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

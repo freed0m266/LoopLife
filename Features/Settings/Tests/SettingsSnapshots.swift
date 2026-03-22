@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import iRingsTesting
+import TempooTesting
 @testable import Settings
 
 class SettingsSnapshots: XCTestCase {

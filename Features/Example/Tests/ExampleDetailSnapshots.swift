@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import iRingsTesting
+import TempooTesting
 @testable import Example
 
 class ExampleDetailSnapshots: XCTestCase {

@@ -8,8 +8,8 @@
 
 import SwiftUI
 import ConfettiSwiftUI
-import iRingsCore
-import iRingsUI
+import TempooCore
+import TempooUI
 
 import Ring
 import Settings

@@ -15,7 +15,7 @@ let services: [Service] = []
 let appTargets: [Target] = features.flatMap(\.allTargets) + services.flatMap(\.allTargets)
 
 let project = Project(
-    name: "iRings",
+    name: "Tempoo",
     organizationName: "Freedom Martin, s.r.o.",
     options: .options(
         developmentRegion: "en"

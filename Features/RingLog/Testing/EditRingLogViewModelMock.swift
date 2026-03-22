@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 final class EditRingLogViewModelMock: EditRingLogViewModeling {
 	@Published var date: Date = .now

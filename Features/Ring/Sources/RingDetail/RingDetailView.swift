@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import iRingsResources
-import iRingsUI
+import TempooResources
+import TempooUI
 
 public struct RingDetailView<ViewModel: RingDetailViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 final class AddRingViewModelMock: AddRingViewModeling {
 	@Published var name: String? = "Workout"

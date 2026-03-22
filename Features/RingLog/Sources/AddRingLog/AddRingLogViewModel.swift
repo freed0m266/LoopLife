@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import iRingsCore
-import iRingsResources
+import TempooCore
+import TempooResources
 
 public protocol AddRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }

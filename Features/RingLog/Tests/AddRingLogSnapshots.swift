@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import iRingsTesting
+import TempooTesting
 @testable import RingLog
 
 class AddRingLogSnapshots: XCTestCase {

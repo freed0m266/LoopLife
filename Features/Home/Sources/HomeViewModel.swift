@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 import Ring
 
 public final class HomeViewModel: BaseViewModel, ObservableObject {

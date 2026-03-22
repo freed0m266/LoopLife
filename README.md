@@ -1,10 +1,10 @@
-# iRings 2
+# Tempoo
 
 A SwiftUI-based iOS application for tracking goals and habits with beautiful circular progress visualizations.
 
 ## Overview
 
-iRings 2 helps you track your goals with an intuitive visual interface featuring circular progress rings. Each ring represents a goal with a specific target count and deadline, allowing you to monitor both your progress and time remaining at a glance.
+Tempoo helps you track your goals with an intuitive visual interface featuring circular progress rings. Each ring represents a goal with a specific target count and deadline, allowing you to monitor both your progress and time remaining at a glance.
 
 ## Features
 
@@ -21,10 +21,10 @@ iRings 2 helps you track your goals with an intuitive visual interface featuring
 
 The project follows a modular architecture with separation of concerns:
 
-- **iRings** (Main App): Application entry point and coordination
-- **iRingsCore**: Core domain models and business logic
-- **iRingsResources**: Assets and localizations
-- **iRingsUI**: Reusable UI components and styling
+- **Tempoo** (Main App): Application entry point and coordination
+- **TempooCore**: Core domain models and business logic
+- **TempooResources**: Assets and localizations
+- **TempooUI**: Reusable UI components and styling
 - **Feature Modules**:
   - **Home**: Main navigation and ring list
   - **Ring**: Ring detail view and management
@@ -49,7 +49,7 @@ The project follows a modular architecture with separation of concerns:
 ## Project Structure
 
 ```
-iRings/
+Tempoo/
 ├── App/
 │   ├── LoopLifeApp.swift      # App entry point
 │   ├── AppView.swift           # Root view
@@ -58,17 +58,17 @@ iRings/
 │   ├── Home/                   # Home screen module
 │   ├── Ring/                   # Ring detail module
 │   └── Sheet/                  # Modal presentations
-├── iRingsCore/                 # Core business logic
+├── TempooCore/                 # Core business logic
 │   ├── Models/
 │   │   ├── Ring.swift
 │   │   └── RingLog.swift
 │   └── Repositories/
-├── iRingsUI/                   # Reusable UI components
+├── TempooUI/                   # Reusable UI components
 │   ├── Components/
 │   │   ├── RingGraph.swift
 │   │   └── TimelineChart.swift
 │   └── Styling/
-└── iRingsResources/           # Assets and localizations
+└── TempooResources/           # Assets and localizations
 ```
 
 ## Key Concepts
@@ -130,7 +130,7 @@ The pace index is a calculated metric that shows whether you're on track:
 ### Dependencies
 
 - **SwiftyBeaver**: Logging framework
-- Custom internal frameworks (iRingsCore, iRingsUI, etc.)
+- Custom internal frameworks (TempooCore, TempooUI, etc.)
 
 ### Debug Logging
 

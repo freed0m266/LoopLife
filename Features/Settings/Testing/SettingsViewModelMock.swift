@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 final class SettingsViewModelMock: SettingsViewModeling {
 	// swiftlint:disable:next force_unwrapping

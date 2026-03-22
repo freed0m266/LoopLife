@@ -7,7 +7,7 @@ public struct AppSetup {
 	}
 	
 	public let environment: Environment
-	public let moduleBundleIDPrefix = "com.freedommartin.irings"
+	public let moduleBundleIDPrefix = "com.freedommartin.tempoo"
 	
 	public var bundleID: String {
 		switch environment {
@@ -60,15 +60,15 @@ public struct AppSetup {
 
 extension AppSetup {
 	public var appName: String {
-		["iRings", environment.appNameValue].joined(separator: " ")
+		["Tempoo", environment.appNameValue].joined(separator: " ")
 	}
 	
 	public var iconName: String {
-		"Icon-iRings"
+		"Icon-Tempoo"
 	}
 	
 	public var logoName: String {
-		"Logo-iRings"
+		"Logo-Tempoo"
 	}
 }
 

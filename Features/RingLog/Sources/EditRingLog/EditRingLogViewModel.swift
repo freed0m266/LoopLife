@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 public protocol EditRingLogViewModeling: ObservableObject {
 	var ring: Ring? { get }

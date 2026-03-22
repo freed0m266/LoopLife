@@ -7,7 +7,7 @@
 //
 
 import Combine
-import iRingsCore
+import TempooCore
 
 public protocol ExampleListViewModeling: ObservableObject {
 	var examples: [Example] { get }

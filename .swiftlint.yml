@@ -16,10 +16,10 @@ disabled_rules:
   - file_length
   - trailing_whitespace
 included: # paths to include during linting. `--path` is ignored if present.
-  - LoopLife
-  - LoopLifeCore
-  - LoopLifeUI
-  - LoopLifeResources
+  - Tempoo
+  - TempooCore
+  - TempooUI
+  - TempooResources
   - Features
   - Services
 excluded: # paths to ignore during linting. Takes precedence over `included`.

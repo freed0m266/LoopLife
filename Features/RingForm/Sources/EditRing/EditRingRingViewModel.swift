@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import iRingsCore
+import TempooCore
 
 public protocol EditRingViewModeling: ObservableObject {
 	var name: String? { get set }

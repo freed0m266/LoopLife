@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import iRingsUI
+import TempooUI
 
 public struct ExampleDetailView<ViewModel: ExampleDetailViewModeling>: View {
 	@StateObject private var viewModel: ViewModel

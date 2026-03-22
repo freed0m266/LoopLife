@@ -50,6 +50,14 @@
 "settings.title" = "Settings";
 "settings.appName" = "iRings App %@";
 "settings.appAuthor" = "by Martin Freedom";
+"settings.exportButton" = "Export Data";
+"settings.importButton" = "Import Data";
+"settings.exportSuccess" = "Data exported successfully";
+"settings.exportFailed" = "Failed to export data";
+"settings.importSuccess" = "%@ rings imported successfully";
+"settings.importFailed" = "Failed to import data";
+"settings.importConfirmTitle" = "Import Data";
+"settings.importConfirmMessage" = "Importing data will overwrite any existing entries with matching IDs. Do you want to continue?";
 "demo.ringName" = "Workout (Demo)";
 "demo.noteTextOne" = "Short morning workout; focused on consistency rather than intensity.";
 "demo.noteTextTwo" = "Completed despite low motivation; glad I didn’t skip today.";

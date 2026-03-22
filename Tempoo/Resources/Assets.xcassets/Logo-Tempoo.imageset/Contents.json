@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo-looplife.png",
+      "filename" : "logo-tempoo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "logo-looplife@2x.png",
+      "filename" : "logo-tempoo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "logo-looplife@3x.png",
+      "filename" : "logo-tempoo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

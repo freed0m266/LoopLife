@@ -8,10 +8,21 @@
 
 import Foundation
 import iRingsCore
+import iRingsResources
 
 public protocol SettingsViewModeling: ObservableObject {
 	var version: String { get }
 	var appUrl: URL { get }
+	var isExporting: Bool { get set }
+	var isImporting: Bool { get set }
+	var isImportConfirmationShown: Bool { get set }
+	var exportDocument: ExportDocument? { get }
+	var exportFilename: String { get }
+	
+	func exportData()
+	func beginImport()
+	func importData(from data: Data)
+	func confirmImport()
 }
 
 public func settingsVM() -> some SettingsViewModeling {
@@ -19,6 +30,8 @@ public func settingsVM() -> some SettingsViewModeling {
 }
 
 final class SettingsViewModel: BaseViewModel, SettingsViewModeling {
+	
+	typealias Texts = L10n.Settings
 	
 	var appUrl: URL {
 		// swiftlint:disable:next force_unwrapping
@@ -30,7 +43,19 @@ final class SettingsViewModel: BaseViewModel, SettingsViewModeling {
 		return "v\(version)"
 	}
 	
+	var exportFilename: String {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd"
+		return "iRings-Export-\(formatter.string(from: .now))"
+	}
+	
+	@Published var isExporting = false
+	@Published var isImporting = false
+	@Published var isImportConfirmationShown = false
+	@Published var exportDocument: ExportDocument?
+	
     private let dependencies: SettingsDependencies
+	private var pendingImportData: Data?
 	
     // MARK: - Init
 
@@ -39,6 +64,41 @@ final class SettingsViewModel: BaseViewModel, SettingsViewModeling {
 		super.init()
 		setupBindings()
     }
+	
+	// MARK: - Public API
+	
+	func beginImport() {
+		isImporting = true
+	}
+	
+	func exportData() {
+		do {
+			let data = try dependencies.dataMigrationManager.exportData()
+			exportDocument = ExportDocument(data: data)
+			isExporting = true
+		} catch {
+			Logger.error(error)
+			presentToast(item: .failure(Texts.exportFailed))
+		}
+	}
+	
+	func importData(from data: Data) {
+		pendingImportData = data
+		isImportConfirmationShown = true
+	}
+	
+	func confirmImport() {
+		guard let data = pendingImportData else { return }
+		pendingImportData = nil
+		
+		do {
+			let result = try dependencies.dataMigrationManager.importData(from: data)
+			presentToast(item: .success(Texts.importSuccess(result.ringsCount)))
+		} catch {
+			Logger.error(error)
+			presentToast(item: .failure(Texts.importFailed))
+		}
+	}
 	
 	// MARK: - Private API
 	

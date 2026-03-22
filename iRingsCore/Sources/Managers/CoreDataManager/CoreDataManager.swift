@@ -13,6 +13,7 @@ public protocol CoreDataManaging {
 	func save<T: Storable>(item: T) throws
 	func load<T: Storable>(id: T.ID) throws -> T?
 	func load<T: Storable>(ids: [T.ID]) throws -> [T]
+	func loadAll<T: Storable>() throws -> [T]
 	func delete(key: EntityKey) throws
 	func delete(ids: [String], entityType: String) throws
 }
@@ -111,6 +112,10 @@ final class CoreDataManager: CoreDataManaging {
 		}
 		
 		return items
+	}
+	
+	func loadAll<T: Storable>() throws -> [T] {
+		try load(ids: [])
 	}
 	
 	func delete(key: EntityKey) throws {

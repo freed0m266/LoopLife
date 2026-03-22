@@ -13,4 +13,14 @@ final class SettingsViewModelMock: SettingsViewModeling {
 	// swiftlint:disable:next force_unwrapping
 	var appUrl = URL(string: Environment.appLinkUrlString)!
 	var version = "v26.4.12"
+	var exportFilename = "LoopLife-Export-2026-03-22"
+	var isExporting = false
+	var isImporting = false
+	var isImportConfirmationShown = false
+	var exportDocument: ExportDocument?
+	
+	func exportData() { }
+	func beginImport() { }
+	func importData(from data: Data) { }
+	func confirmImport() { }
 }

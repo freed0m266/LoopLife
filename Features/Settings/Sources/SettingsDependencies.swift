@@ -9,13 +9,13 @@
 import iRingsCore
 
 public struct SettingsDependencies {
-
+	let dataMigrationManager: DataMigrationManaging
 }
 
 extension AppDependency {
 	var settings: SettingsDependencies {
 		.init(
-			
+			dataMigrationManager: dataMigrationManager
 		)
 	}
 }

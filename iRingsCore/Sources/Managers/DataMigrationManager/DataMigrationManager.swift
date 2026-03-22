@@ -38,9 +38,19 @@ final class DataMigrationManager: DataMigrationManaging {
 		let rings: [Ring] = try coreDataManager.loadAll()
 		let ringLogs: [RingLog] = try coreDataManager.loadAll()
 		
+		// Fill in missing order values so exported data always has order set
+		let sortedRings = rings.sortedByOrder()
+		let exportRings = sortedRings.enumerated().map { index, ring in
+			var ring = ring
+			if ring.order == nil {
+				ring.order = index
+			}
+			return ring
+		}
+		
 		let envelope = ExportEnvelope(
 			appVersion: Bundle.main.version,
-			rings: rings,
+			rings: exportRings,
 			ringLogs: ringLogs
 		)
 		

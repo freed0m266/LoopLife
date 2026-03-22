@@ -21,6 +21,10 @@ open class BaseRepository {
 	
 	// MARK: - Public API
 	
+	func loadAllItems<T: Storable>() throws -> [T] {
+		try coreDataManager.loadAll()
+	}
+	
 	func loadItems<T: Storable>(ids: [T.ID] = [], subject: PassthroughSubject<[T], Error>) {
 		do {
 			let items: [T] = try coreDataManager.load(ids: ids)

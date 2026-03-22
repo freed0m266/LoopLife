@@ -14,6 +14,7 @@ public struct Ring: Storable {
 	public let id: String
 	public var name: String
 	public var targetCount: Int
+	public var order: Int?
 	public var startDate: Date
 	public var endDate: Date
 	public var lastUpdate: Date?
@@ -23,6 +24,7 @@ public struct Ring: Storable {
 		id: String = UUID().uuidString,
 		name: String,
 		targetCount: Int,
+		order: Int?,
 		startDate: Date = .now.startOfDay,
 		endDate: Date,
 		lastUpdate: Date? = nil,
@@ -31,6 +33,7 @@ public struct Ring: Storable {
 		self.id = id
 		self.name = name
 		self.targetCount = targetCount
+		self.order = order
 		self.startDate = startDate
 		self.endDate = endDate
 		self.lastUpdate = lastUpdate
@@ -98,12 +101,36 @@ public extension Ring {
 	}
 }
 
+public extension Array where Element == Ring {
+	/// Sorts rings by `order`, placing rings with `nil` order at the end.
+	func sortedByOrder() -> [Ring] {
+		sorted { lhs, rhs in
+			switch (lhs.order, rhs.order) {
+			case let (l?, r?):
+				return l < r
+			case (_?, nil):
+				return true
+			case (nil, _?):
+				return false
+			case (nil, nil):
+				return false
+			}
+		}
+	}
+	
+	/// Returns the next order value to assign to a new ring.
+	var nextOrder: Int {
+		compactMap(\.order).max().map { $0 + 1 } ?? count
+	}
+}
+
 extension Ring {
 	public static var empty: Self {
 		.init(
 			id: "",
 			name: "",
 			targetCount: 0,
+			order: nil,
 			startDate: .placeholder,
 			endDate: .placeholder,
 			lastUpdate: nil,
@@ -122,6 +149,7 @@ extension Ring {
 			id: demoRingId,
 			name: L10n.Demo.ringName,
 			targetCount: 10,
+			order: 0,
 			startDate: startOfToday.minus(days: 15),
 			endDate: startOfToday.plus(days: 15),
 			lastUpdate: startOfToday.minus(days: 1),

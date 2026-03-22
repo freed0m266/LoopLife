@@ -55,6 +55,7 @@ final class EditRingViewModel: BaseViewModel, EditRingViewModeling {
 			id: ring.id,
 			name: name,
 			targetCount: targetCount,
+			order: ring.order,
 			startDate: startDate,
 			endDate: endDate,
 			lastUpdate: ring.lastUpdate,

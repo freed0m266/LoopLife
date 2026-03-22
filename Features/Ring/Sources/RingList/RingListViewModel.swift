@@ -66,6 +66,7 @@ final class RingListViewModel: BaseViewModel, RingListViewModeling {
 	
 	private func setupBindings() {
 		dependencies.ringsRepository.rings()
+			.map { $0.sortedByOrder() }
 			.assign(to: \.rings, on: self)
 	}
 }

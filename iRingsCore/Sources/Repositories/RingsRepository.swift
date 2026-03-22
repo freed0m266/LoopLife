@@ -18,6 +18,7 @@ public protocol RingsRepositoring {
 	func ringLog(id: RingLog.ID) -> AnyPublisher<RingLog, Error>
 	
 	func save(ring: Ring) throws
+	func nextRingOrder() throws -> Int
 	
 	func addLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws
 	func editLog(log: RingLog, date: Date, completionRatio: CGFloat, note: String?) throws
@@ -114,6 +115,11 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 		loadItem(id: ring.id, subject: ringSubject)
 	}
 	
+	func nextRingOrder() throws -> Int {
+		let rings: [Ring] = try loadAllItems()
+		return rings.nextOrder
+	}
+	
 	func addLog(for ring: Ring, date: Date?, completionRatio: CGFloat, note: String?) throws {
 		var ring = ring
 		
@@ -164,6 +170,7 @@ final class RingsRepository: BaseRepository, RingsRepositoring {
 			id: ring.id,
 			name: ring.name,
 			targetCount: ring.targetCount,
+			order: ring.order,
 			startDate: ring.startDate,
 			endDate: ring.endDate,
 			lastUpdate: ring.lastUpdate,

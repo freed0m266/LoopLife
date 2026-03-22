@@ -61,13 +61,16 @@ final class AddRingViewModel: BaseViewModel, AddRingViewModeling {
 	func saveRing() {
 		guard let name, let targetCount else { return }
 		
-		let ring = Ring(
-			name: name,
-			targetCount: targetCount,
-			endDate: endDate
-		)
-		
 		do {
+			let order = try dependencies.ringsRepository.nextRingOrder()
+			
+			let ring = Ring(
+				name: name,
+				targetCount: targetCount,
+				order: order,
+				endDate: endDate
+			)
+			
 			try dependencies.ringsRepository.save(ring: ring)
 		} catch {
 			showError(error)

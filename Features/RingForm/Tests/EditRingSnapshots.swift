@@ -8,7 +8,7 @@
 
 import XCTest
 import TempooTesting
-@testable import Ring
+@testable import RingForm
 
 class EditRingSnapshots: XCTestCase {
 	func testPreviews() {

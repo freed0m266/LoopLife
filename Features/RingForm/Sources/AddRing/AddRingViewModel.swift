@@ -28,7 +28,7 @@ public func addRingVM() -> some AddRingViewModeling {
 final class AddRingViewModel: BaseViewModel, AddRingViewModeling {
 	@Published var name: String?
 	@Published var targetCount: Int?
-	@Published var endDate: Date = .now.startOfMonth
+	@Published var endDate: Date = .now.plus(days: 30)
 	
 	var progressRatioText: String? {
 		guard let targetCount else { return nil }

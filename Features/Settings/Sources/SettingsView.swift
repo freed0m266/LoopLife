@@ -83,11 +83,6 @@ public struct SettingsView<ViewModel: SettingsViewModeling>: View {
 			Assets.appIcon.swiftUIImage
 				.size(50)
 				.cornerRadius(10)
-				.overlay {
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(.basicBlack, lineWidth: 0.5)
-						.aspectRatio(1, contentMode: .fit)
-				}
 			
 			VStack(alignment: .leading, spacing: 8) {
 				Text(Texts.appName(viewModel.version))
